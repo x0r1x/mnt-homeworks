@@ -1,6 +1,67 @@
 ---
+  - name: docker pull images
+    hosts: localhost
+    gather_facts: false 
+    tasks:
+      - name: docker pull ubuntu OS 
+        docker_image:
+          name: ubuntu
+          tag: latest
+          source: pull
+      - name: docker pull centos OS 
+        docker_image:
+          name: centos
+          tag: latest
+          source: pull     
+
+  - name: docker container run
+    hosts: localhost
+    #connection: local
+    gather_facts: false 
+    tasks:
+      - name: create docker container for Centos7
+        docker_container:
+          name: centos7
+          image: centos:latest
+          state: started
+          #restart: yes
+          restart_policy: always
+          interactive: true
+          tty: true
+          detach: true
+      - name: create docker container for Ubuntu
+        docker_container:
+          name: ubuntu
+          image: ubuntu:latest
+          state: started
+          #restart: yes
+          restart_policy: always
+          interactive: true
+          tty: true
+          detach: true
+
+  - name: Installing python on hosts
+    hosts: [ubuntu, centos7]
+    gather_facts: false
+    tasks:
+      - name: update pack manager and install python for ubuntu host
+        raw: "{{ item }}"
+        loop:
+          - apt-get update
+          - apt-get -y install python3
+        when: inventory_hostname == 'ubuntu'
+      - name: update pack manager and install python for centos7 host
+        raw: "{{ item }}"
+        loop:
+          - sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+          - sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+          - yum -y update
+          - yum -y install python39
+        when: inventory_hostname == 'centos7'
+  
   - name: Print os facts
     hosts: all
+    connection: local
     tasks:
       - name: Print OS
         debug:
