@@ -1,0 +1,6 @@
+debian_packages:
+  - sudo
+  - systemctl
+  - gnupg
+  - apt-utils
+  - apt-transport-https

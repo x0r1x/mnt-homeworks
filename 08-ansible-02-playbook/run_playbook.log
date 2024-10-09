@@ -1,0 +1,2399 @@
+alekseykashin@MBP-Aleksej playbook %  ansible-playbook site.yml -i ./inventory/prod.yml -vvv
+ansible-playbook [core 2.17.4]
+  config file = None
+  configured module search path = ['/Users/alekseykashin/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible
+  ansible collection location = /Users/alekseykashin/.ansible/collections:/usr/share/ansible/collections
+  executable location = /opt/homebrew/bin/ansible-playbook
+  python version = 3.12.6 (main, Sep  6 2024, 19:03:47) [Clang 15.0.0 (clang-1500.3.9.4)] (/opt/homebrew/Cellar/ansible/10.4.0/libexec/bin/python)
+  jinja version = 3.1.4
+  libyaml = True
+No config file found; using defaults
+host_list declined parsing /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/inventory/prod.yml as it did not pass its verify_file() method
+script declined parsing /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/inventory/prod.yml as it did not pass its verify_file() method
+Parsed /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/inventory/prod.yml inventory source with yaml plugin
+redirecting (type: modules) ansible.builtin.docker_image to community.docker.docker_image
+redirecting (type: modules) ansible.builtin.docker_container to community.docker.docker_container
+Skipping callback 'default', as we already have a stdout callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+
+PLAYBOOK: site.yml ***************************************************************************************************************************************************************************************************
+5 plays in site.yml
+
+PLAY [docker pull images] ********************************************************************************************************************************************************************************************
+
+TASK [docker pull ubuntu OS] *****************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/site.yml:6
+redirecting (type: modules) ansible.builtin.docker_image to community.docker.docker_image
+<localhost> ESTABLISH LOCAL CONNECTION FOR USER: alekseykashin
+<localhost> EXEC /bin/sh -c 'echo ~alekseykashin && sleep 0'
+<localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /Users/alekseykashin/.ansible/tmp `"&& mkdir "` echo /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.331729-62757-196218376880781 `" && echo ansible-tmp-1728505796.331729-62757-196218376880781="` echo /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.331729-62757-196218376880781 `" ) && sleep 0'
+redirecting (type: modules) ansible.builtin.docker_image to community.docker.docker_image
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible_collections/community/docker/plugins/modules/docker_image.py
+<localhost> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpubmrw398 TO /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.331729-62757-196218376880781/AnsiballZ_docker_image.py
+<localhost> EXEC /bin/sh -c 'chmod u+x /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.331729-62757-196218376880781/ /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.331729-62757-196218376880781/AnsiballZ_docker_image.py && sleep 0'
+<localhost> EXEC /bin/sh -c '/opt/homebrew/Cellar/ansible/10.4.0/libexec/bin/python /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.331729-62757-196218376880781/AnsiballZ_docker_image.py && sleep 0'
+<localhost> EXEC /bin/sh -c 'rm -f -r /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.331729-62757-196218376880781/ > /dev/null 2>&1 && sleep 0'
+ok: [localhost] => {
+    "actions": [],
+    "changed": false,
+    "image": {
+        "Architecture": "arm64",
+        "Author": "",
+        "Comment": "",
+        "Config": {
+            "AttachStderr": false,
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "Cmd": [
+                "/bin/bash"
+            ],
+            "Domainname": "",
+            "Entrypoint": null,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Hostname": "",
+            "Image": "sha256:cda645029b39f2e6252f29a2d69bfeccf8dc50d034823b5cdca06607308c0f9b",
+            "Labels": {
+                "org.opencontainers.image.ref.name": "ubuntu",
+                "org.opencontainers.image.version": "24.04"
+            },
+            "OnBuild": null,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Tty": false,
+            "User": "",
+            "Volumes": null,
+            "WorkingDir": ""
+        },
+        "Created": "2024-09-16T06:23:59.011017704Z",
+        "DockerVersion": "24.0.7",
+        "GraphDriver": {
+            "Data": {
+                "MergedDir": "/var/lib/docker/overlay2/9d5e4dd5902a0cef28eeb5822b134a54e3cd899ba1828d92945072ef1e3d7642/merged",
+                "UpperDir": "/var/lib/docker/overlay2/9d5e4dd5902a0cef28eeb5822b134a54e3cd899ba1828d92945072ef1e3d7642/diff",
+                "WorkDir": "/var/lib/docker/overlay2/9d5e4dd5902a0cef28eeb5822b134a54e3cd899ba1828d92945072ef1e3d7642/work"
+            },
+            "Name": "overlay2"
+        },
+        "Id": "sha256:c22ec0081bf1bc159b97b27b55812319e99b710df960a16c2f2495dc7fc61c00",
+        "Metadata": {
+            "LastTagTime": "0001-01-01T00:00:00Z"
+        },
+        "Os": "linux",
+        "Parent": "",
+        "RepoDigests": [
+            "ubuntu@sha256:b359f1067efa76f37863778f7b6d0e8d911e3ee8efa807ad01fbf5dc1ef9006b"
+        ],
+        "RepoTags": [
+            "ubuntu:latest"
+        ],
+        "RootFS": {
+            "Layers": [
+                "sha256:c26ee3582dcbad8dc56066358653080b606b054382320eb0b869a2cb4ff1b98b"
+            ],
+            "Type": "layers"
+        },
+        "Size": 100647026,
+        "Variant": "v8"
+    },
+    "invocation": {
+        "module_args": {
+            "api_version": "auto",
+            "archive_path": null,
+            "build": null,
+            "ca_path": null,
+            "client_cert": null,
+            "client_key": null,
+            "debug": false,
+            "docker_host": "unix:///var/run/docker.sock",
+            "force_absent": false,
+            "force_source": false,
+            "force_tag": false,
+            "load_path": null,
+            "name": "ubuntu",
+            "pull": null,
+            "push": false,
+            "repository": null,
+            "source": "pull",
+            "ssl_version": null,
+            "state": "present",
+            "tag": "latest",
+            "timeout": 60,
+            "tls": false,
+            "tls_hostname": null,
+            "use_ssh_client": false,
+            "validate_certs": false
+        }
+    }
+}
+
+PLAY [docker container ubuntu up] ************************************************************************************************************************************************************************************
+
+TASK [create docker container for clickhouse-01] *********************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/site.yml:16
+redirecting (type: modules) ansible.builtin.docker_container to community.docker.docker_container
+<localhost> ESTABLISH LOCAL CONNECTION FOR USER: alekseykashin
+<localhost> EXEC /bin/sh -c 'echo ~alekseykashin && sleep 0'
+<localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /Users/alekseykashin/.ansible/tmp `"&& mkdir "` echo /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.81982-62777-132142625650700 `" && echo ansible-tmp-1728505796.81982-62777-132142625650700="` echo /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.81982-62777-132142625650700 `" ) && sleep 0'
+redirecting (type: modules) ansible.builtin.docker_container to community.docker.docker_container
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible_collections/community/docker/plugins/modules/docker_container.py
+<localhost> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpu3afz6h9 TO /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.81982-62777-132142625650700/AnsiballZ_docker_container.py
+<localhost> EXEC /bin/sh -c 'chmod u+x /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.81982-62777-132142625650700/ /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.81982-62777-132142625650700/AnsiballZ_docker_container.py && sleep 0'
+<localhost> EXEC /bin/sh -c '/opt/homebrew/Cellar/ansible/10.4.0/libexec/bin/python /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.81982-62777-132142625650700/AnsiballZ_docker_container.py && sleep 0'
+<localhost> EXEC /bin/sh -c 'rm -f -r /Users/alekseykashin/.ansible/tmp/ansible-tmp-1728505796.81982-62777-132142625650700/ > /dev/null 2>&1 && sleep 0'
+changed: [localhost] => {
+    "changed": true,
+    "container": {
+        "AppArmorProfile": "",
+        "Args": [],
+        "Config": {
+            "AttachStderr": false,
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "Cmd": [
+                "/bin/bash"
+            ],
+            "Domainname": "",
+            "Entrypoint": null,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Hostname": "e2c95fa3f112",
+            "Image": "ubuntu:latest",
+            "Labels": {
+                "org.opencontainers.image.ref.name": "ubuntu",
+                "org.opencontainers.image.version": "24.04"
+            },
+            "OnBuild": null,
+            "OpenStdin": true,
+            "StdinOnce": false,
+            "Tty": true,
+            "User": "",
+            "Volumes": null,
+            "WorkingDir": ""
+        },
+        "Created": "2024-10-09T20:29:57.300655963Z",
+        "Driver": "overlay2",
+        "ExecIDs": null,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/79f71ba92675a6ba7a63fae29840b711bb15044e0f1a971c59d73f0dd1e86968-init/diff:/var/lib/docker/overlay2/9d5e4dd5902a0cef28eeb5822b134a54e3cd899ba1828d92945072ef1e3d7642/diff",
+                "MergedDir": "/var/lib/docker/overlay2/79f71ba92675a6ba7a63fae29840b711bb15044e0f1a971c59d73f0dd1e86968/merged",
+                "UpperDir": "/var/lib/docker/overlay2/79f71ba92675a6ba7a63fae29840b711bb15044e0f1a971c59d73f0dd1e86968/diff",
+                "WorkDir": "/var/lib/docker/overlay2/79f71ba92675a6ba7a63fae29840b711bb15044e0f1a971c59d73f0dd1e86968/work"
+            },
+            "Name": "overlay2"
+        },
+        "HostConfig": {
+            "AutoRemove": false,
+            "Binds": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceWriteIOps": null,
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "Cgroup": "",
+            "CgroupParent": "",
+            "CgroupnsMode": "private",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "ContainerIDFile": "",
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpuShares": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "Devices": null,
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IOMaximumBandwidth": 0,
+            "IOMaximumIOps": 0,
+            "IpcMode": "private",
+            "Isolation": "",
+            "Links": null,
+            "LogConfig": {
+                "Config": {},
+                "Type": "json-file"
+            },
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "Memory": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "NanoCpus": 0,
+            "NetworkMode": "bridge",
+            "OomKillDisable": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "PidsLimit": null,
+            "PortBindings": null,
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ],
+            "ReadonlyRootfs": false,
+            "RestartPolicy": {
+                "MaximumRetryCount": 0,
+                "Name": "always"
+            },
+            "Runtime": "runc",
+            "SecurityOpt": null,
+            "ShmSize": 67108864,
+            "UTSMode": "",
+            "Ulimits": null,
+            "UsernsMode": "",
+            "VolumeDriver": "",
+            "VolumesFrom": null
+        },
+        "HostnamePath": "/var/lib/docker/containers/e2c95fa3f112416a90b19892bb9de5a6e58dfd4ec74e0d94c2fad0f62737869b/hostname",
+        "HostsPath": "/var/lib/docker/containers/e2c95fa3f112416a90b19892bb9de5a6e58dfd4ec74e0d94c2fad0f62737869b/hosts",
+        "Id": "e2c95fa3f112416a90b19892bb9de5a6e58dfd4ec74e0d94c2fad0f62737869b",
+        "Image": "sha256:c22ec0081bf1bc159b97b27b55812319e99b710df960a16c2f2495dc7fc61c00",
+        "LogPath": "/var/lib/docker/containers/e2c95fa3f112416a90b19892bb9de5a6e58dfd4ec74e0d94c2fad0f62737869b/e2c95fa3f112416a90b19892bb9de5a6e58dfd4ec74e0d94c2fad0f62737869b-json.log",
+        "MountLabel": "",
+        "Mounts": [],
+        "Name": "/clickhouse-01",
+        "NetworkSettings": {
+            "Bridge": "",
+            "EndpointID": "26f27ed60156eb2ea3f6ae1787d7ebde00bbb0bb912a827e445f4ebf7268cf93",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "HairpinMode": false,
+            "IPAddress": "172.17.0.2",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "MacAddress": "02:42:ac:11:00:02",
+            "Networks": {
+                "bridge": {
+                    "Aliases": null,
+                    "DNSNames": null,
+                    "DriverOpts": null,
+                    "EndpointID": "26f27ed60156eb2ea3f6ae1787d7ebde00bbb0bb912a827e445f4ebf7268cf93",
+                    "Gateway": "172.17.0.1",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "IPAMConfig": null,
+                    "IPAddress": "172.17.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "Links": null,
+                    "MacAddress": "02:42:ac:11:00:02",
+                    "NetworkID": "528f5a0c21b563aa5241f2bf153324fd7b6bb0d5f416d38633cf4866720527f5"
+                }
+            },
+            "Ports": {},
+            "SandboxID": "4611b059f674a8e623c6956198fb08cff25639893b95811098cd50c8edf471bf",
+            "SandboxKey": "/var/run/docker/netns/4611b059f674",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null
+        },
+        "Path": "/bin/bash",
+        "Platform": "linux",
+        "ProcessLabel": "",
+        "ResolvConfPath": "/var/lib/docker/containers/e2c95fa3f112416a90b19892bb9de5a6e58dfd4ec74e0d94c2fad0f62737869b/resolv.conf",
+        "RestartCount": 0,
+        "State": {
+            "Dead": false,
+            "Error": "",
+            "ExitCode": 0,
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "OOMKilled": false,
+            "Paused": false,
+            "Pid": 54763,
+            "Restarting": false,
+            "Running": true,
+            "StartedAt": "2024-10-09T20:29:57.336210921Z",
+            "Status": "running"
+        }
+    },
+    "invocation": {
+        "module_args": {
+            "api_version": "auto",
+            "auto_remove": null,
+            "blkio_weight": null,
+            "ca_path": null,
+            "cap_drop": null,
+            "capabilities": null,
+            "cgroup_parent": null,
+            "cgroupns_mode": null,
+            "cleanup": false,
+            "client_cert": null,
+            "client_key": null,
+            "command": null,
+            "command_handling": "correct",
+            "comparisons": null,
+            "container_default_behavior": "no_defaults",
+            "cpu_period": null,
+            "cpu_quota": null,
+            "cpu_shares": null,
+            "cpus": null,
+            "cpuset_cpus": null,
+            "cpuset_mems": null,
+            "debug": false,
+            "default_host_ip": null,
+            "detach": true,
+            "device_cgroup_rules": null,
+            "device_read_bps": null,
+            "device_read_iops": null,
+            "device_requests": null,
+            "device_write_bps": null,
+            "device_write_iops": null,
+            "devices": null,
+            "dns_opts": null,
+            "dns_search_domains": null,
+            "dns_servers": null,
+            "docker_host": "unix:///var/run/docker.sock",
+            "domainname": null,
+            "entrypoint": null,
+            "env": null,
+            "env_file": null,
+            "etc_hosts": null,
+            "exposed_ports": null,
+            "force_kill": false,
+            "groups": null,
+            "healthcheck": null,
+            "healthy_wait_timeout": 300.0,
+            "hostname": null,
+            "ignore_image": false,
+            "image": "ubuntu:latest",
+            "image_comparison": "desired-image",
+            "image_label_mismatch": "ignore",
+            "image_name_mismatch": null,
+            "init": null,
+            "interactive": true,
+            "ipc_mode": null,
+            "keep_volumes": true,
+            "kernel_memory": null,
+            "kill_signal": null,
+            "labels": null,
+            "links": null,
+            "log_driver": null,
+            "log_options": null,
+            "mac_address": null,
+            "memory": null,
+            "memory_reservation": null,
+            "memory_swap": null,
+            "memory_swappiness": null,
+            "mounts": null,
+            "name": "clickhouse-01",
+            "network_mode": null,
+            "networks": null,
+            "networks_cli_compatible": true,
+            "oom_killer": null,
+            "oom_score_adj": null,
+            "output_logs": false,
+            "paused": null,
+            "pid_mode": null,
+            "pids_limit": null,
+            "platform": null,
+            "privileged": null,
+            "publish_all_ports": null,
+            "published_ports": null,
+            "pull": "missing",
+            "pull_check_mode_behavior": "image_not_present",
+            "purge_networks": false,
+            "read_only": null,
+            "recreate": false,
+            "removal_wait_timeout": null,
+            "restart": false,
+            "restart_policy": "always",
+            "restart_retries": null,
+            "runtime": null,
+            "security_opts": null,
+            "shm_size": null,
+            "ssl_version": null,
+            "state": "started",
+            "stop_signal": null,
+            "stop_timeout": null,
+            "storage_opts": null,
+            "sysctls": null,
+            "timeout": 60,
+            "tls": false,
+            "tls_hostname": null,
+            "tmpfs": null,
+            "tty": true,
+            "ulimits": null,
+            "use_ssh_client": false,
+            "user": null,
+            "userns_mode": null,
+            "uts": null,
+            "validate_certs": false,
+            "volume_driver": null,
+            "volumes": null,
+            "volumes_from": null,
+            "working_dir": null
+        }
+    }
+}
+
+PLAY [Isntall python on Debian hosts] ********************************************************************************************************************************************************************************
+
+TASK [check if python install] ***************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/site.yml:30
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505797.582179-62802-143327759895675 `" && echo ansible-tmp-1728505797.582179-62802-143327759895675="` echo /root/.ansible/tmp/ansible-tmp-1728505797.582179-62802-143327759895675 `" ) && sleep 0\'']
+<clickhouse-01> Attempting python interpreter discovery
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'echo PLATFORM; uname; echo FOUND; command -v \'"\'"\'python3.12\'"\'"\'; command -v \'"\'"\'python3.11\'"\'"\'; command -v \'"\'"\'python3.10\'"\'"\'; command -v \'"\'"\'python3.9\'"\'"\'; command -v \'"\'"\'python3.8\'"\'"\'; command -v \'"\'"\'python3.7\'"\'"\'; command -v \'"\'"\'/usr/bin/python3\'"\'"\'; command -v \'"\'"\'python3\'"\'"\'; echo ENDFOUND && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/command.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpdnu2lcmg TO /root/.ansible/tmp/ansible-tmp-1728505797.582179-62802-143327759895675/AnsiballZ_command.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505797.582179-62802-143327759895675/ /root/.ansible/tmp/ansible-tmp-1728505797.582179-62802-143327759895675/AnsiballZ_command.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c '/usr/bin/python3 /root/.ansible/tmp/ansible-tmp-1728505797.582179-62802-143327759895675/AnsiballZ_command.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505797.582179-62802-143327759895675/ > /dev/null 2>&1 && sleep 0'"]
+[WARNING]: No python interpreters found for host clickhouse-01 (tried ['python3.12', 'python3.11', 'python3.10', 'python3.9', 'python3.8', 'python3.7', '/usr/bin/python3', 'python3'])
+fatal: [clickhouse-01]: FAILED! => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "module_stderr": "/bin/sh: 1: /usr/bin/python3: not found\n",
+    "module_stdout": "",
+    "msg": "The module failed to execute correctly, you probably need to set the interpreter.\nSee stdout/stderr for the exact error",
+    "rc": 127
+}
+...ignoring
+
+TASK [update pack manager and install python] ************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/site.yml:35
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', 'apt-get update']
+changed: [clickhouse-01] => (item=apt-get update) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "item": "apt-get update",
+    "rc": 0,
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Get:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease [256 kB]\nGet:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]\nGet:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]\nGet:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]\nGet:5 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 Packages [1776 kB]\nGet:6 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 Packages [19.0 MB]\nGet:7 http://ports.ubuntu.com/ubuntu-ports noble/multiverse arm64 Packages [274 kB]\nGet:8 http://ports.ubuntu.com/ubuntu-ports noble/restricted arm64 Packages [113 kB]\nGet:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [508 kB]\nGet:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [13.2 kB]\nGet:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [680 kB]\nGet:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [458 kB]\nGet:13 http://ports.ubuntu.com/ubuntu-ports noble-backports/universe arm64 Packages [11.9 kB]\nGet:14 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [366 kB]\nGet:15 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [458 kB]\nGet:16 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [13.2 kB]\nGet:17 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [476 kB]\nFetched 24.8 MB in 3s (7335 kB/s)\nReading package lists...\n",
+    "stdout_lines": [
+        "Get:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease [256 kB]",
+        "Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]",
+        "Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]",
+        "Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]",
+        "Get:5 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 Packages [1776 kB]",
+        "Get:6 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 Packages [19.0 MB]",
+        "Get:7 http://ports.ubuntu.com/ubuntu-ports noble/multiverse arm64 Packages [274 kB]",
+        "Get:8 http://ports.ubuntu.com/ubuntu-ports noble/restricted arm64 Packages [113 kB]",
+        "Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [508 kB]",
+        "Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [13.2 kB]",
+        "Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [680 kB]",
+        "Get:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [458 kB]",
+        "Get:13 http://ports.ubuntu.com/ubuntu-ports noble-backports/universe arm64 Packages [11.9 kB]",
+        "Get:14 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [366 kB]",
+        "Get:15 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [458 kB]",
+        "Get:16 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [13.2 kB]",
+        "Get:17 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [476 kB]",
+        "Fetched 24.8 MB in 3s (7335 kB/s)",
+        "Reading package lists..."
+    ]
+}
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', 'apt-get -y install python3']
+changed: [clickhouse-01] => (item=apt-get -y install python3) => {
+    "ansible_loop_var": "item",
+    "changed": true,
+    "item": "apt-get -y install python3",
+    "rc": 0,
+    "stderr": "debconf: delaying package configuration, since apt-utils is not installed\n",
+    "stderr_lines": [
+        "debconf: delaying package configuration, since apt-utils is not installed"
+    ],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nThe following additional packages will be installed:\n  ca-certificates libexpat1 libpython3-stdlib libpython3.12-minimal\n  libpython3.12-stdlib libreadline8t64 libsqlite3-0 media-types netbase\n  openssl python3-minimal python3.12 python3.12-minimal readline-common tzdata\nSuggested packages:\n  python3-doc python3-tk python3-venv python3.12-venv python3.12-doc binutils\n  binfmt-support readline-doc\nThe following NEW packages will be installed:\n  ca-certificates libexpat1 libpython3-stdlib libpython3.12-minimal\n  libpython3.12-stdlib libreadline8t64 libsqlite3-0 media-types netbase\n  openssl python3 python3-minimal python3.12 python3.12-minimal\n  readline-common tzdata\n0 upgraded, 16 newly installed, 0 to remove and 4 not upgraded.\nNeed to get 8263 kB of archives.\nAfter this operation, 31.7 MB of additional disk space will be used.\nGet:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3.12-minimal arm64 3.12.3-1ubuntu0.2 [831 kB]\nGet:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libexpat1 arm64 2.6.1-2ubuntu0.1 [76.1 kB]\nGet:3 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 python3.12-minimal arm64 3.12.3-1ubuntu0.2 [2237 kB]\nGet:4 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 python3-minimal arm64 3.12.3-0ubuntu2 [27.4 kB]\nGet:5 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 media-types all 10.1.0 [27.5 kB]\nGet:6 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 netbase all 6.4 [13.1 kB]\nGet:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 tzdata all 2024a-3ubuntu1.1 [273 kB]\nGet:8 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 readline-common all 8.2-4build1 [56.5 kB]\nGet:9 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libreadline8t64 arm64 8.2-4build1 [153 kB]\nGet:10 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libsqlite3-0 arm64 3.45.1-1ubuntu2 [703 kB]\nGet:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3.12-stdlib arm64 3.12.3-1ubuntu0.2 [2037 kB]\nGet:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 python3.12 arm64 3.12.3-1ubuntu0.2 [651 kB]\nGet:13 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3-stdlib arm64 3.12.3-0ubuntu2 [10.0 kB]\nGet:14 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 python3 arm64 3.12.3-0ubuntu2 [23.0 kB]\nGet:15 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 openssl arm64 3.0.13-0ubuntu3.4 [985 kB]\nGet:16 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 ca-certificates all 20240203 [159 kB]\nFetched 8263 kB in 2s (4756 kB/s)\nSelecting previously unselected package libpython3.12-minimal:arm64.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 4373 files and directories currently installed.)\r\nPreparing to unpack .../libpython3.12-minimal_3.12.3-1ubuntu0.2_arm64.deb ...\r\nUnpacking libpython3.12-minimal:arm64 (3.12.3-1ubuntu0.2) ...\r\nSelecting previously unselected package libexpat1:arm64.\r\nPreparing to unpack .../libexpat1_2.6.1-2ubuntu0.1_arm64.deb ...\r\nUnpacking libexpat1:arm64 (2.6.1-2ubuntu0.1) ...\r\nSelecting previously unselected package python3.12-minimal.\r\nPreparing to unpack .../python3.12-minimal_3.12.3-1ubuntu0.2_arm64.deb ...\r\nUnpacking python3.12-minimal (3.12.3-1ubuntu0.2) ...\r\nSetting up libpython3.12-minimal:arm64 (3.12.3-1ubuntu0.2) ...\r\nSetting up libexpat1:arm64 (2.6.1-2ubuntu0.1) ...\r\nSetting up python3.12-minimal (3.12.3-1ubuntu0.2) ...\r\nSelecting previously unselected package python3-minimal.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 4692 files and directories currently installed.)\r\nPreparing to unpack .../0-python3-minimal_3.12.3-0ubuntu2_arm64.deb ...\r\nUnpacking python3-minimal (3.12.3-0ubuntu2) ...\r\nSelecting previously unselected package media-types.\r\nPreparing to unpack .../1-media-types_10.1.0_all.deb ...\r\nUnpacking media-types (10.1.0) ...\r\nSelecting previously unselected package netbase.\r\nPreparing to unpack .../2-netbase_6.4_all.deb ...\r\nUnpacking netbase (6.4) ...\r\nSelecting previously unselected package tzdata.\r\nPreparing to unpack .../3-tzdata_2024a-3ubuntu1.1_all.deb ...\r\nUnpacking tzdata (2024a-3ubuntu1.1) ...\r\nSelecting previously unselected package readline-common.\r\nPreparing to unpack .../4-readline-common_8.2-4build1_all.deb ...\r\nUnpacking readline-common (8.2-4build1) ...\r\nSelecting previously unselected package libreadline8t64:arm64.\r\nPreparing to unpack .../5-libreadline8t64_8.2-4build1_arm64.deb ...\r\nAdding 'diversion of /lib/aarch64-linux-gnu/libhistory.so.8 to /lib/aarch64-linux-gnu/libhistory.so.8.usr-is-merged by libreadline8t64'\r\nAdding 'diversion of /lib/aarch64-linux-gnu/libhistory.so.8.2 to /lib/aarch64-linux-gnu/libhistory.so.8.2.usr-is-merged by libreadline8t64'\r\nAdding 'diversion of /lib/aarch64-linux-gnu/libreadline.so.8 to /lib/aarch64-linux-gnu/libreadline.so.8.usr-is-merged by libreadline8t64'\r\nAdding 'diversion of /lib/aarch64-linux-gnu/libreadline.so.8.2 to /lib/aarch64-linux-gnu/libreadline.so.8.2.usr-is-merged by libreadline8t64'\r\nUnpacking libreadline8t64:arm64 (8.2-4build1) ...\r\nSelecting previously unselected package libsqlite3-0:arm64.\r\nPreparing to unpack .../6-libsqlite3-0_3.45.1-1ubuntu2_arm64.deb ...\r\nUnpacking libsqlite3-0:arm64 (3.45.1-1ubuntu2) ...\r\nSelecting previously unselected package libpython3.12-stdlib:arm64.\r\nPreparing to unpack .../7-libpython3.12-stdlib_3.12.3-1ubuntu0.2_arm64.deb ...\r\nUnpacking libpython3.12-stdlib:arm64 (3.12.3-1ubuntu0.2) ...\r\nSelecting previously unselected package python3.12.\r\nPreparing to unpack .../8-python3.12_3.12.3-1ubuntu0.2_arm64.deb ...\r\nUnpacking python3.12 (3.12.3-1ubuntu0.2) ...\r\nSelecting previously unselected package libpython3-stdlib:arm64.\r\nPreparing to unpack .../9-libpython3-stdlib_3.12.3-0ubuntu2_arm64.deb ...\r\nUnpacking libpython3-stdlib:arm64 (3.12.3-0ubuntu2) ...\r\nSetting up python3-minimal (3.12.3-0ubuntu2) ...\r\nSelecting previously unselected package python3.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 5697 files and directories currently installed.)\r\nPreparing to unpack .../python3_3.12.3-0ubuntu2_arm64.deb ...\r\nUnpacking python3 (3.12.3-0ubuntu2) ...\r\nSelecting previously unselected package openssl.\r\nPreparing to unpack .../openssl_3.0.13-0ubuntu3.4_arm64.deb ...\r\nUnpacking openssl (3.0.13-0ubuntu3.4) ...\r\nSelecting previously unselected package ca-certificates.\r\nPreparing to unpack .../ca-certificates_20240203_all.deb ...\r\nUnpacking ca-certificates (20240203) ...\r\nSetting up media-types (10.1.0) ...\r\nSetting up libsqlite3-0:arm64 (3.45.1-1ubuntu2) ...\r\nSetting up tzdata (2024a-3ubuntu1.1) ...\r\ndebconf: unable to initialize frontend: Dialog\r\ndebconf: (TERM is not set, so the dialog frontend is not usable.)\r\ndebconf: falling back to frontend: Readline\r\ndebconf: unable to initialize frontend: Readline\r\ndebconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/aarch64-linux-gnu/perl/5.38.2 /usr/local/share/perl/5.38.2 /usr/lib/aarch64-linux-gnu/perl5/5.38 /usr/share/perl5 /usr/lib/aarch64-linux-gnu/perl-base /usr/lib/aarch64-linux-gnu/perl/5.38 /usr/share/perl/5.38 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)\r\ndebconf: falling back to frontend: Teletype\r\nConfiguring tzdata\r\n------------------\r\n\r\nPlease select the geographic area in which you live. Subsequent configuration\r\nquestions will narrow this down by presenting a list of cities, representing\r\nthe time zones in which they are located.\r\n\r\n  1. Africa   3. Antarctica  5. Asia      7. Australia  9. Indian    11. Etc\r\n  2. America  4. Arctic      6. Atlantic  8. Europe     10. Pacific\r\nGeographic area: \r\nUse of uninitialized value $_[1] in join or string at /usr/share/perl5/Debconf/DbDriver/Stack.pm line 112.\r\n\r\nCurrent default time zone: '/UTC'\r\nLocal time is now:      Wed Oct  9 20:30:05 UTC 2024.\r\nUniversal Time is now:  Wed Oct  9 20:30:05 UTC 2024.\r\nRun 'dpkg-reconfigure tzdata' if you wish to change it.\r\n\r\nUse of uninitialized value $val in substitution (s///) at /usr/share/perl5/Debconf/Format/822.pm line 84, <GEN6> line 4.\r\nUse of uninitialized value $val in concatenation (.) or string at /usr/share/perl5/Debconf/Format/822.pm line 85, <GEN6> line 4.\r\nSetting up netbase (6.4) ...\r\nSetting up openssl (3.0.13-0ubuntu3.4) ...\r\nSetting up readline-common (8.2-4build1) ...\r\nSetting up ca-certificates (20240203) ...\r\ndebconf: unable to initialize frontend: Dialog\r\ndebconf: (TERM is not set, so the dialog frontend is not usable.)\r\ndebconf: falling back to frontend: Readline\r\ndebconf: unable to initialize frontend: Readline\r\ndebconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/aarch64-linux-gnu/perl/5.38.2 /usr/local/share/perl/5.38.2 /usr/lib/aarch64-linux-gnu/perl5/5.38 /usr/share/perl5 /usr/lib/aarch64-linux-gnu/perl-base /usr/lib/aarch64-linux-gnu/perl/5.38 /usr/share/perl/5.38 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)\r\ndebconf: falling back to frontend: Teletype\r\nUpdating certificates in /etc/ssl/certs...\r\n146 added, 0 removed; done.\r\nSetting up libreadline8t64:arm64 (8.2-4build1) ...\r\nSetting up libpython3.12-stdlib:arm64 (3.12.3-1ubuntu0.2) ...\r\nSetting up python3.12 (3.12.3-1ubuntu0.2) ...\r\nSetting up libpython3-stdlib:arm64 (3.12.3-0ubuntu2) ...\r\nSetting up python3 (3.12.3-0ubuntu2) ...\r\nrunning python rtupdate hooks for python3.12...\r\nrunning python post-rtupdate hooks for python3.12...\r\nProcessing triggers for libc-bin (2.39-0ubuntu8.3) ...\r\nProcessing triggers for ca-certificates (20240203) ...\r\nUpdating certificates in /etc/ssl/certs...\r\n0 added, 0 removed; done.\r\nRunning hooks in /etc/ca-certificates/update.d...\r\ndone.\r\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "The following additional packages will be installed:",
+        "  ca-certificates libexpat1 libpython3-stdlib libpython3.12-minimal",
+        "  libpython3.12-stdlib libreadline8t64 libsqlite3-0 media-types netbase",
+        "  openssl python3-minimal python3.12 python3.12-minimal readline-common tzdata",
+        "Suggested packages:",
+        "  python3-doc python3-tk python3-venv python3.12-venv python3.12-doc binutils",
+        "  binfmt-support readline-doc",
+        "The following NEW packages will be installed:",
+        "  ca-certificates libexpat1 libpython3-stdlib libpython3.12-minimal",
+        "  libpython3.12-stdlib libreadline8t64 libsqlite3-0 media-types netbase",
+        "  openssl python3 python3-minimal python3.12 python3.12-minimal",
+        "  readline-common tzdata",
+        "0 upgraded, 16 newly installed, 0 to remove and 4 not upgraded.",
+        "Need to get 8263 kB of archives.",
+        "After this operation, 31.7 MB of additional disk space will be used.",
+        "Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3.12-minimal arm64 3.12.3-1ubuntu0.2 [831 kB]",
+        "Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libexpat1 arm64 2.6.1-2ubuntu0.1 [76.1 kB]",
+        "Get:3 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 python3.12-minimal arm64 3.12.3-1ubuntu0.2 [2237 kB]",
+        "Get:4 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 python3-minimal arm64 3.12.3-0ubuntu2 [27.4 kB]",
+        "Get:5 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 media-types all 10.1.0 [27.5 kB]",
+        "Get:6 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 netbase all 6.4 [13.1 kB]",
+        "Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 tzdata all 2024a-3ubuntu1.1 [273 kB]",
+        "Get:8 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 readline-common all 8.2-4build1 [56.5 kB]",
+        "Get:9 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libreadline8t64 arm64 8.2-4build1 [153 kB]",
+        "Get:10 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libsqlite3-0 arm64 3.45.1-1ubuntu2 [703 kB]",
+        "Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3.12-stdlib arm64 3.12.3-1ubuntu0.2 [2037 kB]",
+        "Get:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 python3.12 arm64 3.12.3-1ubuntu0.2 [651 kB]",
+        "Get:13 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3-stdlib arm64 3.12.3-0ubuntu2 [10.0 kB]",
+        "Get:14 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 python3 arm64 3.12.3-0ubuntu2 [23.0 kB]",
+        "Get:15 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 openssl arm64 3.0.13-0ubuntu3.4 [985 kB]",
+        "Get:16 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 ca-certificates all 20240203 [159 kB]",
+        "Fetched 8263 kB in 2s (4756 kB/s)",
+        "Selecting previously unselected package libpython3.12-minimal:arm64.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 4373 files and directories currently installed.)",
+        "Preparing to unpack .../libpython3.12-minimal_3.12.3-1ubuntu0.2_arm64.deb ...",
+        "Unpacking libpython3.12-minimal:arm64 (3.12.3-1ubuntu0.2) ...",
+        "Selecting previously unselected package libexpat1:arm64.",
+        "Preparing to unpack .../libexpat1_2.6.1-2ubuntu0.1_arm64.deb ...",
+        "Unpacking libexpat1:arm64 (2.6.1-2ubuntu0.1) ...",
+        "Selecting previously unselected package python3.12-minimal.",
+        "Preparing to unpack .../python3.12-minimal_3.12.3-1ubuntu0.2_arm64.deb ...",
+        "Unpacking python3.12-minimal (3.12.3-1ubuntu0.2) ...",
+        "Setting up libpython3.12-minimal:arm64 (3.12.3-1ubuntu0.2) ...",
+        "Setting up libexpat1:arm64 (2.6.1-2ubuntu0.1) ...",
+        "Setting up python3.12-minimal (3.12.3-1ubuntu0.2) ...",
+        "Selecting previously unselected package python3-minimal.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 4692 files and directories currently installed.)",
+        "Preparing to unpack .../0-python3-minimal_3.12.3-0ubuntu2_arm64.deb ...",
+        "Unpacking python3-minimal (3.12.3-0ubuntu2) ...",
+        "Selecting previously unselected package media-types.",
+        "Preparing to unpack .../1-media-types_10.1.0_all.deb ...",
+        "Unpacking media-types (10.1.0) ...",
+        "Selecting previously unselected package netbase.",
+        "Preparing to unpack .../2-netbase_6.4_all.deb ...",
+        "Unpacking netbase (6.4) ...",
+        "Selecting previously unselected package tzdata.",
+        "Preparing to unpack .../3-tzdata_2024a-3ubuntu1.1_all.deb ...",
+        "Unpacking tzdata (2024a-3ubuntu1.1) ...",
+        "Selecting previously unselected package readline-common.",
+        "Preparing to unpack .../4-readline-common_8.2-4build1_all.deb ...",
+        "Unpacking readline-common (8.2-4build1) ...",
+        "Selecting previously unselected package libreadline8t64:arm64.",
+        "Preparing to unpack .../5-libreadline8t64_8.2-4build1_arm64.deb ...",
+        "Adding 'diversion of /lib/aarch64-linux-gnu/libhistory.so.8 to /lib/aarch64-linux-gnu/libhistory.so.8.usr-is-merged by libreadline8t64'",
+        "Adding 'diversion of /lib/aarch64-linux-gnu/libhistory.so.8.2 to /lib/aarch64-linux-gnu/libhistory.so.8.2.usr-is-merged by libreadline8t64'",
+        "Adding 'diversion of /lib/aarch64-linux-gnu/libreadline.so.8 to /lib/aarch64-linux-gnu/libreadline.so.8.usr-is-merged by libreadline8t64'",
+        "Adding 'diversion of /lib/aarch64-linux-gnu/libreadline.so.8.2 to /lib/aarch64-linux-gnu/libreadline.so.8.2.usr-is-merged by libreadline8t64'",
+        "Unpacking libreadline8t64:arm64 (8.2-4build1) ...",
+        "Selecting previously unselected package libsqlite3-0:arm64.",
+        "Preparing to unpack .../6-libsqlite3-0_3.45.1-1ubuntu2_arm64.deb ...",
+        "Unpacking libsqlite3-0:arm64 (3.45.1-1ubuntu2) ...",
+        "Selecting previously unselected package libpython3.12-stdlib:arm64.",
+        "Preparing to unpack .../7-libpython3.12-stdlib_3.12.3-1ubuntu0.2_arm64.deb ...",
+        "Unpacking libpython3.12-stdlib:arm64 (3.12.3-1ubuntu0.2) ...",
+        "Selecting previously unselected package python3.12.",
+        "Preparing to unpack .../8-python3.12_3.12.3-1ubuntu0.2_arm64.deb ...",
+        "Unpacking python3.12 (3.12.3-1ubuntu0.2) ...",
+        "Selecting previously unselected package libpython3-stdlib:arm64.",
+        "Preparing to unpack .../9-libpython3-stdlib_3.12.3-0ubuntu2_arm64.deb ...",
+        "Unpacking libpython3-stdlib:arm64 (3.12.3-0ubuntu2) ...",
+        "Setting up python3-minimal (3.12.3-0ubuntu2) ...",
+        "Selecting previously unselected package python3.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 5697 files and directories currently installed.)",
+        "Preparing to unpack .../python3_3.12.3-0ubuntu2_arm64.deb ...",
+        "Unpacking python3 (3.12.3-0ubuntu2) ...",
+        "Selecting previously unselected package openssl.",
+        "Preparing to unpack .../openssl_3.0.13-0ubuntu3.4_arm64.deb ...",
+        "Unpacking openssl (3.0.13-0ubuntu3.4) ...",
+        "Selecting previously unselected package ca-certificates.",
+        "Preparing to unpack .../ca-certificates_20240203_all.deb ...",
+        "Unpacking ca-certificates (20240203) ...",
+        "Setting up media-types (10.1.0) ...",
+        "Setting up libsqlite3-0:arm64 (3.45.1-1ubuntu2) ...",
+        "Setting up tzdata (2024a-3ubuntu1.1) ...",
+        "debconf: unable to initialize frontend: Dialog",
+        "debconf: (TERM is not set, so the dialog frontend is not usable.)",
+        "debconf: falling back to frontend: Readline",
+        "debconf: unable to initialize frontend: Readline",
+        "debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/aarch64-linux-gnu/perl/5.38.2 /usr/local/share/perl/5.38.2 /usr/lib/aarch64-linux-gnu/perl5/5.38 /usr/share/perl5 /usr/lib/aarch64-linux-gnu/perl-base /usr/lib/aarch64-linux-gnu/perl/5.38 /usr/share/perl/5.38 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)",
+        "debconf: falling back to frontend: Teletype",
+        "Configuring tzdata",
+        "------------------",
+        "",
+        "Please select the geographic area in which you live. Subsequent configuration",
+        "questions will narrow this down by presenting a list of cities, representing",
+        "the time zones in which they are located.",
+        "",
+        "  1. Africa   3. Antarctica  5. Asia      7. Australia  9. Indian    11. Etc",
+        "  2. America  4. Arctic      6. Atlantic  8. Europe     10. Pacific",
+        "Geographic area: ",
+        "Use of uninitialized value $_[1] in join or string at /usr/share/perl5/Debconf/DbDriver/Stack.pm line 112.",
+        "",
+        "Current default time zone: '/UTC'",
+        "Local time is now:      Wed Oct  9 20:30:05 UTC 2024.",
+        "Universal Time is now:  Wed Oct  9 20:30:05 UTC 2024.",
+        "Run 'dpkg-reconfigure tzdata' if you wish to change it.",
+        "",
+        "Use of uninitialized value $val in substitution (s///) at /usr/share/perl5/Debconf/Format/822.pm line 84, <GEN6> line 4.",
+        "Use of uninitialized value $val in concatenation (.) or string at /usr/share/perl5/Debconf/Format/822.pm line 85, <GEN6> line 4.",
+        "Setting up netbase (6.4) ...",
+        "Setting up openssl (3.0.13-0ubuntu3.4) ...",
+        "Setting up readline-common (8.2-4build1) ...",
+        "Setting up ca-certificates (20240203) ...",
+        "debconf: unable to initialize frontend: Dialog",
+        "debconf: (TERM is not set, so the dialog frontend is not usable.)",
+        "debconf: falling back to frontend: Readline",
+        "debconf: unable to initialize frontend: Readline",
+        "debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/aarch64-linux-gnu/perl/5.38.2 /usr/local/share/perl/5.38.2 /usr/lib/aarch64-linux-gnu/perl5/5.38 /usr/share/perl5 /usr/lib/aarch64-linux-gnu/perl-base /usr/lib/aarch64-linux-gnu/perl/5.38 /usr/share/perl/5.38 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)",
+        "debconf: falling back to frontend: Teletype",
+        "Updating certificates in /etc/ssl/certs...",
+        "146 added, 0 removed; done.",
+        "Setting up libreadline8t64:arm64 (8.2-4build1) ...",
+        "Setting up libpython3.12-stdlib:arm64 (3.12.3-1ubuntu0.2) ...",
+        "Setting up python3.12 (3.12.3-1ubuntu0.2) ...",
+        "Setting up libpython3-stdlib:arm64 (3.12.3-0ubuntu2) ...",
+        "Setting up python3 (3.12.3-0ubuntu2) ...",
+        "running python rtupdate hooks for python3.12...",
+        "running python post-rtupdate hooks for python3.12...",
+        "Processing triggers for libc-bin (2.39-0ubuntu8.3) ...",
+        "Processing triggers for ca-certificates (20240203) ...",
+        "Updating certificates in /etc/ssl/certs...",
+        "0 added, 0 removed; done.",
+        "Running hooks in /etc/ca-certificates/update.d...",
+        "done."
+    ]
+}
+
+PLAY [Isntall [pkg | clickhouse | vector] on Debian hosts] ***********************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/site.yml:43
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505807.381498-62841-126824023128191 `" && echo ansible-tmp-1728505807.381498-62841-126824023128191="` echo /root/.ansible/tmp/ansible-tmp-1728505807.381498-62841-126824023128191 `" ) && sleep 0\'']
+<clickhouse-01> Attempting python interpreter discovery
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'echo PLATFORM; uname; echo FOUND; command -v \'"\'"\'python3.12\'"\'"\'; command -v \'"\'"\'python3.11\'"\'"\'; command -v \'"\'"\'python3.10\'"\'"\'; command -v \'"\'"\'python3.9\'"\'"\'; command -v \'"\'"\'python3.8\'"\'"\'; command -v \'"\'"\'python3.7\'"\'"\'; command -v \'"\'"\'/usr/bin/python3\'"\'"\'; command -v \'"\'"\'python3\'"\'"\'; echo ENDFOUND && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c '/usr/bin/python3.12 && sleep 0'"]
+<clickhouse-01> Python interpreter discovery fallback (unsupported Linux distribution: ubuntu)
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/setup.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpk83w8sbf TO /root/.ansible/tmp/ansible-tmp-1728505807.381498-62841-126824023128191/AnsiballZ_setup.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505807.381498-62841-126824023128191/ /root/.ansible/tmp/ansible-tmp-1728505807.381498-62841-126824023128191/AnsiballZ_setup.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c '/usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505807.381498-62841-126824023128191/AnsiballZ_setup.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505807.381498-62841-126824023128191/ > /dev/null 2>&1 && sleep 0'"]
+[WARNING]: Platform linux on host clickhouse-01 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [clickhouse-01]
+
+TASK [debian : Install and upgrade apt packages] *********************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/debian/tasks/main.yml:2
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505808.515462-62853-97918252887434 `" && echo ansible-tmp-1728505808.515462-62853-97918252887434="` echo /root/.ansible/tmp/ansible-tmp-1728505808.515462-62853-97918252887434 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpglg26ptc TO /root/.ansible/tmp/ansible-tmp-1728505808.515462-62853-97918252887434/AnsiballZ_apt.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505808.515462-62853-97918252887434/ /root/.ansible/tmp/ansible-tmp-1728505808.515462-62853-97918252887434/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c '/usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505808.515462-62853-97918252887434/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505808.515462-62853-97918252887434/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => (item=sudo) => {
+    "ansible_loop_var": "item",
+    "cache_update_time": 1728505801,
+    "cache_updated": false,
+    "changed": true,
+    "diff": {},
+    "invocation": {
+        "module_args": {
+            "allow_change_held_packages": false,
+            "allow_downgrade": false,
+            "allow_unauthenticated": false,
+            "autoclean": false,
+            "autoremove": false,
+            "cache_valid_time": 86400,
+            "clean": false,
+            "deb": null,
+            "default_release": null,
+            "dpkg_options": "force-confdef,force-confold",
+            "fail_on_autoremove": false,
+            "force": false,
+            "force_apt_get": false,
+            "install_recommends": null,
+            "lock_timeout": 60,
+            "name": [
+                "sudo"
+            ],
+            "only_upgrade": false,
+            "package": [
+                "sudo"
+            ],
+            "policy_rc_d": null,
+            "purge": false,
+            "state": "present",
+            "update_cache": true,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "upgrade": null
+        }
+    },
+    "item": "sudo",
+    "stderr": "debconf: delaying package configuration, since apt-utils is not installed\n",
+    "stderr_lines": [
+        "debconf: delaying package configuration, since apt-utils is not installed"
+    ],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nThe following additional packages will be installed:\n  libapparmor1\nThe following NEW packages will be installed:\n  libapparmor1 sudo\n0 upgraded, 2 newly installed, 0 to remove and 4 not upgraded.\nNeed to get 979 kB of archives.\nAfter this operation, 4120 kB of additional disk space will be used.\nGet:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libapparmor1 arm64 4.0.1really4.0.1-0ubuntu0.24.04.3 [50.8 kB]\nGet:2 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 sudo arm64 1.9.15p5-3ubuntu5 [929 kB]\nFetched 979 kB in 1s (1954 kB/s)\nSelecting previously unselected package libapparmor1:arm64.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 7708 files and directories currently installed.)\r\nPreparing to unpack .../libapparmor1_4.0.1really4.0.1-0ubuntu0.24.04.3_arm64.deb ...\r\nUnpacking libapparmor1:arm64 (4.0.1really4.0.1-0ubuntu0.24.04.3) ...\r\nSelecting previously unselected package sudo.\r\nPreparing to unpack .../sudo_1.9.15p5-3ubuntu5_arm64.deb ...\r\nUnpacking sudo (1.9.15p5-3ubuntu5) ...\r\nSetting up libapparmor1:arm64 (4.0.1really4.0.1-0ubuntu0.24.04.3) ...\r\nSetting up sudo (1.9.15p5-3ubuntu5) ...\r\nProcessing triggers for libc-bin (2.39-0ubuntu8.3) ...\r\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "The following additional packages will be installed:",
+        "  libapparmor1",
+        "The following NEW packages will be installed:",
+        "  libapparmor1 sudo",
+        "0 upgraded, 2 newly installed, 0 to remove and 4 not upgraded.",
+        "Need to get 979 kB of archives.",
+        "After this operation, 4120 kB of additional disk space will be used.",
+        "Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libapparmor1 arm64 4.0.1really4.0.1-0ubuntu0.24.04.3 [50.8 kB]",
+        "Get:2 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 sudo arm64 1.9.15p5-3ubuntu5 [929 kB]",
+        "Fetched 979 kB in 1s (1954 kB/s)",
+        "Selecting previously unselected package libapparmor1:arm64.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 7708 files and directories currently installed.)",
+        "Preparing to unpack .../libapparmor1_4.0.1really4.0.1-0ubuntu0.24.04.3_arm64.deb ...",
+        "Unpacking libapparmor1:arm64 (4.0.1really4.0.1-0ubuntu0.24.04.3) ...",
+        "Selecting previously unselected package sudo.",
+        "Preparing to unpack .../sudo_1.9.15p5-3ubuntu5_arm64.deb ...",
+        "Unpacking sudo (1.9.15p5-3ubuntu5) ...",
+        "Setting up libapparmor1:arm64 (4.0.1really4.0.1-0ubuntu0.24.04.3) ...",
+        "Setting up sudo (1.9.15p5-3ubuntu5) ...",
+        "Processing triggers for libc-bin (2.39-0ubuntu8.3) ..."
+    ]
+}
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505815.055004-62853-181019059774191 `" && echo ansible-tmp-1728505815.055004-62853-181019059774191="` echo /root/.ansible/tmp/ansible-tmp-1728505815.055004-62853-181019059774191 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmprped59r6 TO /root/.ansible/tmp/ansible-tmp-1728505815.055004-62853-181019059774191/AnsiballZ_apt.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505815.055004-62853-181019059774191/ /root/.ansible/tmp/ansible-tmp-1728505815.055004-62853-181019059774191/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c '/usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505815.055004-62853-181019059774191/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505815.055004-62853-181019059774191/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => (item=systemctl) => {
+    "ansible_loop_var": "item",
+    "cache_update_time": 1728505801,
+    "cache_updated": false,
+    "changed": true,
+    "diff": {},
+    "invocation": {
+        "module_args": {
+            "allow_change_held_packages": false,
+            "allow_downgrade": false,
+            "allow_unauthenticated": false,
+            "autoclean": false,
+            "autoremove": false,
+            "cache_valid_time": 86400,
+            "clean": false,
+            "deb": null,
+            "default_release": null,
+            "dpkg_options": "force-confdef,force-confold",
+            "fail_on_autoremove": false,
+            "force": false,
+            "force_apt_get": false,
+            "install_recommends": null,
+            "lock_timeout": 60,
+            "name": [
+                "systemctl"
+            ],
+            "only_upgrade": false,
+            "package": [
+                "systemctl"
+            ],
+            "policy_rc_d": null,
+            "purge": false,
+            "state": "present",
+            "update_cache": true,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "upgrade": null
+        }
+    },
+    "item": "systemctl",
+    "stderr": "debconf: delaying package configuration, since apt-utils is not installed\n",
+    "stderr_lines": [
+        "debconf: delaying package configuration, since apt-utils is not installed"
+    ],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nSuggested packages:\n  tini | dumb-init\nThe following NEW packages will be installed:\n  systemctl\n0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.\nNeed to get 76.6 kB of archives.\nAfter this operation, 279 kB of additional disk space will be used.\nGet:1 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 systemctl all 1.4.4181-1.1 [76.6 kB]\nFetched 76.6 kB in 0s (310 kB/s)\nSelecting previously unselected package systemctl.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 7781 files and directories currently installed.)\r\nPreparing to unpack .../systemctl_1.4.4181-1.1_all.deb ...\r\nUnpacking systemctl (1.4.4181-1.1) ...\r\nSetting up systemctl (1.4.4181-1.1) ...\r\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "Suggested packages:",
+        "  tini | dumb-init",
+        "The following NEW packages will be installed:",
+        "  systemctl",
+        "0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.",
+        "Need to get 76.6 kB of archives.",
+        "After this operation, 279 kB of additional disk space will be used.",
+        "Get:1 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 systemctl all 1.4.4181-1.1 [76.6 kB]",
+        "Fetched 76.6 kB in 0s (310 kB/s)",
+        "Selecting previously unselected package systemctl.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 7781 files and directories currently installed.)",
+        "Preparing to unpack .../systemctl_1.4.4181-1.1_all.deb ...",
+        "Unpacking systemctl (1.4.4181-1.1) ...",
+        "Setting up systemctl (1.4.4181-1.1) ..."
+    ]
+}
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505817.985795-62853-97781686416700 `" && echo ansible-tmp-1728505817.985795-62853-97781686416700="` echo /root/.ansible/tmp/ansible-tmp-1728505817.985795-62853-97781686416700 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpjfag9nyg TO /root/.ansible/tmp/ansible-tmp-1728505817.985795-62853-97781686416700/AnsiballZ_apt.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505817.985795-62853-97781686416700/ /root/.ansible/tmp/ansible-tmp-1728505817.985795-62853-97781686416700/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c '/usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505817.985795-62853-97781686416700/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505817.985795-62853-97781686416700/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => (item=gnupg) => {
+    "ansible_loop_var": "item",
+    "cache_update_time": 1728505801,
+    "cache_updated": false,
+    "changed": true,
+    "diff": {},
+    "invocation": {
+        "module_args": {
+            "allow_change_held_packages": false,
+            "allow_downgrade": false,
+            "allow_unauthenticated": false,
+            "autoclean": false,
+            "autoremove": false,
+            "cache_valid_time": 86400,
+            "clean": false,
+            "deb": null,
+            "default_release": null,
+            "dpkg_options": "force-confdef,force-confold",
+            "fail_on_autoremove": false,
+            "force": false,
+            "force_apt_get": false,
+            "install_recommends": null,
+            "lock_timeout": 60,
+            "name": [
+                "gnupg"
+            ],
+            "only_upgrade": false,
+            "package": [
+                "gnupg"
+            ],
+            "policy_rc_d": null,
+            "purge": false,
+            "state": "present",
+            "update_cache": true,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "upgrade": null
+        }
+    },
+    "item": "gnupg",
+    "stderr": "debconf: delaying package configuration, since apt-utils is not installed\n",
+    "stderr_lines": [
+        "debconf: delaying package configuration, since apt-utils is not installed"
+    ],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nThe following additional packages will be installed:\n  adduser dirmngr gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpgconf\n  gpgsm keyboxd libksba8 libldap-common libldap2 libsasl2-2 libsasl2-modules\n  libsasl2-modules-db pinentry-curses\nSuggested packages:\n  liblocale-gettext-perl perl cron quota ecryptfs-utils dbus-user-session\n  libpam-systemd pinentry-gnome3 tor parcimonie xloadimage gpg-wks-server\n  scdaemon libsasl2-modules-gssapi-mit | libsasl2-modules-gssapi-heimdal\n  libsasl2-modules-ldap libsasl2-modules-otp libsasl2-modules-sql pinentry-doc\nThe following NEW packages will be installed:\n  adduser dirmngr gnupg gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client\n  gpgconf gpgsm keyboxd libksba8 libldap-common libldap2 libsasl2-2\n  libsasl2-modules libsasl2-modules-db pinentry-curses\n0 upgraded, 18 newly installed, 0 to remove and 4 not upgraded.\nNeed to get 2714 kB of archives.\nAfter this operation, 8025 kB of additional disk space will be used.\nGet:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 adduser all 3.137ubuntu1 [101 kB]\nGet:2 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gpgconf arm64 2.4.4-2ubuntu17 [103 kB]\nGet:3 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libksba8 arm64 1.6.6-1build1 [119 kB]\nGet:4 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsasl2-modules-db arm64 2.1.28+dfsg1-5ubuntu3.1 [21.6 kB]\nGet:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsasl2-2 arm64 2.1.28+dfsg1-5ubuntu3.1 [54.7 kB]\nGet:6 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libldap2 arm64 2.6.7+dfsg-1~exp1ubuntu8 [193 kB]\nGet:7 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 dirmngr arm64 2.4.4-2ubuntu17 [316 kB]\nGet:8 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gnupg-utils arm64 2.4.4-2ubuntu17 [106 kB]\nGet:9 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gpg arm64 2.4.4-2ubuntu17 [548 kB]\nGet:10 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 pinentry-curses arm64 1.2.1-3ubuntu5 [34.3 kB]\nGet:11 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gpg-agent arm64 2.4.4-2ubuntu17 [221 kB]\nGet:12 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gpgsm arm64 2.4.4-2ubuntu17 [225 kB]\nGet:13 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 keyboxd arm64 2.4.4-2ubuntu17 [76.0 kB]\nGet:14 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gnupg all 2.4.4-2ubuntu17 [359 kB]\nGet:15 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gnupg-l10n all 2.4.4-2ubuntu17 [65.9 kB]\nGet:16 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gpg-wks-client arm64 2.4.4-2ubuntu17 [69.7 kB]\nGet:17 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libldap-common all 2.6.7+dfsg-1~exp1ubuntu8 [31.4 kB]\nGet:18 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsasl2-modules arm64 2.1.28+dfsg1-5ubuntu3.1 [69.6 kB]\nFetched 2714 kB in 2s (1802 kB/s)\nSelecting previously unselected package adduser.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 7799 files and directories currently installed.)\r\nPreparing to unpack .../adduser_3.137ubuntu1_all.deb ...\r\nUnpacking adduser (3.137ubuntu1) ...\r\nSetting up adduser (3.137ubuntu1) ...\r\nSelecting previously unselected package gpgconf.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 7847 files and directories currently installed.)\r\nPreparing to unpack .../00-gpgconf_2.4.4-2ubuntu17_arm64.deb ...\r\nUnpacking gpgconf (2.4.4-2ubuntu17) ...\r\nSelecting previously unselected package libksba8:arm64.\r\nPreparing to unpack .../01-libksba8_1.6.6-1build1_arm64.deb ...\r\nUnpacking libksba8:arm64 (1.6.6-1build1) ...\r\nSelecting previously unselected package libsasl2-modules-db:arm64.\r\nPreparing to unpack .../02-libsasl2-modules-db_2.1.28+dfsg1-5ubuntu3.1_arm64.deb ...\r\nUnpacking libsasl2-modules-db:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...\r\nSelecting previously unselected package libsasl2-2:arm64.\r\nPreparing to unpack .../03-libsasl2-2_2.1.28+dfsg1-5ubuntu3.1_arm64.deb ...\r\nUnpacking libsasl2-2:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...\r\nSelecting previously unselected package libldap2:arm64.\r\nPreparing to unpack .../04-libldap2_2.6.7+dfsg-1~exp1ubuntu8_arm64.deb ...\r\nUnpacking libldap2:arm64 (2.6.7+dfsg-1~exp1ubuntu8) ...\r\nSelecting previously unselected package dirmngr.\r\nPreparing to unpack .../05-dirmngr_2.4.4-2ubuntu17_arm64.deb ...\r\nUnpacking dirmngr (2.4.4-2ubuntu17) ...\r\nSelecting previously unselected package gnupg-utils.\r\nPreparing to unpack .../06-gnupg-utils_2.4.4-2ubuntu17_arm64.deb ...\r\nUnpacking gnupg-utils (2.4.4-2ubuntu17) ...\r\nSelecting previously unselected package gpg.\r\nPreparing to unpack .../07-gpg_2.4.4-2ubuntu17_arm64.deb ...\r\nUnpacking gpg (2.4.4-2ubuntu17) ...\r\nSelecting previously unselected package pinentry-curses.\r\nPreparing to unpack .../08-pinentry-curses_1.2.1-3ubuntu5_arm64.deb ...\r\nUnpacking pinentry-curses (1.2.1-3ubuntu5) ...\r\nSelecting previously unselected package gpg-agent.\r\nPreparing to unpack .../09-gpg-agent_2.4.4-2ubuntu17_arm64.deb ...\r\nUnpacking gpg-agent (2.4.4-2ubuntu17) ...\r\nSelecting previously unselected package gpgsm.\r\nPreparing to unpack .../10-gpgsm_2.4.4-2ubuntu17_arm64.deb ...\r\nUnpacking gpgsm (2.4.4-2ubuntu17) ...\r\nSelecting previously unselected package keyboxd.\r\nPreparing to unpack .../11-keyboxd_2.4.4-2ubuntu17_arm64.deb ...\r\nUnpacking keyboxd (2.4.4-2ubuntu17) ...\r\nSelecting previously unselected package gnupg.\r\nPreparing to unpack .../12-gnupg_2.4.4-2ubuntu17_all.deb ...\r\nUnpacking gnupg (2.4.4-2ubuntu17) ...\r\nSelecting previously unselected package gnupg-l10n.\r\nPreparing to unpack .../13-gnupg-l10n_2.4.4-2ubuntu17_all.deb ...\r\nUnpacking gnupg-l10n (2.4.4-2ubuntu17) ...\r\nSelecting previously unselected package gpg-wks-client.\r\nPreparing to unpack .../14-gpg-wks-client_2.4.4-2ubuntu17_arm64.deb ...\r\nUnpacking gpg-wks-client (2.4.4-2ubuntu17) ...\r\nSelecting previously unselected package libldap-common.\r\nPreparing to unpack .../15-libldap-common_2.6.7+dfsg-1~exp1ubuntu8_all.deb ...\r\nUnpacking libldap-common (2.6.7+dfsg-1~exp1ubuntu8) ...\r\nSelecting previously unselected package libsasl2-modules:arm64.\r\nPreparing to unpack .../16-libsasl2-modules_2.1.28+dfsg1-5ubuntu3.1_arm64.deb ...\r\nUnpacking libsasl2-modules:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...\r\nSetting up libksba8:arm64 (1.6.6-1build1) ...\r\nSetting up pinentry-curses (1.2.1-3ubuntu5) ...\r\nSetting up libsasl2-modules:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...\r\nSetting up libldap-common (2.6.7+dfsg-1~exp1ubuntu8) ...\r\nSetting up libsasl2-modules-db:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...\r\nSetting up gnupg-l10n (2.4.4-2ubuntu17) ...\r\nSetting up libsasl2-2:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...\r\nSetting up gpgconf (2.4.4-2ubuntu17) ...\r\nSetting up libldap2:arm64 (2.6.7+dfsg-1~exp1ubuntu8) ...\r\nSetting up gpg (2.4.4-2ubuntu17) ...\r\nSetting up gnupg-utils (2.4.4-2ubuntu17) ...\r\nSetting up gpg-agent (2.4.4-2ubuntu17) ...\r\n/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'\r\n  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))\r\n/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'\r\n  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)\r\n/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'\r\n  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)\r\n/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'\r\n  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]\r\nUsage: systemctl [options] command [name...]\r\n\r\nsystemctl: error: no such option: --global\r\n/usr/bin/deb-systemd-helper: error: systemctl preset failed on gpg-agent.socket: No such file or directory\r\n/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'\r\n  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))\r\n/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'\r\n  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)\r\n/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'\r\n  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)\r\n/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'\r\n  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]\r\nUsage: systemctl [options] command [name...]\r\n\r\nsystemctl: error: no such option: --global\r\n/usr/bin/deb-systemd-helper: error: systemctl preset failed on gpg-agent-ssh.socket: No such file or directory\r\n/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'\r\n  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))\r\n/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'\r\n  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)\r\n/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'\r\n  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)\r\n/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'\r\n  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]\r\nUsage: systemctl [options] command [name...]\r\n\r\nsystemctl: error: no such option: --global\r\n/usr/bin/deb-systemd-helper: error: systemctl preset failed on gpg-agent-extra.socket: No such file or directory\r\n/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'\r\n  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))\r\n/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'\r\n  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)\r\n/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'\r\n  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)\r\n/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'\r\n  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]\r\nUsage: systemctl [options] command [name...]\r\n\r\nsystemctl: error: no such option: --global\r\n/usr/bin/deb-systemd-helper: error: systemctl preset failed on gpg-agent-browser.socket: No such file or directory\r\nSetting up gpgsm (2.4.4-2ubuntu17) ...\r\nSetting up dirmngr (2.4.4-2ubuntu17) ...\r\n/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'\r\n  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))\r\n/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'\r\n  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)\r\n/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'\r\n  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)\r\n/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'\r\n  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]\r\nUsage: systemctl [options] command [name...]\r\n\r\nsystemctl: error: no such option: --global\r\n/usr/bin/deb-systemd-helper: error: systemctl preset failed on dirmngr.socket: No such file or directory\r\nSetting up keyboxd (2.4.4-2ubuntu17) ...\r\n/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'\r\n  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))\r\n/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'\r\n  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)\r\n/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'\r\n  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)\r\n/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'\r\n  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]\r\nUsage: systemctl [options] command [name...]\r\n\r\nsystemctl: error: no such option: --global\r\n/usr/bin/deb-systemd-helper: error: systemctl preset failed on keyboxd.socket: No such file or directory\r\nSetting up gnupg (2.4.4-2ubuntu17) ...\r\nSetting up gpg-wks-client (2.4.4-2ubuntu17) ...\r\nProcessing triggers for libc-bin (2.39-0ubuntu8.3) ...\r\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "The following additional packages will be installed:",
+        "  adduser dirmngr gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpgconf",
+        "  gpgsm keyboxd libksba8 libldap-common libldap2 libsasl2-2 libsasl2-modules",
+        "  libsasl2-modules-db pinentry-curses",
+        "Suggested packages:",
+        "  liblocale-gettext-perl perl cron quota ecryptfs-utils dbus-user-session",
+        "  libpam-systemd pinentry-gnome3 tor parcimonie xloadimage gpg-wks-server",
+        "  scdaemon libsasl2-modules-gssapi-mit | libsasl2-modules-gssapi-heimdal",
+        "  libsasl2-modules-ldap libsasl2-modules-otp libsasl2-modules-sql pinentry-doc",
+        "The following NEW packages will be installed:",
+        "  adduser dirmngr gnupg gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client",
+        "  gpgconf gpgsm keyboxd libksba8 libldap-common libldap2 libsasl2-2",
+        "  libsasl2-modules libsasl2-modules-db pinentry-curses",
+        "0 upgraded, 18 newly installed, 0 to remove and 4 not upgraded.",
+        "Need to get 2714 kB of archives.",
+        "After this operation, 8025 kB of additional disk space will be used.",
+        "Get:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 adduser all 3.137ubuntu1 [101 kB]",
+        "Get:2 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gpgconf arm64 2.4.4-2ubuntu17 [103 kB]",
+        "Get:3 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libksba8 arm64 1.6.6-1build1 [119 kB]",
+        "Get:4 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsasl2-modules-db arm64 2.1.28+dfsg1-5ubuntu3.1 [21.6 kB]",
+        "Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsasl2-2 arm64 2.1.28+dfsg1-5ubuntu3.1 [54.7 kB]",
+        "Get:6 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libldap2 arm64 2.6.7+dfsg-1~exp1ubuntu8 [193 kB]",
+        "Get:7 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 dirmngr arm64 2.4.4-2ubuntu17 [316 kB]",
+        "Get:8 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gnupg-utils arm64 2.4.4-2ubuntu17 [106 kB]",
+        "Get:9 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gpg arm64 2.4.4-2ubuntu17 [548 kB]",
+        "Get:10 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 pinentry-curses arm64 1.2.1-3ubuntu5 [34.3 kB]",
+        "Get:11 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gpg-agent arm64 2.4.4-2ubuntu17 [221 kB]",
+        "Get:12 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gpgsm arm64 2.4.4-2ubuntu17 [225 kB]",
+        "Get:13 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 keyboxd arm64 2.4.4-2ubuntu17 [76.0 kB]",
+        "Get:14 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gnupg all 2.4.4-2ubuntu17 [359 kB]",
+        "Get:15 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gnupg-l10n all 2.4.4-2ubuntu17 [65.9 kB]",
+        "Get:16 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 gpg-wks-client arm64 2.4.4-2ubuntu17 [69.7 kB]",
+        "Get:17 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libldap-common all 2.6.7+dfsg-1~exp1ubuntu8 [31.4 kB]",
+        "Get:18 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsasl2-modules arm64 2.1.28+dfsg1-5ubuntu3.1 [69.6 kB]",
+        "Fetched 2714 kB in 2s (1802 kB/s)",
+        "Selecting previously unselected package adduser.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 7799 files and directories currently installed.)",
+        "Preparing to unpack .../adduser_3.137ubuntu1_all.deb ...",
+        "Unpacking adduser (3.137ubuntu1) ...",
+        "Setting up adduser (3.137ubuntu1) ...",
+        "Selecting previously unselected package gpgconf.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 7847 files and directories currently installed.)",
+        "Preparing to unpack .../00-gpgconf_2.4.4-2ubuntu17_arm64.deb ...",
+        "Unpacking gpgconf (2.4.4-2ubuntu17) ...",
+        "Selecting previously unselected package libksba8:arm64.",
+        "Preparing to unpack .../01-libksba8_1.6.6-1build1_arm64.deb ...",
+        "Unpacking libksba8:arm64 (1.6.6-1build1) ...",
+        "Selecting previously unselected package libsasl2-modules-db:arm64.",
+        "Preparing to unpack .../02-libsasl2-modules-db_2.1.28+dfsg1-5ubuntu3.1_arm64.deb ...",
+        "Unpacking libsasl2-modules-db:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...",
+        "Selecting previously unselected package libsasl2-2:arm64.",
+        "Preparing to unpack .../03-libsasl2-2_2.1.28+dfsg1-5ubuntu3.1_arm64.deb ...",
+        "Unpacking libsasl2-2:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...",
+        "Selecting previously unselected package libldap2:arm64.",
+        "Preparing to unpack .../04-libldap2_2.6.7+dfsg-1~exp1ubuntu8_arm64.deb ...",
+        "Unpacking libldap2:arm64 (2.6.7+dfsg-1~exp1ubuntu8) ...",
+        "Selecting previously unselected package dirmngr.",
+        "Preparing to unpack .../05-dirmngr_2.4.4-2ubuntu17_arm64.deb ...",
+        "Unpacking dirmngr (2.4.4-2ubuntu17) ...",
+        "Selecting previously unselected package gnupg-utils.",
+        "Preparing to unpack .../06-gnupg-utils_2.4.4-2ubuntu17_arm64.deb ...",
+        "Unpacking gnupg-utils (2.4.4-2ubuntu17) ...",
+        "Selecting previously unselected package gpg.",
+        "Preparing to unpack .../07-gpg_2.4.4-2ubuntu17_arm64.deb ...",
+        "Unpacking gpg (2.4.4-2ubuntu17) ...",
+        "Selecting previously unselected package pinentry-curses.",
+        "Preparing to unpack .../08-pinentry-curses_1.2.1-3ubuntu5_arm64.deb ...",
+        "Unpacking pinentry-curses (1.2.1-3ubuntu5) ...",
+        "Selecting previously unselected package gpg-agent.",
+        "Preparing to unpack .../09-gpg-agent_2.4.4-2ubuntu17_arm64.deb ...",
+        "Unpacking gpg-agent (2.4.4-2ubuntu17) ...",
+        "Selecting previously unselected package gpgsm.",
+        "Preparing to unpack .../10-gpgsm_2.4.4-2ubuntu17_arm64.deb ...",
+        "Unpacking gpgsm (2.4.4-2ubuntu17) ...",
+        "Selecting previously unselected package keyboxd.",
+        "Preparing to unpack .../11-keyboxd_2.4.4-2ubuntu17_arm64.deb ...",
+        "Unpacking keyboxd (2.4.4-2ubuntu17) ...",
+        "Selecting previously unselected package gnupg.",
+        "Preparing to unpack .../12-gnupg_2.4.4-2ubuntu17_all.deb ...",
+        "Unpacking gnupg (2.4.4-2ubuntu17) ...",
+        "Selecting previously unselected package gnupg-l10n.",
+        "Preparing to unpack .../13-gnupg-l10n_2.4.4-2ubuntu17_all.deb ...",
+        "Unpacking gnupg-l10n (2.4.4-2ubuntu17) ...",
+        "Selecting previously unselected package gpg-wks-client.",
+        "Preparing to unpack .../14-gpg-wks-client_2.4.4-2ubuntu17_arm64.deb ...",
+        "Unpacking gpg-wks-client (2.4.4-2ubuntu17) ...",
+        "Selecting previously unselected package libldap-common.",
+        "Preparing to unpack .../15-libldap-common_2.6.7+dfsg-1~exp1ubuntu8_all.deb ...",
+        "Unpacking libldap-common (2.6.7+dfsg-1~exp1ubuntu8) ...",
+        "Selecting previously unselected package libsasl2-modules:arm64.",
+        "Preparing to unpack .../16-libsasl2-modules_2.1.28+dfsg1-5ubuntu3.1_arm64.deb ...",
+        "Unpacking libsasl2-modules:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...",
+        "Setting up libksba8:arm64 (1.6.6-1build1) ...",
+        "Setting up pinentry-curses (1.2.1-3ubuntu5) ...",
+        "Setting up libsasl2-modules:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...",
+        "Setting up libldap-common (2.6.7+dfsg-1~exp1ubuntu8) ...",
+        "Setting up libsasl2-modules-db:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...",
+        "Setting up gnupg-l10n (2.4.4-2ubuntu17) ...",
+        "Setting up libsasl2-2:arm64 (2.1.28+dfsg1-5ubuntu3.1) ...",
+        "Setting up gpgconf (2.4.4-2ubuntu17) ...",
+        "Setting up libldap2:arm64 (2.6.7+dfsg-1~exp1ubuntu8) ...",
+        "Setting up gpg (2.4.4-2ubuntu17) ...",
+        "Setting up gnupg-utils (2.4.4-2ubuntu17) ...",
+        "Setting up gpg-agent (2.4.4-2ubuntu17) ...",
+        "/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'",
+        "  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))",
+        "/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'",
+        "  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)",
+        "/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'",
+        "  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)",
+        "/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'",
+        "  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]",
+        "Usage: systemctl [options] command [name...]",
+        "",
+        "systemctl: error: no such option: --global",
+        "/usr/bin/deb-systemd-helper: error: systemctl preset failed on gpg-agent.socket: No such file or directory",
+        "/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'",
+        "  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))",
+        "/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'",
+        "  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)",
+        "/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'",
+        "  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)",
+        "/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'",
+        "  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]",
+        "Usage: systemctl [options] command [name...]",
+        "",
+        "systemctl: error: no such option: --global",
+        "/usr/bin/deb-systemd-helper: error: systemctl preset failed on gpg-agent-ssh.socket: No such file or directory",
+        "/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'",
+        "  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))",
+        "/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'",
+        "  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)",
+        "/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'",
+        "  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)",
+        "/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'",
+        "  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]",
+        "Usage: systemctl [options] command [name...]",
+        "",
+        "systemctl: error: no such option: --global",
+        "/usr/bin/deb-systemd-helper: error: systemctl preset failed on gpg-agent-extra.socket: No such file or directory",
+        "/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'",
+        "  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))",
+        "/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'",
+        "  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)",
+        "/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'",
+        "  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)",
+        "/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'",
+        "  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]",
+        "Usage: systemctl [options] command [name...]",
+        "",
+        "systemctl: error: no such option: --global",
+        "/usr/bin/deb-systemd-helper: error: systemctl preset failed on gpg-agent-browser.socket: No such file or directory",
+        "Setting up gpgsm (2.4.4-2ubuntu17) ...",
+        "Setting up dirmngr (2.4.4-2ubuntu17) ...",
+        "/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'",
+        "  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))",
+        "/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'",
+        "  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)",
+        "/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'",
+        "  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)",
+        "/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'",
+        "  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]",
+        "Usage: systemctl [options] command [name...]",
+        "",
+        "systemctl: error: no such option: --global",
+        "/usr/bin/deb-systemd-helper: error: systemctl preset failed on dirmngr.socket: No such file or directory",
+        "Setting up keyboxd (2.4.4-2ubuntu17) ...",
+        "/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'",
+        "  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))",
+        "/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'",
+        "  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)",
+        "/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'",
+        "  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)",
+        "/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'",
+        "  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]",
+        "Usage: systemctl [options] command [name...]",
+        "",
+        "systemctl: error: no such option: --global",
+        "/usr/bin/deb-systemd-helper: error: systemctl preset failed on keyboxd.socket: No such file or directory",
+        "Setting up gnupg (2.4.4-2ubuntu17) ...",
+        "Setting up gpg-wks-client (2.4.4-2ubuntu17) ...",
+        "Processing triggers for libc-bin (2.39-0ubuntu8.3) ..."
+    ]
+}
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505823.260611-62853-45154952153249 `" && echo ansible-tmp-1728505823.260611-62853-45154952153249="` echo /root/.ansible/tmp/ansible-tmp-1728505823.260611-62853-45154952153249 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpxbwa3t93 TO /root/.ansible/tmp/ansible-tmp-1728505823.260611-62853-45154952153249/AnsiballZ_apt.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505823.260611-62853-45154952153249/ /root/.ansible/tmp/ansible-tmp-1728505823.260611-62853-45154952153249/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c '/usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505823.260611-62853-45154952153249/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505823.260611-62853-45154952153249/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => (item=apt-utils) => {
+    "ansible_loop_var": "item",
+    "cache_update_time": 1728505801,
+    "cache_updated": false,
+    "changed": true,
+    "diff": {},
+    "invocation": {
+        "module_args": {
+            "allow_change_held_packages": false,
+            "allow_downgrade": false,
+            "allow_unauthenticated": false,
+            "autoclean": false,
+            "autoremove": false,
+            "cache_valid_time": 86400,
+            "clean": false,
+            "deb": null,
+            "default_release": null,
+            "dpkg_options": "force-confdef,force-confold",
+            "fail_on_autoremove": false,
+            "force": false,
+            "force_apt_get": false,
+            "install_recommends": null,
+            "lock_timeout": 60,
+            "name": [
+                "apt-utils"
+            ],
+            "only_upgrade": false,
+            "package": [
+                "apt-utils"
+            ],
+            "policy_rc_d": null,
+            "purge": false,
+            "state": "present",
+            "update_cache": true,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "upgrade": null
+        }
+    },
+    "item": "apt-utils",
+    "stderr": "debconf: delaying package configuration, since apt-utils is not installed\n",
+    "stderr_lines": [
+        "debconf: delaying package configuration, since apt-utils is not installed"
+    ],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nThe following NEW packages will be installed:\n  apt-utils\n0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.\nNeed to get 205 kB of archives.\nAfter this operation, 791 kB of additional disk space will be used.\nGet:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 apt-utils arm64 2.7.14build2 [205 kB]\nFetched 205 kB in 0s (602 kB/s)\nSelecting previously unselected package apt-utils.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 8094 files and directories currently installed.)\r\nPreparing to unpack .../apt-utils_2.7.14build2_arm64.deb ...\r\nUnpacking apt-utils (2.7.14build2) ...\r\nSetting up apt-utils (2.7.14build2) ...\r\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "The following NEW packages will be installed:",
+        "  apt-utils",
+        "0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.",
+        "Need to get 205 kB of archives.",
+        "After this operation, 791 kB of additional disk space will be used.",
+        "Get:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 apt-utils arm64 2.7.14build2 [205 kB]",
+        "Fetched 205 kB in 0s (602 kB/s)",
+        "Selecting previously unselected package apt-utils.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 8094 files and directories currently installed.)",
+        "Preparing to unpack .../apt-utils_2.7.14build2_arm64.deb ...",
+        "Unpacking apt-utils (2.7.14build2) ...",
+        "Setting up apt-utils (2.7.14build2) ..."
+    ]
+}
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505826.269724-62853-190190316964592 `" && echo ansible-tmp-1728505826.269724-62853-190190316964592="` echo /root/.ansible/tmp/ansible-tmp-1728505826.269724-62853-190190316964592 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpnlhetpb4 TO /root/.ansible/tmp/ansible-tmp-1728505826.269724-62853-190190316964592/AnsiballZ_apt.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505826.269724-62853-190190316964592/ /root/.ansible/tmp/ansible-tmp-1728505826.269724-62853-190190316964592/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c '/usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505826.269724-62853-190190316964592/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505826.269724-62853-190190316964592/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => (item=apt-transport-https) => {
+    "ansible_loop_var": "item",
+    "cache_update_time": 1728505801,
+    "cache_updated": false,
+    "changed": true,
+    "diff": {},
+    "invocation": {
+        "module_args": {
+            "allow_change_held_packages": false,
+            "allow_downgrade": false,
+            "allow_unauthenticated": false,
+            "autoclean": false,
+            "autoremove": false,
+            "cache_valid_time": 86400,
+            "clean": false,
+            "deb": null,
+            "default_release": null,
+            "dpkg_options": "force-confdef,force-confold",
+            "fail_on_autoremove": false,
+            "force": false,
+            "force_apt_get": false,
+            "install_recommends": null,
+            "lock_timeout": 60,
+            "name": [
+                "apt-transport-https"
+            ],
+            "only_upgrade": false,
+            "package": [
+                "apt-transport-https"
+            ],
+            "policy_rc_d": null,
+            "purge": false,
+            "state": "present",
+            "update_cache": true,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "upgrade": null
+        }
+    },
+    "item": "apt-transport-https",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nThe following NEW packages will be installed:\n  apt-transport-https\n0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.\nNeed to get 3974 B of archives.\nAfter this operation, 35.8 kB of additional disk space will be used.\nGet:1 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 apt-transport-https all 2.7.14build2 [3974 B]\nFetched 3974 B in 0s (22.6 kB/s)\nSelecting previously unselected package apt-transport-https.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 8132 files and directories currently installed.)\r\nPreparing to unpack .../apt-transport-https_2.7.14build2_all.deb ...\r\nUnpacking apt-transport-https (2.7.14build2) ...\r\nSetting up apt-transport-https (2.7.14build2) ...\r\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "The following NEW packages will be installed:",
+        "  apt-transport-https",
+        "0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.",
+        "Need to get 3974 B of archives.",
+        "After this operation, 35.8 kB of additional disk space will be used.",
+        "Get:1 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 apt-transport-https all 2.7.14build2 [3974 B]",
+        "Fetched 3974 B in 0s (22.6 kB/s)",
+        "Selecting previously unselected package apt-transport-https.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 8132 files and directories currently installed.)",
+        "Preparing to unpack .../apt-transport-https_2.7.14build2_all.deb ...",
+        "Unpacking apt-transport-https (2.7.14build2) ...",
+        "Setting up apt-transport-https (2.7.14build2) ..."
+    ]
+}
+
+TASK [clickhouse : apt_repository] ***********************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/clickhouse/tasks/main.yaml:7
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505829.706753-62947-51307944449868 `" && echo ansible-tmp-1728505829.706753-62947-51307944449868="` echo /root/.ansible/tmp/ansible-tmp-1728505829.706753-62947-51307944449868 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt_repository.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmp4513hts8 TO /root/.ansible/tmp/ansible-tmp-1728505829.706753-62947-51307944449868/AnsiballZ_apt_repository.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505829.706753-62947-51307944449868/ /root/.ansible/tmp/ansible-tmp-1728505829.706753-62947-51307944449868/AnsiballZ_apt_repository.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-yxbjxvemsqyinmcabbzsittjjzrmhemu ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505829.706753-62947-51307944449868/AnsiballZ_apt_repository.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505829.706753-62947-51307944449868/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => {
+    "changed": true,
+    "diff": [],
+    "invocation": {
+        "module_args": {
+            "codename": null,
+            "filename": null,
+            "install_python_apt": true,
+            "mode": null,
+            "repo": "deb https://packages.clickhouse.com/deb stable main",
+            "state": "present",
+            "update_cache": false,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "validate_certs": true
+        }
+    },
+    "repo": "deb https://packages.clickhouse.com/deb stable main",
+    "sources_added": [
+        "/etc/apt/sources.list.d/packages_clickhouse_com_deb.list"
+    ],
+    "sources_removed": [],
+    "state": "present"
+}
+
+TASK [clickhouse : apt_key] ******************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/clickhouse/tasks/main.yaml:11
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505830.334025-62955-222370982359207 `" && echo ansible-tmp-1728505830.334025-62955-222370982359207="` echo /root/.ansible/tmp/ansible-tmp-1728505830.334025-62955-222370982359207 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt_key.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpqxkwmryh TO /root/.ansible/tmp/ansible-tmp-1728505830.334025-62955-222370982359207/AnsiballZ_apt_key.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505830.334025-62955-222370982359207/ /root/.ansible/tmp/ansible-tmp-1728505830.334025-62955-222370982359207/AnsiballZ_apt_key.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-knpmseekrrdicombknzvbqfbffnvjgwv ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505830.334025-62955-222370982359207/AnsiballZ_apt_key.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505830.334025-62955-222370982359207/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => {
+    "after": [
+        "8919F6BD2B48D754",
+        "B5487D377C749E91",
+        "3E4AD4719DDE9A38",
+        "D94AA3F0EFE21092",
+        "871920D1991BC93C"
+    ],
+    "before": [
+        "D94AA3F0EFE21092",
+        "871920D1991BC93C"
+    ],
+    "changed": true,
+    "fp": "8919F6BD2B48D754",
+    "id": "8919F6BD2B48D754",
+    "invocation": {
+        "module_args": {
+            "data": null,
+            "file": null,
+            "id": null,
+            "keyring": null,
+            "keyserver": null,
+            "state": "present",
+            "url": "https://packages.clickhouse.com/rpm/lts/repodata/repomd.xml.key",
+            "validate_certs": true
+        }
+    },
+    "key_id": "8919F6BD2B48D754",
+    "short_id": "2B48D754"
+}
+
+TASK [clickhouse : apt] **********************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/clickhouse/tasks/main.yaml:14
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505831.511492-62963-222739866026649 `" && echo ansible-tmp-1728505831.511492-62963-222739866026649="` echo /root/.ansible/tmp/ansible-tmp-1728505831.511492-62963-222739866026649 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpkq5ufshx TO /root/.ansible/tmp/ansible-tmp-1728505831.511492-62963-222739866026649/AnsiballZ_apt.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505831.511492-62963-222739866026649/ /root/.ansible/tmp/ansible-tmp-1728505831.511492-62963-222739866026649/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-ltxxcawhsdxgggkfcadkyijhecleokdz ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505831.511492-62963-222739866026649/AnsiballZ_apt.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505831.511492-62963-222739866026649/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => {
+    "cache_update_time": 1728505833,
+    "cache_updated": true,
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "allow_change_held_packages": false,
+            "allow_downgrade": false,
+            "allow_unauthenticated": false,
+            "autoclean": false,
+            "autoremove": false,
+            "cache_valid_time": 0,
+            "clean": false,
+            "deb": null,
+            "default_release": null,
+            "dpkg_options": "force-confdef,force-confold",
+            "fail_on_autoremove": false,
+            "force": true,
+            "force_apt_get": false,
+            "install_recommends": null,
+            "lock_timeout": 60,
+            "only_upgrade": false,
+            "package": null,
+            "policy_rc_d": null,
+            "purge": false,
+            "state": "present",
+            "update_cache": true,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "upgrade": null
+        }
+    }
+}
+
+TASK [clickhouse : apt] **********************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/clickhouse/tasks/main.yaml:17
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505833.994987-62981-266372912371518 `" && echo ansible-tmp-1728505833.994987-62981-266372912371518="` echo /root/.ansible/tmp/ansible-tmp-1728505833.994987-62981-266372912371518 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpuag568_p TO /root/.ansible/tmp/ansible-tmp-1728505833.994987-62981-266372912371518/AnsiballZ_apt.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505833.994987-62981-266372912371518/ /root/.ansible/tmp/ansible-tmp-1728505833.994987-62981-266372912371518/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-wiksiklqwpfzptuoauedcoecfadiwndc ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505833.994987-62981-266372912371518/AnsiballZ_apt.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505833.994987-62981-266372912371518/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => (item=clickhouse-common-static) => {
+    "ansible_loop_var": "item",
+    "cache_update_time": 1728505833,
+    "cache_updated": false,
+    "changed": true,
+    "diff": {},
+    "invocation": {
+        "module_args": {
+            "allow_change_held_packages": false,
+            "allow_downgrade": false,
+            "allow_unauthenticated": false,
+            "autoclean": false,
+            "autoremove": false,
+            "cache_valid_time": 0,
+            "clean": false,
+            "deb": null,
+            "default_release": null,
+            "dpkg_options": "force-confdef,force-confold",
+            "fail_on_autoremove": false,
+            "force": false,
+            "force_apt_get": false,
+            "install_recommends": true,
+            "lock_timeout": 60,
+            "name": [
+                "clickhouse-common-static=24.9.2.42"
+            ],
+            "only_upgrade": false,
+            "package": [
+                "clickhouse-common-static=24.9.2.42"
+            ],
+            "policy_rc_d": null,
+            "purge": false,
+            "state": "present",
+            "update_cache": null,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "upgrade": null
+        }
+    },
+    "item": "clickhouse-common-static",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nSuggested packages:\n  clickhouse-common-static-dbg\nThe following NEW packages will be installed:\n  clickhouse-common-static\n0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.\nNeed to get 142 MB of archives.\nAfter this operation, 492 MB of additional disk space will be used.\nGet:1 https://packages.clickhouse.com/deb stable/main arm64 clickhouse-common-static arm64 24.9.2.42 [142 MB]\nFetched 142 MB in 13s (11.1 MB/s)\nSelecting previously unselected package clickhouse-common-static.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 8136 files and directories currently installed.)\r\nPreparing to unpack .../clickhouse-common-static_24.9.2.42_arm64.deb ...\r\nUnpacking clickhouse-common-static (24.9.2.42) ...\r\nSetting up clickhouse-common-static (24.9.2.42) ...\r\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "Suggested packages:",
+        "  clickhouse-common-static-dbg",
+        "The following NEW packages will be installed:",
+        "  clickhouse-common-static",
+        "0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.",
+        "Need to get 142 MB of archives.",
+        "After this operation, 492 MB of additional disk space will be used.",
+        "Get:1 https://packages.clickhouse.com/deb stable/main arm64 clickhouse-common-static arm64 24.9.2.42 [142 MB]",
+        "Fetched 142 MB in 13s (11.1 MB/s)",
+        "Selecting previously unselected package clickhouse-common-static.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 8136 files and directories currently installed.)",
+        "Preparing to unpack .../clickhouse-common-static_24.9.2.42_arm64.deb ...",
+        "Unpacking clickhouse-common-static (24.9.2.42) ...",
+        "Setting up clickhouse-common-static (24.9.2.42) ..."
+    ]
+}
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505852.352072-62981-205295486062074 `" && echo ansible-tmp-1728505852.352072-62981-205295486062074="` echo /root/.ansible/tmp/ansible-tmp-1728505852.352072-62981-205295486062074 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmp1ns85voi TO /root/.ansible/tmp/ansible-tmp-1728505852.352072-62981-205295486062074/AnsiballZ_apt.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505852.352072-62981-205295486062074/ /root/.ansible/tmp/ansible-tmp-1728505852.352072-62981-205295486062074/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-fsrjavdjnizkmjymnxarsxokarizauth ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505852.352072-62981-205295486062074/AnsiballZ_apt.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505852.352072-62981-205295486062074/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => (item=clickhouse-client) => {
+    "ansible_loop_var": "item",
+    "cache_update_time": 1728505833,
+    "cache_updated": false,
+    "changed": true,
+    "diff": {},
+    "invocation": {
+        "module_args": {
+            "allow_change_held_packages": false,
+            "allow_downgrade": false,
+            "allow_unauthenticated": false,
+            "autoclean": false,
+            "autoremove": false,
+            "cache_valid_time": 0,
+            "clean": false,
+            "deb": null,
+            "default_release": null,
+            "dpkg_options": "force-confdef,force-confold",
+            "fail_on_autoremove": false,
+            "force": false,
+            "force_apt_get": false,
+            "install_recommends": true,
+            "lock_timeout": 60,
+            "name": [
+                "clickhouse-client=24.9.2.42"
+            ],
+            "only_upgrade": false,
+            "package": [
+                "clickhouse-client=24.9.2.42"
+            ],
+            "policy_rc_d": null,
+            "purge": false,
+            "state": "present",
+            "update_cache": null,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "upgrade": null
+        }
+    },
+    "item": "clickhouse-client",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nThe following NEW packages will be installed:\n  clickhouse-client\n0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.\nNeed to get 89.3 kB of archives.\nAfter this operation, 314 kB of additional disk space will be used.\nGet:1 https://packages.clickhouse.com/deb stable/main arm64 clickhouse-client arm64 24.9.2.42 [89.3 kB]\nFetched 89.3 kB in 0s (316 kB/s)\nSelecting previously unselected package clickhouse-client.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 8163 files and directories currently installed.)\r\nPreparing to unpack .../clickhouse-client_24.9.2.42_arm64.deb ...\r\nUnpacking clickhouse-client (24.9.2.42) ...\r\nSetting up clickhouse-client (24.9.2.42) ...\r\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "The following NEW packages will be installed:",
+        "  clickhouse-client",
+        "0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.",
+        "Need to get 89.3 kB of archives.",
+        "After this operation, 314 kB of additional disk space will be used.",
+        "Get:1 https://packages.clickhouse.com/deb stable/main arm64 clickhouse-client arm64 24.9.2.42 [89.3 kB]",
+        "Fetched 89.3 kB in 0s (316 kB/s)",
+        "Selecting previously unselected package clickhouse-client.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 8163 files and directories currently installed.)",
+        "Preparing to unpack .../clickhouse-client_24.9.2.42_arm64.deb ...",
+        "Unpacking clickhouse-client (24.9.2.42) ...",
+        "Setting up clickhouse-client (24.9.2.42) ..."
+    ]
+}
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505856.316567-62981-6648938150634 `" && echo ansible-tmp-1728505856.316567-62981-6648938150634="` echo /root/.ansible/tmp/ansible-tmp-1728505856.316567-62981-6648938150634 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpno9cjylu TO /root/.ansible/tmp/ansible-tmp-1728505856.316567-62981-6648938150634/AnsiballZ_apt.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505856.316567-62981-6648938150634/ /root/.ansible/tmp/ansible-tmp-1728505856.316567-62981-6648938150634/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-bghytqbwolsbjfuffdoreziqgvbehzdu ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505856.316567-62981-6648938150634/AnsiballZ_apt.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505856.316567-62981-6648938150634/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => (item=clickhouse-server) => {
+    "ansible_loop_var": "item",
+    "cache_update_time": 1728505833,
+    "cache_updated": false,
+    "changed": true,
+    "diff": {},
+    "invocation": {
+        "module_args": {
+            "allow_change_held_packages": false,
+            "allow_downgrade": false,
+            "allow_unauthenticated": false,
+            "autoclean": false,
+            "autoremove": false,
+            "cache_valid_time": 0,
+            "clean": false,
+            "deb": null,
+            "default_release": null,
+            "dpkg_options": "force-confdef,force-confold",
+            "fail_on_autoremove": false,
+            "force": false,
+            "force_apt_get": false,
+            "install_recommends": true,
+            "lock_timeout": 60,
+            "name": [
+                "clickhouse-server=24.9.2.42"
+            ],
+            "only_upgrade": false,
+            "package": [
+                "clickhouse-server=24.9.2.42"
+            ],
+            "policy_rc_d": null,
+            "purge": false,
+            "state": "present",
+            "update_cache": null,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "upgrade": null
+        }
+    },
+    "item": "clickhouse-server",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nThe following additional packages will be installed:\n  libcap2-bin libpam-cap\nThe following NEW packages will be installed:\n  clickhouse-server libcap2-bin libpam-cap\n0 upgraded, 3 newly installed, 0 to remove and 4 not upgraded.\nNeed to get 163 kB of archives.\nAfter this operation, 825 kB of additional disk space will be used.\nGet:1 https://packages.clickhouse.com/deb stable/main arm64 clickhouse-server arm64 24.9.2.42 [117 kB]\nGet:2 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libcap2-bin arm64 1:2.66-5ubuntu2 [33.5 kB]\nGet:3 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libpam-cap arm64 1:2.66-5ubuntu2 [12.5 kB]\nFetched 163 kB in 1s (307 kB/s)\nSelecting previously unselected package libcap2-bin.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 8179 files and directories currently installed.)\r\nPreparing to unpack .../libcap2-bin_1%3a2.66-5ubuntu2_arm64.deb ...\r\nUnpacking libcap2-bin (1:2.66-5ubuntu2) ...\r\nSelecting previously unselected package libpam-cap:arm64.\r\nPreparing to unpack .../libpam-cap_1%3a2.66-5ubuntu2_arm64.deb ...\r\nUnpacking libpam-cap:arm64 (1:2.66-5ubuntu2) ...\r\nSelecting previously unselected package clickhouse-server.\r\nPreparing to unpack .../clickhouse-server_24.9.2.42_arm64.deb ...\r\nUnpacking clickhouse-server (24.9.2.42) ...\r\nSetting up libcap2-bin (1:2.66-5ubuntu2) ...\r\nSetting up clickhouse-server (24.9.2.42) ...\r\nClickHouse binary is already located at /usr/bin/clickhouse\r\nSymlink /usr/bin/clickhouse-server already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.\r\nCreating symlink /usr/bin/clickhouse-server to /usr/bin/clickhouse.\r\nSymlink /usr/bin/clickhouse-client already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.\r\nCreating symlink /usr/bin/clickhouse-client to /usr/bin/clickhouse.\r\nSymlink /usr/bin/clickhouse-local already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.\r\nCreating symlink /usr/bin/clickhouse-local to /usr/bin/clickhouse.\r\nSymlink /usr/bin/clickhouse-benchmark already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.\r\nCreating symlink /usr/bin/clickhouse-benchmark to /usr/bin/clickhouse.\r\nSymlink /usr/bin/clickhouse-obfuscator already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.\r\nCreating symlink /usr/bin/clickhouse-obfuscator to /usr/bin/clickhouse.\r\nCreating symlink /usr/bin/clickhouse-git-import to /usr/bin/clickhouse.\r\nSymlink /usr/bin/clickhouse-compressor already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.\r\nCreating symlink /usr/bin/clickhouse-compressor to /usr/bin/clickhouse.\r\nSymlink /usr/bin/clickhouse-format already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.\r\nCreating symlink /usr/bin/clickhouse-format to /usr/bin/clickhouse.\r\nSymlink /usr/bin/clickhouse-extract-from-config already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.\r\nCreating symlink /usr/bin/clickhouse-extract-from-config to /usr/bin/clickhouse.\r\nSymlink /usr/bin/clickhouse-keeper already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.\r\nCreating symlink /usr/bin/clickhouse-keeper to /usr/bin/clickhouse.\r\nSymlink /usr/bin/clickhouse-keeper-converter already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.\r\nCreating symlink /usr/bin/clickhouse-keeper-converter to /usr/bin/clickhouse.\r\nCreating symlink /usr/bin/clickhouse-disks to /usr/bin/clickhouse.\r\nSymlink /usr/bin/ch already exists. Will keep it.\r\nSymlink /usr/bin/chl already exists. Will keep it.\r\nSymlink /usr/bin/chc already exists. Will keep it.\r\nCreating clickhouse group if it does not exist.\r\n groupadd -r clickhouse\r\nCreating clickhouse user if it does not exist.\r\n useradd -r --shell /bin/false --home-dir /nonexistent -g clickhouse clickhouse\r\nWill set ulimits for clickhouse user in /etc/security/limits.d/clickhouse.conf.\r\nCreating config directory /etc/clickhouse-server/config.d that is used for tweaks of main server configuration.\r\nCreating config directory /etc/clickhouse-server/users.d that is used for tweaks of users configuration.\r\nConfig file /etc/clickhouse-server/config.xml already exists, will keep it and extract path info from it.\r\n/etc/clickhouse-server/config.xml has /var/lib/clickhouse/ as data path.\r\n/etc/clickhouse-server/config.xml has /var/log/clickhouse-server/ as log path.\r\nUsers config file /etc/clickhouse-server/users.xml already exists, will keep it and extract users info from it.\r\nCreating log directory /var/log/clickhouse-server/.\r\nCreating data directory /var/lib/clickhouse/.\r\nCreating pid directory /var/run/clickhouse-server.\r\n chown -R clickhouse:clickhouse '/var/log/clickhouse-server/'\r\n chown -R clickhouse:clickhouse '/var/run/clickhouse-server'\r\n chown  clickhouse:clickhouse '/var/lib/clickhouse/'\r\n\u001b[1mPassword for the default user is an empty string. See /etc/clickhouse-server/users.xml and /etc/clickhouse-server/users.d to change it.\u001b[0m\r\nSetting capabilities for clickhouse binary. This is optional.\r\nCannot set 'net_admin' or 'ipc_lock' or 'sys_nice' or 'net_bind_service' capability for clickhouse binary. This is optional. Taskstats accounting will be disabled. To enable taskstats accounting you may add the required capability later manually.\r\n chown -R clickhouse:clickhouse '/etc/clickhouse-server'\r\n\r\nClickHouse has been successfully installed.\r\n\r\nStart clickhouse-server with:\r\n sudo clickhouse start\r\n\r\nStart clickhouse-client with:\r\n clickhouse-client\r\n\r\nSetting up libpam-cap:arm64 (1:2.66-5ubuntu2) ...\r\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "The following additional packages will be installed:",
+        "  libcap2-bin libpam-cap",
+        "The following NEW packages will be installed:",
+        "  clickhouse-server libcap2-bin libpam-cap",
+        "0 upgraded, 3 newly installed, 0 to remove and 4 not upgraded.",
+        "Need to get 163 kB of archives.",
+        "After this operation, 825 kB of additional disk space will be used.",
+        "Get:1 https://packages.clickhouse.com/deb stable/main arm64 clickhouse-server arm64 24.9.2.42 [117 kB]",
+        "Get:2 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libcap2-bin arm64 1:2.66-5ubuntu2 [33.5 kB]",
+        "Get:3 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libpam-cap arm64 1:2.66-5ubuntu2 [12.5 kB]",
+        "Fetched 163 kB in 1s (307 kB/s)",
+        "Selecting previously unselected package libcap2-bin.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 8179 files and directories currently installed.)",
+        "Preparing to unpack .../libcap2-bin_1%3a2.66-5ubuntu2_arm64.deb ...",
+        "Unpacking libcap2-bin (1:2.66-5ubuntu2) ...",
+        "Selecting previously unselected package libpam-cap:arm64.",
+        "Preparing to unpack .../libpam-cap_1%3a2.66-5ubuntu2_arm64.deb ...",
+        "Unpacking libpam-cap:arm64 (1:2.66-5ubuntu2) ...",
+        "Selecting previously unselected package clickhouse-server.",
+        "Preparing to unpack .../clickhouse-server_24.9.2.42_arm64.deb ...",
+        "Unpacking clickhouse-server (24.9.2.42) ...",
+        "Setting up libcap2-bin (1:2.66-5ubuntu2) ...",
+        "Setting up clickhouse-server (24.9.2.42) ...",
+        "ClickHouse binary is already located at /usr/bin/clickhouse",
+        "Symlink /usr/bin/clickhouse-server already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.",
+        "Creating symlink /usr/bin/clickhouse-server to /usr/bin/clickhouse.",
+        "Symlink /usr/bin/clickhouse-client already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.",
+        "Creating symlink /usr/bin/clickhouse-client to /usr/bin/clickhouse.",
+        "Symlink /usr/bin/clickhouse-local already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.",
+        "Creating symlink /usr/bin/clickhouse-local to /usr/bin/clickhouse.",
+        "Symlink /usr/bin/clickhouse-benchmark already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.",
+        "Creating symlink /usr/bin/clickhouse-benchmark to /usr/bin/clickhouse.",
+        "Symlink /usr/bin/clickhouse-obfuscator already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.",
+        "Creating symlink /usr/bin/clickhouse-obfuscator to /usr/bin/clickhouse.",
+        "Creating symlink /usr/bin/clickhouse-git-import to /usr/bin/clickhouse.",
+        "Symlink /usr/bin/clickhouse-compressor already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.",
+        "Creating symlink /usr/bin/clickhouse-compressor to /usr/bin/clickhouse.",
+        "Symlink /usr/bin/clickhouse-format already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.",
+        "Creating symlink /usr/bin/clickhouse-format to /usr/bin/clickhouse.",
+        "Symlink /usr/bin/clickhouse-extract-from-config already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.",
+        "Creating symlink /usr/bin/clickhouse-extract-from-config to /usr/bin/clickhouse.",
+        "Symlink /usr/bin/clickhouse-keeper already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.",
+        "Creating symlink /usr/bin/clickhouse-keeper to /usr/bin/clickhouse.",
+        "Symlink /usr/bin/clickhouse-keeper-converter already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.",
+        "Creating symlink /usr/bin/clickhouse-keeper-converter to /usr/bin/clickhouse.",
+        "Creating symlink /usr/bin/clickhouse-disks to /usr/bin/clickhouse.",
+        "Symlink /usr/bin/ch already exists. Will keep it.",
+        "Symlink /usr/bin/chl already exists. Will keep it.",
+        "Symlink /usr/bin/chc already exists. Will keep it.",
+        "Creating clickhouse group if it does not exist.",
+        " groupadd -r clickhouse",
+        "Creating clickhouse user if it does not exist.",
+        " useradd -r --shell /bin/false --home-dir /nonexistent -g clickhouse clickhouse",
+        "Will set ulimits for clickhouse user in /etc/security/limits.d/clickhouse.conf.",
+        "Creating config directory /etc/clickhouse-server/config.d that is used for tweaks of main server configuration.",
+        "Creating config directory /etc/clickhouse-server/users.d that is used for tweaks of users configuration.",
+        "Config file /etc/clickhouse-server/config.xml already exists, will keep it and extract path info from it.",
+        "/etc/clickhouse-server/config.xml has /var/lib/clickhouse/ as data path.",
+        "/etc/clickhouse-server/config.xml has /var/log/clickhouse-server/ as log path.",
+        "Users config file /etc/clickhouse-server/users.xml already exists, will keep it and extract users info from it.",
+        "Creating log directory /var/log/clickhouse-server/.",
+        "Creating data directory /var/lib/clickhouse/.",
+        "Creating pid directory /var/run/clickhouse-server.",
+        " chown -R clickhouse:clickhouse '/var/log/clickhouse-server/'",
+        " chown -R clickhouse:clickhouse '/var/run/clickhouse-server'",
+        " chown  clickhouse:clickhouse '/var/lib/clickhouse/'",
+        "\u001b[1mPassword for the default user is an empty string. See /etc/clickhouse-server/users.xml and /etc/clickhouse-server/users.d to change it.\u001b[0m",
+        "Setting capabilities for clickhouse binary. This is optional.",
+        "Cannot set 'net_admin' or 'ipc_lock' or 'sys_nice' or 'net_bind_service' capability for clickhouse binary. This is optional. Taskstats accounting will be disabled. To enable taskstats accounting you may add the required capability later manually.",
+        " chown -R clickhouse:clickhouse '/etc/clickhouse-server'",
+        "",
+        "ClickHouse has been successfully installed.",
+        "",
+        "Start clickhouse-server with:",
+        " sudo clickhouse start",
+        "",
+        "Start clickhouse-client with:",
+        " clickhouse-client",
+        "",
+        "Setting up libpam-cap:arm64 (1:2.66-5ubuntu2) ..."
+    ]
+}
+Notification for handler Start clickhouse service has been saved.
+Notification for handler Start clickhouse service has been saved.
+Notification for handler Start clickhouse service has been saved.
+
+TASK [clickhouse : Flush handlers] ***********************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/clickhouse/tasks/main.yaml:24
+NOTIFIED HANDLER clickhouse : Start clickhouse service for clickhouse-01
+META: triggered running handlers for clickhouse-01
+
+RUNNING HANDLER [clickhouse : Start clickhouse service] **************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/clickhouse/handlers/main.yml:2
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505860.793268-63075-85966646986474 `" && echo ansible-tmp-1728505860.793268-63075-85966646986474="` echo /root/.ansible/tmp/ansible-tmp-1728505860.793268-63075-85966646986474 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/sysvinit.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmptzraa_0_ TO /root/.ansible/tmp/ansible-tmp-1728505860.793268-63075-85966646986474/AnsiballZ_sysvinit.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505860.793268-63075-85966646986474/ /root/.ansible/tmp/ansible-tmp-1728505860.793268-63075-85966646986474/AnsiballZ_sysvinit.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-grvtnypevotgipwebajlpsamignxdgep ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505860.793268-63075-85966646986474/AnsiballZ_sysvinit.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505860.793268-63075-85966646986474/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => {
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "arguments": null,
+            "daemonize": false,
+            "enabled": null,
+            "name": "clickhouse-server",
+            "pattern": null,
+            "runlevels": null,
+            "sleep": 1,
+            "state": "restarted"
+        }
+    },
+    "name": "clickhouse-server",
+    "status": {
+        "enabled": {
+            "changed": false,
+            "rc": null,
+            "stderr": null,
+            "stdout": null
+        },
+        "restarted": {
+            "changed": true,
+            "rc": 0,
+            "stderr": "",
+            "stdout": " chown -R clickhouse: '/var/run/clickhouse-server/'\nWill run sudo --preserve-env -u 'clickhouse' /usr/bin/clickhouse-server --config-file /etc/clickhouse-server/config.xml --pid-file /var/run/clickhouse-server/clickhouse-server.pid --daemon\nWaiting for server to start\nWaiting for server to start\nServer started\n"
+        }
+    }
+}
+
+TASK [vector : apt_repository] ***************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/vector/tasks/main.yml:7
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505864.511116-63093-184501880123632 `" && echo ansible-tmp-1728505864.511116-63093-184501880123632="` echo /root/.ansible/tmp/ansible-tmp-1728505864.511116-63093-184501880123632 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt_repository.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpjp9s7q_e TO /root/.ansible/tmp/ansible-tmp-1728505864.511116-63093-184501880123632/AnsiballZ_apt_repository.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505864.511116-63093-184501880123632/ /root/.ansible/tmp/ansible-tmp-1728505864.511116-63093-184501880123632/AnsiballZ_apt_repository.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-xygtcsxqgzttwtfymmesnbwpgrapztrm ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505864.511116-63093-184501880123632/AnsiballZ_apt_repository.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505864.511116-63093-184501880123632/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => {
+    "changed": true,
+    "diff": [],
+    "invocation": {
+        "module_args": {
+            "codename": null,
+            "filename": null,
+            "install_python_apt": true,
+            "mode": null,
+            "repo": "deb https://apt.vector.dev stable vector-0",
+            "state": "present",
+            "update_cache": false,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "validate_certs": true
+        }
+    },
+    "repo": "deb https://apt.vector.dev stable vector-0",
+    "sources_added": [
+        "/etc/apt/sources.list.d/apt_vector_dev.list"
+    ],
+    "sources_removed": [],
+    "state": "present"
+}
+
+TASK [vector : apt_key] **********************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/vector/tasks/main.yml:11
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505865.07182-63101-281342484527418 `" && echo ansible-tmp-1728505865.07182-63101-281342484527418="` echo /root/.ansible/tmp/ansible-tmp-1728505865.07182-63101-281342484527418 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt_key.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmp66izd94d TO /root/.ansible/tmp/ansible-tmp-1728505865.07182-63101-281342484527418/AnsiballZ_apt_key.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505865.07182-63101-281342484527418/ /root/.ansible/tmp/ansible-tmp-1728505865.07182-63101-281342484527418/AnsiballZ_apt_key.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-bagcjsivnzhbnztlcdyrazppfhorgaxz ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505865.07182-63101-281342484527418/AnsiballZ_apt_key.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505865.07182-63101-281342484527418/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => {
+    "after": [
+        "8919F6BD2B48D754",
+        "B5487D377C749E91",
+        "3E4AD4719DDE9A38",
+        "E6266D4AC0962C7D",
+        "D94AA3F0EFE21092",
+        "871920D1991BC93C"
+    ],
+    "before": [
+        "8919F6BD2B48D754",
+        "B5487D377C749E91",
+        "3E4AD4719DDE9A38",
+        "D94AA3F0EFE21092",
+        "871920D1991BC93C"
+    ],
+    "changed": true,
+    "fp": "E6266D4AC0962C7D",
+    "id": "E6266D4AC0962C7D",
+    "invocation": {
+        "module_args": {
+            "data": null,
+            "file": null,
+            "id": null,
+            "keyring": null,
+            "keyserver": null,
+            "state": "present",
+            "url": "https://keys.datadoghq.com/DATADOG_APT_KEY_CURRENT.public",
+            "validate_certs": true
+        }
+    },
+    "key_id": "E6266D4AC0962C7D",
+    "short_id": "C0962C7D"
+}
+
+TASK [vector : apt] **************************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/vector/tasks/main.yml:14
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505866.104342-63114-246828002806356 `" && echo ansible-tmp-1728505866.104342-63114-246828002806356="` echo /root/.ansible/tmp/ansible-tmp-1728505866.104342-63114-246828002806356 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpqyxxs2cc TO /root/.ansible/tmp/ansible-tmp-1728505866.104342-63114-246828002806356/AnsiballZ_apt.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505866.104342-63114-246828002806356/ /root/.ansible/tmp/ansible-tmp-1728505866.104342-63114-246828002806356/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-ykvyexjsyteudwjyprshmvvswysdlgox ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505866.104342-63114-246828002806356/AnsiballZ_apt.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505866.104342-63114-246828002806356/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => {
+    "cache_update_time": 1728505867,
+    "cache_updated": true,
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "allow_change_held_packages": false,
+            "allow_downgrade": false,
+            "allow_unauthenticated": false,
+            "autoclean": false,
+            "autoremove": false,
+            "cache_valid_time": 0,
+            "clean": false,
+            "deb": null,
+            "default_release": null,
+            "dpkg_options": "force-confdef,force-confold",
+            "fail_on_autoremove": false,
+            "force": true,
+            "force_apt_get": false,
+            "install_recommends": null,
+            "lock_timeout": 60,
+            "only_upgrade": false,
+            "package": null,
+            "policy_rc_d": null,
+            "purge": false,
+            "state": "present",
+            "update_cache": true,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "upgrade": null
+        }
+    }
+}
+
+TASK [vector : apt] **************************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/vector/tasks/main.yml:17
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505868.454921-63129-58827746738669 `" && echo ansible-tmp-1728505868.454921-63129-58827746738669="` echo /root/.ansible/tmp/ansible-tmp-1728505868.454921-63129-58827746738669 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/apt.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpexw5_vki TO /root/.ansible/tmp/ansible-tmp-1728505868.454921-63129-58827746738669/AnsiballZ_apt.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505868.454921-63129-58827746738669/ /root/.ansible/tmp/ansible-tmp-1728505868.454921-63129-58827746738669/AnsiballZ_apt.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-bawiaxxyfgcnictbrwaqtyaftcptzscb ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505868.454921-63129-58827746738669/AnsiballZ_apt.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505868.454921-63129-58827746738669/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => (item=vector) => {
+    "ansible_loop_var": "item",
+    "cache_update_time": 1728505867,
+    "cache_updated": false,
+    "changed": true,
+    "diff": {},
+    "invocation": {
+        "module_args": {
+            "allow_change_held_packages": false,
+            "allow_downgrade": false,
+            "allow_unauthenticated": false,
+            "autoclean": false,
+            "autoremove": false,
+            "cache_valid_time": 0,
+            "clean": false,
+            "deb": null,
+            "default_release": null,
+            "dpkg_options": "force-confdef,force-confold",
+            "fail_on_autoremove": false,
+            "force": false,
+            "force_apt_get": false,
+            "install_recommends": true,
+            "lock_timeout": 60,
+            "name": [
+                "vector"
+            ],
+            "only_upgrade": false,
+            "package": [
+                "vector"
+            ],
+            "policy_rc_d": null,
+            "purge": false,
+            "state": "present",
+            "update_cache": null,
+            "update_cache_retries": 5,
+            "update_cache_retry_max_delay": 12,
+            "upgrade": null
+        }
+    },
+    "item": "vector",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nRecommended packages:\n  datadog-signing-keys\nThe following NEW packages will be installed:\n  vector\n0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.\nNeed to get 28.3 MB of archives.\nAfter this operation, 123 MB of additional disk space will be used.\nGet:1 https://apt.vector.dev stable/vector-0 arm64 vector arm64 0.41.1-1 [28.3 MB]\nFetched 28.3 MB in 3s (11.1 MB/s)\nSelecting previously unselected package vector.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 8221 files and directories currently installed.)\r\nPreparing to unpack .../vector_0.41.1-1_arm64.deb ...\r\nUnpacking vector (0.41.1-1) ...\r\nSetting up vector (0.41.1-1) ...\r\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "Recommended packages:",
+        "  datadog-signing-keys",
+        "The following NEW packages will be installed:",
+        "  vector",
+        "0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.",
+        "Need to get 28.3 MB of archives.",
+        "After this operation, 123 MB of additional disk space will be used.",
+        "Get:1 https://apt.vector.dev stable/vector-0 arm64 vector arm64 0.41.1-1 [28.3 MB]",
+        "Fetched 28.3 MB in 3s (11.1 MB/s)",
+        "Selecting previously unselected package vector.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 8221 files and directories currently installed.)",
+        "Preparing to unpack .../vector_0.41.1-1_arm64.deb ...",
+        "Unpacking vector (0.41.1-1) ...",
+        "Setting up vector (0.41.1-1) ..."
+    ]
+}
+
+TASK [vector : Config Vector] ****************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/vector/tasks/main.yml:23
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094 `" && echo ansible-tmp-1728505875.325747-63155-198823429593094="` echo /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/stat.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpimzvii27 TO /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/AnsiballZ_stat.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/ /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/AnsiballZ_stat.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-ujzwfqkulbvxfjnmnvosdqotlseyxcen ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/AnsiballZ_stat.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmp2wutn976/vector.config.j2 TO /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/.source.yaml
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/ /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/.source.yaml && sleep 0'"]
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/copy.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpfx5y8ltj TO /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/AnsiballZ_copy.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/ /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/AnsiballZ_copy.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-lwqjvswnfuozbfiykblemlgaqwhicbxa ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/AnsiballZ_copy.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => {
+    "changed": true,
+    "checksum": "20104ba2d24a33396944677ab5261b9e8efee44a",
+    "dest": "/etc/vector//vector.yaml",
+    "diff": [],
+    "gid": 0,
+    "group": "root",
+    "invocation": {
+        "module_args": {
+            "_original_basename": "vector.config.j2",
+            "attributes": null,
+            "backup": false,
+            "checksum": "20104ba2d24a33396944677ab5261b9e8efee44a",
+            "content": null,
+            "dest": "/etc/vector//vector.yaml",
+            "directory_mode": null,
+            "follow": false,
+            "force": true,
+            "group": null,
+            "local_follow": null,
+            "mode": 420,
+            "owner": null,
+            "remote_src": null,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": "/root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/.source.yaml",
+            "unsafe_writes": false,
+            "validate": null
+        }
+    },
+    "md5sum": "e232f56dbd169f4ca26ad458e73c5c7d",
+    "mode": "0644",
+    "owner": "root",
+    "size": 289,
+    "src": "/root/.ansible/tmp/ansible-tmp-1728505875.325747-63155-198823429593094/.source.yaml",
+    "state": "file",
+    "uid": 0
+}
+
+TASK [vector : Config Vector as service] *****************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/vector/tasks/main.yml:29
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781 `" && echo ansible-tmp-1728505876.3716412-63173-109837949657781="` echo /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/stat.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpbl28zikv TO /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/AnsiballZ_stat.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/ /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/AnsiballZ_stat.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-rwluxfzivqsovzphqzablwhmdtetzpng ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/AnsiballZ_stat.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpk9pzrsoz/vector.service.j2 TO /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/.source.service
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/ /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/.source.service && sleep 0'"]
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/copy.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpo2yl1wyc TO /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/AnsiballZ_copy.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/ /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/AnsiballZ_copy.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-cfbeuxnggsvssbzospirpkmabiynynwn ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/AnsiballZ_copy.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/ > /dev/null 2>&1 && sleep 0'"]
+Notification for handler Start vector service has been saved.
+changed: [clickhouse-01] => {
+    "changed": true,
+    "checksum": "a77f07b02062a38981f159dfd6d855a172509bb0",
+    "dest": "/etc/systemd/system/vector.service",
+    "diff": [],
+    "gid": 0,
+    "group": "root",
+    "invocation": {
+        "module_args": {
+            "_original_basename": "vector.service.j2",
+            "attributes": null,
+            "backup": false,
+            "checksum": "a77f07b02062a38981f159dfd6d855a172509bb0",
+            "content": null,
+            "dest": "/etc/systemd/system/vector.service",
+            "directory_mode": null,
+            "follow": false,
+            "force": true,
+            "group": null,
+            "local_follow": null,
+            "mode": 420,
+            "owner": null,
+            "remote_src": null,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": "/root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/.source.service",
+            "unsafe_writes": false,
+            "validate": null
+        }
+    },
+    "md5sum": "c09134e7bf7ad9a7c100ef9aa264d4e3",
+    "mode": "0644",
+    "owner": "root",
+    "size": 106,
+    "src": "/root/.ansible/tmp/ansible-tmp-1728505876.3716412-63173-109837949657781/.source.service",
+    "state": "file",
+    "uid": 0
+}
+
+TASK [vector : Flush handlers] ***************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/vector/tasks/main.yml:36
+NOTIFIED HANDLER vector : Start vector service for clickhouse-01
+META: triggered running handlers for clickhouse-01
+
+RUNNING HANDLER [vector : Start vector service] **********************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/roles/vector/handlers/main.yml:2
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505877.28932-63186-138613792734023 `" && echo ansible-tmp-1728505877.28932-63186-138613792734023="` echo /root/.ansible/tmp/ansible-tmp-1728505877.28932-63186-138613792734023 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/systemd.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpiaqy3s1o TO /root/.ansible/tmp/ansible-tmp-1728505877.28932-63186-138613792734023/AnsiballZ_systemd.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505877.28932-63186-138613792734023/ /root/.ansible/tmp/ansible-tmp-1728505877.28932-63186-138613792734023/AnsiballZ_systemd.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'sudo -H -S -n  -u root /bin/sh -c \'"\'"\'echo BECOME-SUCCESS-yohuzzjphlxxsmxnmruarpanbylithom ; /usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505877.28932-63186-138613792734023/AnsiballZ_systemd.py\'"\'"\' && sleep 0\'']
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505877.28932-63186-138613792734023/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => {
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "daemon_reexec": false,
+            "daemon_reload": true,
+            "enabled": null,
+            "force": null,
+            "masked": null,
+            "name": "vector.service",
+            "no_block": false,
+            "scope": "system",
+            "state": "restarted"
+        }
+    },
+    "name": "vector.service",
+    "state": "started",
+    "status": {
+        "ActiveState": "inactive",
+        "Description": "Vector Serivce",
+        "Id": "vector.service",
+        "LoadState": "loaded",
+        "MainPID": "0",
+        "Names": "vector.service",
+        "NeedDaemonReload": "no",
+        "SubState": "dead",
+        "TimeoutStartUSec": "1min 30s",
+        "TimeoutStopUSec": "1min 30s",
+        "UnitFileState": "static"
+    }
+}
+
+PLAY [Create Clickhouse DB] ******************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/site.yml:50
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505878.897366-63201-9534960118328 `" && echo ansible-tmp-1728505878.897366-63201-9534960118328="` echo /root/.ansible/tmp/ansible-tmp-1728505878.897366-63201-9534960118328 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/setup.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpr5sl34kb TO /root/.ansible/tmp/ansible-tmp-1728505878.897366-63201-9534960118328/AnsiballZ_setup.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505878.897366-63201-9534960118328/ /root/.ansible/tmp/ansible-tmp-1728505878.897366-63201-9534960118328/AnsiballZ_setup.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c '/usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505878.897366-63201-9534960118328/AnsiballZ_setup.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505878.897366-63201-9534960118328/ > /dev/null 2>&1 && sleep 0'"]
+ok: [clickhouse-01]
+
+TASK [Create database] ***********************************************************************************************************************************************************************************************
+task path: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-02-playbook/playbook/site.yml:53
+redirecting (type: connection) ansible.builtin.docker to community.docker.docker
+<clickhouse-01> ESTABLISH DOCKER CONNECTION FOR USER: root
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'echo ~ && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', '/bin/sh -c \'( umask 77 && mkdir -p "` echo /root/.ansible/tmp `"&& mkdir "` echo /root/.ansible/tmp/ansible-tmp-1728505879.7465029-63209-254842097917225 `" && echo ansible-tmp-1728505879.7465029-63209-254842097917225="` echo /root/.ansible/tmp/ansible-tmp-1728505879.7465029-63209-254842097917225 `" ) && sleep 0\'']
+Using module file /opt/homebrew/Cellar/ansible/10.4.0/libexec/lib/python3.12/site-packages/ansible/modules/command.py
+<clickhouse-01> PUT /Users/alekseykashin/.ansible/tmp/ansible-local-62755_ukh05pp/tmpog1196n4 TO /root/.ansible/tmp/ansible-tmp-1728505879.7465029-63209-254842097917225/AnsiballZ_command.py
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1728505879.7465029-63209-254842097917225/ /root/.ansible/tmp/ansible-tmp-1728505879.7465029-63209-254842097917225/AnsiballZ_command.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c '/usr/bin/python3.12 /root/.ansible/tmp/ansible-tmp-1728505879.7465029-63209-254842097917225/AnsiballZ_command.py && sleep 0'"]
+<clickhouse-01> EXEC ['/usr/local/bin/docker', b'exec', b'-i', 'clickhouse-01', '/bin/sh', '-c', "/bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1728505879.7465029-63209-254842097917225/ > /dev/null 2>&1 && sleep 0'"]
+changed: [clickhouse-01] => {
+    "changed": true,
+    "cmd": [
+        "clickhouse-client",
+        "-q",
+        "create database logs;"
+    ],
+    "delta": "0:00:00.026502",
+    "end": "2024-10-09 20:31:20.092603",
+    "failed_when_result": false,
+    "invocation": {
+        "module_args": {
+            "_raw_params": "clickhouse-client -q 'create database logs;'",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "expand_argument_vars": true,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true
+        }
+    },
+    "msg": "",
+    "rc": 0,
+    "start": "2024-10-09 20:31:20.066101",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "",
+    "stdout_lines": []
+}
+
+PLAY RECAP ***********************************************************************************************************************************************************************************************************
+clickhouse-01              : ok=18   changed=15   unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

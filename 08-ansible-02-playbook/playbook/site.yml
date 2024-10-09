@@ -1,34 +1,56 @@
 ---
-- name: Install Clickhouse
-  hosts: clickhouse
-  handlers:
-    - name: Start clickhouse service
-      become: true
-      ansible.builtin.service:
-        name: clickhouse-server
-        state: restarted
+- name: Docker pull images
+  hosts: localhost
+  gather_facts: false
   tasks:
-    - block:
-        - name: Get clickhouse distrib
-          ansible.builtin.get_url:
-            url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.noarch.rpm"
-            dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
-          with_items: "{{ clickhouse_packages }}"
-      rescue:
-        - name: Get clickhouse distrib
-          ansible.builtin.get_url:
-            url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
-            dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
-    - name: Install clickhouse packages
-      become: true
-      ansible.builtin.yum:
-        name:
-          - clickhouse-common-static-{{ clickhouse_version }}.rpm
-          - clickhouse-client-{{ clickhouse_version }}.rpm
-          - clickhouse-server-{{ clickhouse_version }}.rpm
-      notify: Start clickhouse service
-    - name: Flush handlers
-      meta: flush_handlers
+    - name: Docker pull ubuntu OS
+      community.docker.docker_image:
+        name: ubuntu
+        tag: latest
+        source: pull
+
+- name: Docker container ubuntu up
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create docker container for clickhouse-01
+      community.docker.docker_container:
+        name: clickhouse-01
+        image: ubuntu:latest
+        state: started
+        restart_policy: always
+        interactive: true
+        tty: true
+        detach: true
+
+- name: Isntall python on Debian hosts
+  hosts: clickhouse
+  gather_facts: false
+  tasks:
+    # - name: Check if python install
+    #   ansible.builtin.command: python3 --version
+    #   register: python_valid
+    #   ignore_errors: true
+    #   changed_when: false
+    - name: Update pack manager and install python
+      ansible.builtin.raw: "{{ item }}"
+      loop:
+        - apt-get update
+        - apt-get -y install python3
+      register: my_output
+      changed_when: my_output.rc != 0
+      # when: python_valid.failed
+
+- name: Isntall [pkg | clickhouse | vector] on Debian hosts
+  hosts: clickhouse
+  roles:
+    - debian
+    - clickhouse
+    - vector
+
+- name: Create Clickhouse DB
+  hosts: clickhouse
+  tasks:
     - name: Create database
       ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
       register: create_db

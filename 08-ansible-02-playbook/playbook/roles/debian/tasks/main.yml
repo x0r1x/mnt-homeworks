@@ -1,0 +1,10 @@
+---
+- name: Install and upgrade apt packages
+  ansible.builtin.apt:
+    name:
+      - "{{ item }}"
+    update_cache: true
+    cache_valid_time: 86400
+  with_items: "{{ debian_packages }}"
+  when:
+    ansible_os_family == "Debian"

@@ -1,0 +1,29 @@
+---
+- name: Install Clickhouse on Debian
+  when:
+    ansible_os_family == "Debian"
+  become: true
+  block:
+    - name: Add Clickhouse repository
+      ansible.builtin.apt_repository:
+        repo: "deb {{ clickhouse_repository }} stable main"
+        state: present
+        update_cache: false
+    - name: Add Clickhouse gpg key
+      ansible.builtin.apt_key:
+        url: "{{ clickhouse_gpg }}"
+        state: present
+    - name: Update cache
+      ansible.builtin.apt:
+        update_cache: true
+        force: true
+    - name: Install Clickhouse from repository
+      ansible.builtin.apt:
+        name:
+          - "{{ item }}={{ clickhouse_version }}"
+        state: present
+        install_recommends: true
+      with_items: "{{ clickhouse_packages }}"
+      notify: Start clickhouse service
+- name: Flush Handlers
+  ansible.builtin.meta: flush_handlers
