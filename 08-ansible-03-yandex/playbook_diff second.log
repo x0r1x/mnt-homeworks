@@ -1,0 +1,97 @@
+alekseykashin@MBP-Aleksej playbook % ansible-playbook site.yml -i ./inventory/hosts.yml -u ubuntu --diff 
+
+PLAY [Isntall Clickhouse] *************************************************************************************************************************
+
+TASK [Gathering Facts] ****************************************************************************************************************************
+[WARNING]: Platform linux on host clickhouse-01 is using the discovered Python interpreter at /usr/bin/python3.8, but future installation of
+another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [clickhouse-01]
+
+TASK [clickhouse : Add Clickhouse repository] *****************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : Add Clickhouse gpg key] ********************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : Update cache] ******************************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : Install Clickhouse from repository] ********************************************************************************************
+ok: [clickhouse-01] => (item=clickhouse-common-static)
+ok: [clickhouse-01] => (item=clickhouse-client)
+ok: [clickhouse-01] => (item=clickhouse-server)
+
+TASK [clickhouse : Config Clickhouse open connections for any] ************************************************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : Flush Handlers] ****************************************************************************************************************
+
+TASK [clickhouse : Create database for Vector] ****************************************************************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : Create database for Vector] ****************************************************************************************************
+ok: [clickhouse-01]
+
+PLAY [Install Vector] *****************************************************************************************************************************
+
+TASK [Gathering Facts] ****************************************************************************************************************************
+[WARNING]: Platform linux on host vector-01 is using the discovered Python interpreter at /usr/bin/python3.8, but future installation of another
+Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [vector-01]
+
+TASK [vector : Add Vector repository] *************************************************************************************************************
+ok: [vector-01]
+
+TASK [vector : Add Vector gpg key] ****************************************************************************************************************
+ok: [vector-01]
+
+TASK [vector : Update cache] **********************************************************************************************************************
+ok: [vector-01]
+
+TASK [vector : Install Vector] ********************************************************************************************************************
+ok: [vector-01] => (item=vector)
+
+TASK [vector : Config Vector] *********************************************************************************************************************
+ok: [vector-01]
+
+TASK [vector : Config Vector as service] **********************************************************************************************************
+ok: [vector-01]
+
+TASK [vector : Flush handlers] ********************************************************************************************************************
+
+PLAY [Install Vector] *****************************************************************************************************************************
+
+TASK [Gathering Facts] ****************************************************************************************************************************
+[WARNING]: Platform linux on host lighthouse-01 is using the discovered Python interpreter at /usr/bin/python3.8, but future installation of
+another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [lighthouse-01]
+
+TASK [lighthouse : Install git] *******************************************************************************************************************
+ok: [lighthouse-01]
+
+TASK [lighthouse : Lighthouse repository] *********************************************************************************************************
+ok: [lighthouse-01]
+
+TASK [lighthouse : Creates directory] *************************************************************************************************************
+ok: [lighthouse-01]
+
+TASK [lighthouse : Config Lighthouse on Nginx server] *********************************************************************************************
+ok: [lighthouse-01]
+
+TASK [nginx : Install Nginx] **********************************************************************************************************************
+ok: [lighthouse-01]
+
+TASK [nginx : Config Nginx] ***********************************************************************************************************************
+ok: [lighthouse-01]
+
+TASK [nginx : Flush handlers] *********************************************************************************************************************
+
+PLAY RECAP ****************************************************************************************************************************************
+clickhouse-01              : ok=8    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+lighthouse-01              : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+vector-01                  : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+alekseykashin@MBP-Aleksej playbook % 

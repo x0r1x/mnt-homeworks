@@ -1,0 +1,6 @@
+---
+lighthouse_url: "https://github.com/VKCOM/lighthouse.git"
+lighthouse_path: "/home/ubuntu/lighthouse"
+lighthouse_conf_template: "nginx.lighthouse.conf.j2"
+lighthouse_conf_path: "/etc/nginx/conf.d"
+lighthouse_conf_path_file: "default.conf"

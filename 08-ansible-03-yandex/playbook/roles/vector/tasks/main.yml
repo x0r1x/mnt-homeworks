@@ -1,0 +1,41 @@
+---
+- name: Install Vector on Debian
+  when:
+    ansible_os_family == "Debian"
+  become: true
+  block:
+    - name: Add Vector repository
+      ansible.builtin.apt_repository:
+        repo: "deb {{ vector_repo_url }} stable vector-0"
+        state: present
+        update_cache: false
+    - name: Add Vector gpg key
+      ansible.builtin.apt_key:
+        url: "{{ vector_gpg }}"
+        state: present
+    - name: Update cache
+      ansible.builtin.apt:
+        update_cache: true
+        force: true
+    - name: Install Vector
+      ansible.builtin.apt:
+        name:
+          - "{{ item }}"
+        state: present
+        install_recommends: true
+      with_items: "{{ vector_packages }}"
+- name: Config Vector
+  become: true
+  ansible.builtin.template:
+    src: vector.config.j2
+    mode: "0644"
+    dest: "{{ vector_config_path }}/vector.yaml"
+- name: Config Vector as service
+  become: true
+  ansible.builtin.template:
+    src: vector.service.j2
+    mode: "0644"
+    dest: "/etc/systemd/system/vector.service"
+  notify: Start vector service
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers

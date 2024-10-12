@@ -1,0 +1,9 @@
+[Unit]
+Description=Vector Serivce
+Documentation=https://vector.dev
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+ExecStart=/usr/bin/vector
+ExecReload=/usr/bin/vector validate

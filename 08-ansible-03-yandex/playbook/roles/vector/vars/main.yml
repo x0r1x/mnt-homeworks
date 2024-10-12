@@ -1,0 +1,26 @@
+vector_repo_url: "https://apt.vector.dev"
+vector_repo_pkg: "deb"
+vector_repo_ver: "stable"
+vector_gpg: "https://keys.datadoghq.com/DATADOG_APT_KEY_CURRENT.public"
+vector_packages:
+  - vector
+vector_config_path: "/etc/vector/"
+vector_config:
+  data_dir: "/var/lib/vector"
+  sources:
+    demo_logs:
+      type: demo_logs
+      format: syslog
+    in:
+      type: stdin
+  sinks:
+    to_clickhouse:
+      type: clickhouse
+      inputs:
+        - demo_logs
+      database: vector
+      endpoint: http://51.250.77.75:8123
+      table: server_log
+      compression: gzip
+      healthcheck: false
+      skip_unknown_fields: true

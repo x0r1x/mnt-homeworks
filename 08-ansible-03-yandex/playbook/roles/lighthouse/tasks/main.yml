@@ -1,0 +1,26 @@
+---
+- name: Install git
+  become: true
+  when:
+    ansible_os_family == "Debian"
+  ansible.builtin.apt:
+    name: git
+    state: present
+- name: Lighthouse repository
+  become: true
+  ansible.builtin.git:
+    repo: "{{ lighthouse_url }}"
+    dest: "{{ lighthouse_path }}"
+    version: master
+- name: Creates directory
+  become: true
+  ansible.builtin.file:
+    path: "{{ lighthouse_conf_path }}"
+    state: directory
+    mode: "0644"
+- name: Config Lighthouse on Nginx server
+  become: true
+  ansible.builtin.template:
+    src: "{{ lighthouse_conf_template }}"
+    dest: "{{ lighthouse_conf_path }}/{{ lighthouse_conf_path_file }}"
+    mode: "0644"

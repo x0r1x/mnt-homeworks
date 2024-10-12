@@ -1,0 +1,117 @@
+alekseykashin@MBP-Aleksej playbook % ansible-playbook site.yml -i ./inventory/hosts.yml -u ubuntu
+
+PLAY [Isntall Clickhouse] **********************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************
+[WARNING]: Platform linux on host clickhouse-01 is using the discovered Python interpreter at
+/usr/bin/python3.8, but future installation of another Python interpreter could change the meaning of that
+path. See https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for
+more information.
+ok: [clickhouse-01]
+
+TASK [clickhouse : Add Clickhouse repository] **************************************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Add Clickhouse gpg key] *****************************************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Update cache] ***************************************************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Install Clickhouse from repository] *****************************************************
+changed: [clickhouse-01] => (item=clickhouse-common-static)
+changed: [clickhouse-01] => (item=clickhouse-client)
+changed: [clickhouse-01] => (item=clickhouse-server)
+
+TASK [clickhouse : Config Clickhouse open connections for any] *********************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Flush Handlers] *************************************************************************
+
+RUNNING HANDLER [clickhouse : Start clickhouse service] ****************************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Create database for Vector] *************************************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Create database for Vector] *************************************************************
+changed: [clickhouse-01]
+
+PLAY [Install Vector] **************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************
+The authenticity of host '62.84.127.199 (62.84.127.199)' can't be established.
+ED25519 key fingerprint is SHA256:w7LZ3/NsHTLwJ6pgg/baCJoafFJCu9ufaoZcAF68Bvo.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+[WARNING]: Platform linux on host vector-01 is using the discovered Python interpreter at
+/usr/bin/python3.8, but future installation of another Python interpreter could change the meaning of that
+path. See https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for
+more information.
+ok: [vector-01]
+
+TASK [vector : Add Vector repository] **********************************************************************
+changed: [vector-01]
+
+TASK [vector : Add Vector gpg key] *************************************************************************
+changed: [vector-01]
+
+TASK [vector : Update cache] *******************************************************************************
+changed: [vector-01]
+
+TASK [vector : Install Vector] *****************************************************************************
+changed: [vector-01] => (item=vector)
+
+TASK [vector : Config Vector] ******************************************************************************
+changed: [vector-01]
+
+TASK [vector : Config Vector as service] *******************************************************************
+changed: [vector-01]
+
+TASK [vector : Flush handlers] *****************************************************************************
+
+RUNNING HANDLER [vector : Start vector service] ************************************************************
+changed: [vector-01]
+
+PLAY [Install Vector] **************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************
+The authenticity of host '51.250.10.201 (51.250.10.201)' can't be established.
+ED25519 key fingerprint is SHA256:vfU2Lz7KZK9FWsHyqkMrTJnx3gh/35v1X0FZU+utXd8.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+[WARNING]: Platform linux on host lighthouse-01 is using the discovered Python interpreter at
+/usr/bin/python3.8, but future installation of another Python interpreter could change the meaning of that
+path. See https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for
+more information.
+ok: [lighthouse-01]
+
+TASK [lighthouse : Install git] ****************************************************************************
+changed: [lighthouse-01]
+
+TASK [lighthouse : Lighthouse repository] ******************************************************************
+changed: [lighthouse-01]
+
+TASK [lighthouse : Creates directory] **********************************************************************
+changed: [lighthouse-01]
+
+TASK [lighthouse : Config Lighthouse on Nginx server] ******************************************************
+changed: [lighthouse-01]
+
+TASK [nginx : Install Nginx] *******************************************************************************
+changed: [lighthouse-01]
+
+TASK [nginx : Config Nginx] ********************************************************************************
+changed: [lighthouse-01]
+
+TASK [nginx : Flush handlers] ******************************************************************************
+
+RUNNING HANDLER [nginx : Restart Nginx] ********************************************************************
+changed: [lighthouse-01]
+
+PLAY RECAP *************************************************************************************************
+clickhouse-01              : ok=9    changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+lighthouse-01              : ok=8    changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+vector-01                  : ok=8    changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+alekseykashin@MBP-Aleksej playbook % 

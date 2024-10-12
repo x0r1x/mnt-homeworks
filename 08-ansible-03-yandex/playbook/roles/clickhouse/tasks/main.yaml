@@ -1,0 +1,46 @@
+---
+- name: Install Clickhouse on Debian
+  when:
+    ansible_os_family == "Debian"
+  become: true
+  block:
+    - name: Add Clickhouse repository
+      ansible.builtin.apt_repository:
+        repo: "deb {{ clickhouse_repository }} stable main"
+        state: present
+        update_cache: false
+    - name: Add Clickhouse gpg key
+      ansible.builtin.apt_key:
+        url: "{{ clickhouse_gpg }}"
+        state: present
+    - name: Update cache
+      ansible.builtin.apt:
+        update_cache: true
+        force: true
+    - name: Install Clickhouse from repository
+      ansible.builtin.apt:
+        name:
+          - "{{ item }}={{ clickhouse_version }}"
+        state: present
+        install_recommends: true
+      with_items: "{{ clickhouse_packages }}"
+      notify: Start clickhouse service
+- name: Config Clickhouse open connections for any
+  become: true
+  ansible.builtin.lineinfile:
+    dest: /etc/clickhouse-server/config.xml
+    regexp: '^(.*)<listen_host>0.0.0.0</listen_host>(.*)$'
+    line: '    <listen_host>0.0.0.0</listen_host>'
+    state: present
+- name: Flush Handlers
+  ansible.builtin.meta: flush_handlers
+- name: Create database for Vector
+  ansible.builtin.command: "clickhouse-client -q 'CREATE DATABASE vector;'"
+  register: create_db
+  failed_when: create_db.rc != 0 and create_db.rc !=82
+  changed_when: create_db.rc == 0
+- name: Create database for Vector
+  ansible.builtin.command: "clickhouse-client -q 'CREATE TABLE vector.server_log(message String) ENGINE = TinyLog();'"
+  register: create_table
+  failed_when: create_table.rc != 0 and create_table.rc != 57
+  changed_when: create_table.rc == 0

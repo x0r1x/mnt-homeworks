@@ -1,0 +1,4 @@
+---
+nginx_user_name: "root"
+nginx_conf_path: "/etc/nginx/nginx.conf"
+nginx_conf_template: "nginx.conf.j2"

@@ -1,0 +1,17 @@
+---
+- name: Isntall Clickhouse
+  hosts: clickhouse
+  roles:
+    - clickhouse
+
+- name: Install Vector
+  hosts: vector
+  roles:
+    - vector
+
+- name: Install Vector
+  hosts: lighthouse
+  order: sorted
+  roles:
+    - lighthouse
+    - nginx

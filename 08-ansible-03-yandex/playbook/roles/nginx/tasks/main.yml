@@ -1,0 +1,17 @@
+---
+- name: Install Nginx
+  when:
+    ansible_os_family == "Debian"
+  become: true
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+- name: Config Nginx
+  become: true
+  ansible.builtin.template:
+    src: "{{ nginx_conf_template }}"
+    dest: "{{ nginx_conf_path }}"
+    mode: "0644"
+  notify: Restart Nginx
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers

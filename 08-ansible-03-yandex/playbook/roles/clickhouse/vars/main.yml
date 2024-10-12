@@ -1,0 +1,7 @@
+clickhouse_repository: "https://packages.clickhouse.com/deb"
+clickhouse_gpg: https://packages.clickhouse.com/rpm/lts/repodata/repomd.xml.key
+clickhouse_version: "24.9.2.42"
+clickhouse_packages:
+  - clickhouse-common-static
+  - clickhouse-client
+  - clickhouse-server
