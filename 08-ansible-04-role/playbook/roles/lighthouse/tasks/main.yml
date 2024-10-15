@@ -1,0 +1,34 @@
+---
+- name: 'Include OS Family and Specific Variables'
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_os_family | lower }}.yml"
+      paths:
+        - 'vars'
+  tags: [always]
+
+- name: 'Include Nginx Specific Variables'
+  ansible.builtin.include_vars:
+    dir: 'vars'
+    files_matching: nginx.yml
+  tags: [always]
+
+- name: Isntall Nginx and Lighthouse
+  ansible.builtin.include_tasks:
+    file: "{{ lookup('first_found', params) }}"
+    apply:
+      tags: [install]
+  vars:
+    params:
+      files:
+        - "install/{{ ansible_pkg_mgr }}.yml"
+  tags: [install]
+
+- name: Configure Lighthouse service
+  ansible.builtin.include_tasks:
+    file: configure/lighthouse_service.yml
+    apply:
+      tags: [configure]
+  tags: [configure]

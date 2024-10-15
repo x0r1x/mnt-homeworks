@@ -1,0 +1,24 @@
+---
+- name: Install Nginx
+  when:
+    ansible_os_family == "Debian"
+  become: true
+  block:
+    - name: Update cache
+      ansible.builtin.apt:
+        update_cache: true
+        force: true
+    - name: Isntall git 
+      ansible.builtin.apt:
+        name: git
+        state: present    
+    - name: Install nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+    - name: Lighthouse repository
+      become: true
+      ansible.builtin.git:
+        repo: "{{ lighthouse_url }}"
+        dest: "{{ lighthouse_path }}"
+        version: master

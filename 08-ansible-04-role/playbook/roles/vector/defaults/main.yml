@@ -1,0 +1,16 @@
+---
+vector_config:
+  data_dir: "/var/lib/vector"
+  sources:
+    demo_logs:
+      type: demo_logs
+      format: syslog
+    in:
+      type: stdin
+  sinks:
+    print:
+      type: "console"
+      inputs:
+        - "demo_logs"
+      encoding:
+        codec: "text"

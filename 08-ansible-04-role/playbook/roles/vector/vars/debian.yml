@@ -1,0 +1,5 @@
+---
+vector_repo_url: "deb https://apt.vector.dev stable vector-0"
+vector_gpg: "https://keys.datadoghq.com/DATADOG_APT_KEY_CURRENT.public"
+vector_packages:
+  - vector

@@ -1,0 +1,26 @@
+---
+- name: Install Vector on Debian
+  when:
+    ansible_os_family == "Debian"
+  become: true
+  block:
+    - name: Add Vector repository
+      ansible.builtin.apt_repository:
+        repo: "{{ vector_repo_url }}"
+        state: present
+        update_cache: false
+    - name: Add Vector gpg key
+      ansible.builtin.apt_key:
+        url: "{{ vector_gpg }}"
+        state: present
+    - name: Update cache
+      ansible.builtin.apt:
+        update_cache: true
+        force: true
+    - name: Install Vector
+      ansible.builtin.apt:
+        name:
+          - "{{ item }}"
+        state: present
+        install_recommends: true
+      with_items: "{{ vector_packages }}"

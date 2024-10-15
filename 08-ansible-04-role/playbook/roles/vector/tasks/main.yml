@@ -1,0 +1,27 @@
+---
+- name: 'Include OS Family Specific Variables'
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_os_family | lower }}.yml"
+      paths:
+        - 'vars'
+
+- name: Install Vector
+  ansible.builtin.include_tasks:
+    file: "{{ lookup('first_found', params) }}"
+    apply:
+      tags: [install]
+  vars:
+    params:
+      files:
+        - "install/{{ ansible_pkg_mgr }}.yml"
+  tags: [install]
+
+- name: Configure Vector service
+  ansible.builtin.include_tasks:
+    file: configure/vector_service.yml
+    apply:
+      tags: [configure]
+  tags: [configure]

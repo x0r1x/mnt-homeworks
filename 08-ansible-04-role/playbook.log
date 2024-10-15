@@ -1,0 +1,222 @@
+alekseykashin@MBP-Aleksej playbook % ansible-playbook site.yml -i ./inventory/hosts.yml -u ubuntu
+
+PLAY [Install Clickhouse] ****************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************
+The authenticity of host '51.250.78.4 (51.250.78.4)' can't be established.
+ED25519 key fingerprint is SHA256:DoxXDeuBkKL1IYVUwj85tHYKwFmHCdyH7tHEZEe8z1g.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+[WARNING]: Platform linux on host clickhouse-01 is using the discovered Python interpreter at /usr/bin/python3.8,
+but future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [clickhouse-01]
+
+TASK [clickhouse : Include OS Family Specific Variables] *********************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : include_tasks] ********************************************************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-04-role/playbook/roles/clickhouse/tasks/precheck.yml for clickhouse-01
+
+TASK [clickhouse : Requirements check | Checking sse4_2 support] *************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : Requirements check | Not supported distribution && release] ***********************************
+skipping: [clickhouse-01]
+
+TASK [clickhouse : include_tasks] ********************************************************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-04-role/playbook/roles/clickhouse/tasks/params.yml for clickhouse-01
+
+TASK [clickhouse : Set clickhouse_service_enable] ****************************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : Set clickhouse_service_ensure] ****************************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : include_tasks] ********************************************************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-04-role/playbook/roles/clickhouse/tasks/install/apt.yml for clickhouse-01
+
+TASK [clickhouse : Install by APT | Apt-key add repo key] ********************************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Install by APT | Remove old repo] *************************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : Install by APT | Repo installation] ***********************************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Install by APT | Package installation] ********************************************************
+skipping: [clickhouse-01]
+
+TASK [clickhouse : Install by APT | Package installation] ********************************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Hold specified version during APT upgrade | Package installation] *****************************
+changed: [clickhouse-01] => (item=clickhouse-client)
+changed: [clickhouse-01] => (item=clickhouse-server)
+changed: [clickhouse-01] => (item=clickhouse-common-static)
+
+TASK [clickhouse : include_tasks] ********************************************************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-04-role/playbook/roles/clickhouse/tasks/configure/sys.yml for clickhouse-01
+
+TASK [clickhouse : Check clickhouse config, data and logs] *******************************************************
+ok: [clickhouse-01] => (item=/var/log/clickhouse-server)
+changed: [clickhouse-01] => (item=/etc/clickhouse-server)
+changed: [clickhouse-01] => (item=/var/lib/clickhouse/tmp/)
+changed: [clickhouse-01] => (item=/var/lib/clickhouse/)
+
+TASK [clickhouse : Config | Create config.d folder] **************************************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Config | Create users.d folder] ***************************************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Config | Generate system config] **************************************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Config | Generate users config] ***************************************************************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Config | Generate remote_servers config] ******************************************************
+skipping: [clickhouse-01]
+
+TASK [clickhouse : Config | Generate macros config] **************************************************************
+skipping: [clickhouse-01]
+
+TASK [clickhouse : Config | Generate zookeeper servers config] ***************************************************
+skipping: [clickhouse-01]
+
+TASK [clickhouse : Config | Fix interserver_http_port and intersever_https_port collision] ***********************
+skipping: [clickhouse-01]
+
+TASK [clickhouse : Notify Handlers Now] **************************************************************************
+
+RUNNING HANDLER [clickhouse : Restart Clickhouse Service] ********************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : include_tasks] ********************************************************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-04-role/playbook/roles/clickhouse/tasks/service.yml for clickhouse-01
+
+TASK [clickhouse : Ensure clickhouse-server.service is enabled: True and state: restarted] ***********************
+changed: [clickhouse-01]
+
+TASK [clickhouse : Wait for Clickhouse Server to Become Ready] ***************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : include_tasks] ********************************************************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-04-role/playbook/roles/clickhouse/tasks/configure/db.yml for clickhouse-01
+
+TASK [clickhouse : Set ClickHose Connection String] **************************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : Gather list of existing databases] ************************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : Config | Delete database config] **************************************************************
+skipping: [clickhouse-01] => (item={'name': 'vector', 'state': 'present'}) 
+skipping: [clickhouse-01]
+
+TASK [clickhouse : Config | Create database config] **************************************************************
+changed: [clickhouse-01] => (item={'name': 'vector', 'state': 'present'})
+
+TASK [clickhouse : include_tasks] ********************************************************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-04-role/playbook/roles/clickhouse/tasks/configure/dict.yml for clickhouse-01
+
+TASK [clickhouse : Config | Generate dictionary config] **********************************************************
+skipping: [clickhouse-01]
+
+TASK [clickhouse : include_tasks] ********************************************************************************
+skipping: [clickhouse-01]
+
+TASK [Create table on schema for Vector service] *****************************************************************
+changed: [clickhouse-01] => (item={'db': 'vector', 'table': 'server_log'})
+
+PLAY [Install Vector] ********************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************
+ok: [clickhouse-01]
+
+TASK [vector : Include OS Family Specific Variables] *************************************************************
+ok: [clickhouse-01]
+
+TASK [vector : Install Vector] ***********************************************************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-04-role/playbook/roles/vector/tasks/install/apt.yml for clickhouse-01
+
+TASK [vector : Add Vector repository] ****************************************************************************
+changed: [clickhouse-01]
+
+TASK [vector : Add Vector gpg key] *******************************************************************************
+changed: [clickhouse-01]
+
+TASK [vector : Update cache] *************************************************************************************
+changed: [clickhouse-01]
+
+TASK [vector : Install Vector] ***********************************************************************************
+changed: [clickhouse-01] => (item=vector)
+
+TASK [vector : Configure Vector service] *************************************************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-04-role/playbook/roles/vector/tasks/configure/vector_service.yml for clickhouse-01
+
+TASK [vector : Config Vector] ************************************************************************************
+changed: [clickhouse-01]
+
+TASK [vector : Config Vector as service] *************************************************************************
+changed: [clickhouse-01]
+
+TASK [vector : Flush Vector handlers] ****************************************************************************
+
+RUNNING HANDLER [vector : Start vector service] ******************************************************************
+changed: [clickhouse-01]
+
+PLAY [Install Lighthouse] ****************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************
+The authenticity of host '51.250.83.129 (51.250.83.129)' can't be established.
+ED25519 key fingerprint is SHA256:srwmyddXX3Qu1i1KoJGY6SBS/mDWzj4Tx9ctC9xOPEE.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+[WARNING]: Platform linux on host lighthouse-01 is using the discovered Python interpreter at /usr/bin/python3.8,
+but future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+ok: [lighthouse-01]
+
+TASK [lighthouse : Include OS Family and Specific Variables] *****************************************************
+ok: [lighthouse-01]
+
+TASK [lighthouse : Include Nginx Specific Variables] *************************************************************
+ok: [lighthouse-01]
+
+TASK [lighthouse : Isntall Nginx and Lighthouse] *****************************************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-04-role/playbook/roles/lighthouse/tasks/install/apt.yml for lighthouse-01
+
+TASK [lighthouse : Update cache] *********************************************************************************
+changed: [lighthouse-01]
+
+TASK [lighthouse : Isntall git] **********************************************************************************
+changed: [lighthouse-01]
+
+TASK [lighthouse : Install nginx] ********************************************************************************
+changed: [lighthouse-01]
+
+TASK [lighthouse : Lighthouse repository] ************************************************************************
+changed: [lighthouse-01]
+
+TASK [lighthouse : Configure Lighthouse service] *****************************************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-04-role/playbook/roles/lighthouse/tasks/configure/lighthouse_service.yml for lighthouse-01
+
+TASK [lighthouse : Config Nginx] *********************************************************************************
+changed: [lighthouse-01]
+
+TASK [lighthouse : Config Lighthouse on Nginx server] ************************************************************
+changed: [lighthouse-01]
+
+TASK [lighthouse : Flush handlers] *******************************************************************************
+
+RUNNING HANDLER [lighthouse : Restart Nginx] *********************************************************************
+changed: [lighthouse-01]
+
+PLAY RECAP *******************************************************************************************************
+clickhouse-01              : ok=40   changed=19   unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+lighthouse-01              : ok=12   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+alekseykashin@MBP-Aleksej playbook % 

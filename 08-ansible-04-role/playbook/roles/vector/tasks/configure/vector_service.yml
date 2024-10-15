@@ -1,0 +1,18 @@
+---
+- name: Config Vector
+  become: true
+  ansible.builtin.template:
+    src: vector.config.j2
+    mode: "0644"
+    dest: "{{ vector_config_path }}/vector.yaml"
+
+- name: Config Vector as service
+  become: true
+  ansible.builtin.template:
+    src: vector.service.j2
+    mode: "0644"
+    dest: "{{ vector_service_file_path }}"
+  notify: Start vector service
+
+- name: Flush Vector handlers
+  ansible.builtin.meta: flush_handlers

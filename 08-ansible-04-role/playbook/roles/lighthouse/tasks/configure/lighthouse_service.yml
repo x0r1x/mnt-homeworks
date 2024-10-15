@@ -1,0 +1,17 @@
+- name: Config Nginx
+  become: true
+  ansible.builtin.template:
+    src: "{{ lighthouse_nginx_conf_template }}"
+    dest: "{{ lighthouse_nginx_conf_path }}"
+    mode: "0644"
+
+- name: Config Lighthouse on Nginx server
+  become: true
+  ansible.builtin.template:
+    src: "{{ lighthouse_conf_template }}"
+    dest: "{{ lighthouse_conf_path }}/{{ lighthouse_conf_path_file }}"
+    mode: "0644"
+  notify: Restart Nginx
+
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
