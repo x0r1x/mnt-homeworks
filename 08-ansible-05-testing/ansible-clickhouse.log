@@ -1,0 +1,116 @@
+alekseykashin@MBP-Aleksej clickhouse % molecule test -s ubuntu_xenial
+WARNING  Driver docker does not provide a schema.
+INFO     ubuntu_xenial scenario test matrix: dependency, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
+INFO     Performing prerun with role_name_check=0...
+INFO     Running ubuntu_xenial > dependency
+WARNING  Skipping, missing the requirements file.
+WARNING  Skipping, missing the requirements file.
+INFO     Running ubuntu_xenial > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running ubuntu_xenial > destroy
+INFO     Sanity checks: 'docker'
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item=ubuntu_xenial)
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (300 retries left).
+ok: [localhost] => (item=ubuntu_xenial)
+
+TASK [Delete docker networks(s)] ***********************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Running ubuntu_xenial > syntax
+
+playbook: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-clickhouse/molecule/resources/playbooks/converge.yml
+INFO     Running ubuntu_xenial > create
+
+PLAY [Create] ******************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Log into a Docker registry] **********************************************
+skipping: [localhost] => (item=None) 
+skipping: [localhost]
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item={'capabilities': ['SYS_ADMIN'], 'command': '/sbin/init', 'dockerfile': '../resources/Dockerfile.j2', 'env': {'ANSIBLE_USER': 'ansible', 'DEPLOY_GROUP': 'deployer', 'SUDO_GROUP': 'sudo', 'container': 'docker'}, 'image': 'ubuntu:xenial', 'name': 'ubuntu_xenial', 'privileged': True, 'tmpfs': ['/run', '/tmp'], 'volumes': ['/sys/fs/cgroup:/sys/fs/cgroup']})
+
+TASK [Create Dockerfiles from image names] *************************************
+changed: [localhost] => (item={'capabilities': ['SYS_ADMIN'], 'command': '/sbin/init', 'dockerfile': '../resources/Dockerfile.j2', 'env': {'ANSIBLE_USER': 'ansible', 'DEPLOY_GROUP': 'deployer', 'SUDO_GROUP': 'sudo', 'container': 'docker'}, 'image': 'ubuntu:xenial', 'name': 'ubuntu_xenial', 'privileged': True, 'tmpfs': ['/run', '/tmp'], 'volumes': ['/sys/fs/cgroup:/sys/fs/cgroup']})
+
+TASK [Synchronization the context] *********************************************
+changed: [localhost] => (item={'capabilities': ['SYS_ADMIN'], 'command': '/sbin/init', 'dockerfile': '../resources/Dockerfile.j2', 'env': {'ANSIBLE_USER': 'ansible', 'DEPLOY_GROUP': 'deployer', 'SUDO_GROUP': 'sudo', 'container': 'docker'}, 'image': 'ubuntu:xenial', 'name': 'ubuntu_xenial', 'privileged': True, 'tmpfs': ['/run', '/tmp'], 'volumes': ['/sys/fs/cgroup:/sys/fs/cgroup']})
+
+TASK [Discover local Docker images] ********************************************
+ok: [localhost] => (item=None)
+ok: [localhost]
+
+TASK [Build an Ansible compatible image (new)] *********************************
+ok: [localhost] => (item=molecule_local/ubuntu:xenial)
+
+TASK [Create docker network(s)] ************************************************
+skipping: [localhost]
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item=None)
+ok: [localhost]
+
+TASK [Create molecule instance(s)] *********************************************
+changed: [localhost] => (item=ubuntu_xenial)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (300 retries left).
+changed: [localhost] => (item=None)
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=9    changed=4    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
+
+INFO     Running ubuntu_xenial > prepare
+WARNING  Skipping, prepare playbook not configured.
+INFO     Running ubuntu_xenial > converge
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+fatal: [ubuntu_xenial]: FAILED! => {"ansible_facts": {}, "changed": false, "failed_modules": {"ansible.legacy.setup": {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3"}, "exception": "Traceback (most recent call last):\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1729279954.763264-26095-166225752541112/AnsiballZ_setup.py\", line 107, in <module>\n    _ansiballz_main()\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1729279954.763264-26095-166225752541112/AnsiballZ_setup.py\", line 99, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1729279954.763264-26095-166225752541112/AnsiballZ_setup.py\", line 44, in invoke_module\n    from ansible.module_utils import basic\n  File \"<frozen importlib._bootstrap>\", line 969, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 954, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 896, in _find_spec\n  File \"<frozen importlib._bootstrap_external>\", line 1139, in find_spec\n  File \"<frozen importlib._bootstrap_external>\", line 1115, in _get_spec\n  File \"<frozen importlib._bootstrap_external>\", line 1096, in _legacy_get_spec\n  File \"<frozen importlib._bootstrap>\", line 444, in spec_from_loader\n  File \"<frozen importlib._bootstrap_external>\", line 533, in spec_from_file_location\n  File \"/tmp/ansible_ansible.legacy.setup_payload__l5iuwi4/ansible_ansible.legacy.setup_payload.zip/ansible/module_utils/basic.py\", line 17\n    msg=f\"ansible-core requires a minimum of Python version {'.'.join(map(str, _PY_MIN))}. Current version: {''.join(sys.version.splitlines())}\",\n                                                                                                                                               ^\nSyntaxError: invalid syntax\n", "failed": true, "module_stderr": "Traceback (most recent call last):\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1729279954.763264-26095-166225752541112/AnsiballZ_setup.py\", line 107, in <module>\n    _ansiballz_main()\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1729279954.763264-26095-166225752541112/AnsiballZ_setup.py\", line 99, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1729279954.763264-26095-166225752541112/AnsiballZ_setup.py\", line 44, in invoke_module\n    from ansible.module_utils import basic\n  File \"<frozen importlib._bootstrap>\", line 969, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 954, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 896, in _find_spec\n  File \"<frozen importlib._bootstrap_external>\", line 1139, in find_spec\n  File \"<frozen importlib._bootstrap_external>\", line 1115, in _get_spec\n  File \"<frozen importlib._bootstrap_external>\", line 1096, in _legacy_get_spec\n  File \"<frozen importlib._bootstrap>\", line 444, in spec_from_loader\n  File \"<frozen importlib._bootstrap_external>\", line 533, in spec_from_file_location\n  File \"/tmp/ansible_ansible.legacy.setup_payload__l5iuwi4/ansible_ansible.legacy.setup_payload.zip/ansible/module_utils/basic.py\", line 17\n    msg=f\"ansible-core requires a minimum of Python version {'.'.join(map(str, _PY_MIN))}. Current version: {''.join(sys.version.splitlines())}\",\n                                                                                                                                               ^\nSyntaxError: invalid syntax\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}}, "msg": "The following modules failed to execute: ansible.legacy.setup\n"}
+
+PLAY RECAP *********************************************************************
+ubuntu_xenial              : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+
+CRITICAL Ansible return code was 2, command was: ansible-playbook -D --inventory /Users/alekseykashin/.cache/molecule/ansible-clickhouse/ubuntu_xenial/inventory --skip-tags molecule-notest,notest /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-clickhouse/molecule/resources/playbooks/converge.yml
+WARNING  An error occurred during the test sequence action: 'converge'. Cleaning up.
+INFO     Running ubuntu_xenial > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running ubuntu_xenial > destroy
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item=ubuntu_xenial)
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (300 retries left).
+changed: [localhost] => (item=ubuntu_xenial)
+
+TASK [Delete docker networks(s)] ***********************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+alekseykashin@MBP-Aleksej clickhouse % 

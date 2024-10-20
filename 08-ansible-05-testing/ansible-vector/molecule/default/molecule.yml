@@ -1,0 +1,14 @@
+---
+driver:
+  name: docker
+platforms:
+  - name: ubuntu
+    image: docker.io/ubuntu:latest
+    pre_build_image: false
+  - name: debian
+    image: docker.io/debian:latest
+    pre_build_image: false
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

@@ -1,0 +1,28 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: true
+  become: true
+  pre_tasks:
+    - name: Update and upgrade apt packages
+      ansible.builtin.apt:
+        upgrade: "yes"
+        update_cache: true
+        force: true
+      when:
+        ansible_os_family == "Debian"
+    - name: Add packages
+      ansible.builtin.apt:
+        name:
+          - sudo
+          - systemctl
+          - gpg
+          - gpg-agent
+        state: present
+        update_cache: true
+      when:
+        ansible_os_family == "Debian"
+  tasks:
+    - name: Inclide Vector
+      ansible.builtin.include_role:
+        name: ansible-vector

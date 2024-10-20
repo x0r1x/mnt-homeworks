@@ -1,0 +1,7 @@
+selinux
+lxml
+molecule
+molecule-plugins
+molecule_podman
+jmespath
+docker

@@ -1,0 +1,32 @@
+---
+# This is an example playbook to execute Ansible tests.
+- name: Verify
+  hosts: all
+  gather_facts: false
+  vars:
+    vector_service: 'vector'
+  tasks:
+    - name: 'Gather Installed Packages'
+      ansible.builtin.package_facts:
+        manager: auto
+      become: true
+
+    - name: 'Check Vector configuration'
+      ansible.builtin.command: "vector validate /etc/vector/vector.yaml"
+      changed_when: false
+      register: vector_config
+
+    - name: 'Assert Vector config is not failed'
+      ansible.builtin.assert:
+        that:
+          - "'Validated' in vector_config.stdout"
+
+    - name: 'Check Vector configuration'
+      ansible.builtin.command: "systemctl status vector"
+      changed_when: false
+      register: vector_service
+
+    - name: 'Assert Vector service is not failed'
+      ansible.builtin.assert:
+        that:
+          - "'Active: active (running)' in vector_service.stdout"

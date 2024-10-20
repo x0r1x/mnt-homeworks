@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  #gather_facts: false
+  tasks:
+    - name: 'Apply Clickhouse Role'
+      include_role:
+        name: ansible-clickhouse

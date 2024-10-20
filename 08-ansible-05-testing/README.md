@@ -22,6 +22,46 @@
 5. Запустите тестирование роли повторно и проверьте, что оно прошло успешно.
 5. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
 
+#### Решение
+
+1. Запустил тест `ubuntu_xenial` на `molecule` [ansible-clickhouse](ansible-clickhouse.log)
+2. Создаем сценарий тестировия для `molecule`
+
+```bash
+alekseykashin@MBP-Aleksej ansible-vector % molecule init scenario --driver-name docker
+INFO     Initializing new scenario default...
+
+PLAY [Create a new molecule scenario] ******************************************
+
+TASK [Check if destination folder exists] **************************************
+changed: [localhost]
+
+TASK [Check if destination folder is empty] ************************************
+ok: [localhost]
+
+TASK [Fail if destination folder is not empty] *********************************
+skipping: [localhost]
+
+TASK [Expand templates] ********************************************************
+skipping: [localhost] => (item=molecule/default/destroy.yml) 
+changed: [localhost] => (item=molecule/default/molecule.yml)
+changed: [localhost] => (item=molecule/default/converge.yml)
+skipping: [localhost] => (item=molecule/default/create.yml) 
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Initialized scenario in /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/molecule/default successfully.
+alekseykashin@MBP-Aleksej ansible-vector % 
+```
+
+2. Дальше я создал создал сценарий тестирования для семейства OS `Debian`, выбрал 2 образа ![OS](image.png), так же добавил недостоющие пакеты ![alt text](image-1.png), и настроил две проверки (что сервис активен и что конфигурация валидна) ![alt text](<Снимок экрана 2024-10-20 в 17.49.04.png>)
+
+3. Запускаю убеждаюсь что все работает [molucule_log](ansible-vector_molecule_test.log)
+
+4. Заливаю `git` проект [vector](https://github.com/x0r1x/ansible-vector/tree/v0.0.2)
+
+
 ### Tox
 
 1. Добавьте в директорию с vector-role файлы из [директории](./example).
@@ -33,6 +73,54 @@
 9. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
 
 После выполнения у вас должно получится два сценария molecule и один tox.ini файл в репозитории. Не забудьте указать в ответе теги решений Tox и Molecule заданий. В качестве решения пришлите ссылку на  ваш репозиторий и скриншоты этапов выполнения задания. 
+
+#### Решение 
+
+1. Для `molecule` создаем новую сценарий тестирования `tox`, меняем драйвер на `podman`.
+
+```bash
+alekseykashin@MBP-Aleksej ansible-vector % molecule init scenario tox --driver-name=podman         
+INFO     Initializing new scenario tox...
+
+PLAY [Create a new molecule scenario] ******************************************
+
+TASK [Check if destination folder exists] **************************************
+changed: [localhost]
+
+TASK [Check if destination folder is empty] ************************************
+ok: [localhost]
+
+TASK [Fail if destination folder is not empty] *********************************
+skipping: [localhost]
+
+TASK [Expand templates] ********************************************************
+skipping: [localhost] => (item=molecule/tox/destroy.yml) 
+changed: [localhost] => (item=molecule/tox/molecule.yml)
+changed: [localhost] => (item=molecule/tox/converge.yml)
+skipping: [localhost] => (item=molecule/tox/create.yml) 
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Initialized scenario in /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/molecule/tox successfully.
+```
+
+2. Из сецнария `default` копируем [`converge`, `verify`], переопределенные этапы сценария
+3. В `molecule.yml` меняем/упрощаем этапы последовательности прогона тестетов ![скрин](image-2.png)
+4. Настриваем `tox` на прогон сценария тестирования `molecule/tox`, делаем матрицу тестирования на питон [`3.9`, `3.12`] с одной стороны, а с другой стороны ansible [`2.12`, `2.17`], по сути должно получится 4 прогона.
+5. Запускаем `tox`, убеждаемся что все отработало хорошо. 
+
+```bash
+INFO     Pruning extra files from scenario ephemeral directory
+  py39-ansible212: OK (100.09=setup[8.04]+cmd[92.05] seconds)
+  py39-ansible217: OK (79.91=setup[0.01]+cmd[79.90] seconds)
+  py312-ansible212: OK (76.33=setup[7.70]+cmd[68.64] seconds)
+  py312-ansible217: OK (77.74=setup[0.01]+cmd[77.73] seconds)
+  congratulations :) (334.14 seconds)
+alekseykashin@MBP-Aleksej ansible-vector % 
+```
+
+6. Заливаю `git` проект [vector](https://github.com/x0r1x/ansible-vector/tree/v0.0.3)
 
 ## Необязательная часть
 

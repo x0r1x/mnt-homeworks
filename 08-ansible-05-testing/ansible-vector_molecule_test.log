@@ -1,0 +1,402 @@
+alekseykashin@MBP-Aleksej ansible-vector % molecule test
+WARNING  Driver docker does not provide a schema.
+INFO     default scenario test matrix: dependency, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
+INFO     Performing prerun with role_name_check=0...
+INFO     Running default > dependency
+WARNING  Skipping, missing the requirements file.
+WARNING  Skipping, missing the requirements file.
+INFO     Running default > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running default > destroy
+INFO     Sanity checks: 'docker'
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item=ubuntu)
+changed: [localhost] => (item=debian)
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+ok: [localhost] => (item=ubuntu)
+ok: [localhost] => (item=debian)
+
+TASK [Delete docker networks(s)] ***********************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Running default > syntax
+
+playbook: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/molecule/default/converge.yml
+INFO     Running default > create
+
+PLAY [Create] ******************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Log into a Docker registry] **********************************************
+skipping: [localhost] => (item=None) 
+skipping: [localhost] => (item=None) 
+skipping: [localhost]
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})
+ok: [localhost] => (item={'image': 'docker.io/debian:latest', 'name': 'debian', 'pre_build_image': False})
+
+TASK [Create Dockerfiles from image names] *************************************
+changed: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})
+changed: [localhost] => (item={'image': 'docker.io/debian:latest', 'name': 'debian', 'pre_build_image': False})
+
+TASK [Synchronization the context] *********************************************
+changed: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})
+ok: [localhost] => (item={'image': 'docker.io/debian:latest', 'name': 'debian', 'pre_build_image': False})
+
+TASK [Discover local Docker images] ********************************************
+ok: [localhost] => (item={'diff': [], 'dest': '/Users/alekseykashin/.cache/molecule/ansible-vector/default/Dockerfile_docker_io_ubuntu_latest', 'src': '/Users/alekseykashin/.ansible/tmp/ansible-tmp-1729433153.2817862-64516-242305519484099/.source', 'md5sum': '330de22dfc16ff29d86b3716e465e2f7', 'checksum': '4db7ac40b7ce1da528b957da93d48cd0d1dc84dc', 'changed': True, 'uid': 501, 'gid': 20, 'owner': 'alekseykashin', 'group': 'staff', 'mode': '0600', 'state': 'file', 'size': 1052, 'invocation': {'module_args': {'src': '/Users/alekseykashin/.ansible/tmp/ansible-tmp-1729433153.2817862-64516-242305519484099/.source', 'dest': '/Users/alekseykashin/.cache/molecule/ansible-vector/default/Dockerfile_docker_io_ubuntu_latest', 'mode': '0600', 'follow': False, '_original_basename': 'Dockerfile.j2', 'checksum': '4db7ac40b7ce1da528b957da93d48cd0d1dc84dc', 'backup': False, 'force': True, 'unsafe_writes': False, 'content': None, 'validate': None, 'directory_mode': None, 'remote_src': None, 'local_follow': None, 'owner': None, 'group': None, 'seuser': None, 'serole': None, 'selevel': None, 'setype': None, 'attributes': None}}, 'failed': False, 'item': {'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False}, 'ansible_loop_var': 'item', 'i': 0, 'ansible_index_var': 'i'})
+ok: [localhost] => (item={'diff': [], 'dest': '/Users/alekseykashin/.cache/molecule/ansible-vector/default/Dockerfile_docker_io_debian_latest', 'src': '/Users/alekseykashin/.ansible/tmp/ansible-tmp-1729433153.7652748-64516-267645942575021/.source', 'md5sum': 'fcf5ab812df1ffc8934d0bc0f670b7ce', 'checksum': 'e2fc56b543833ae4b40ecef79cfbfe03a75c1d14', 'changed': True, 'uid': 501, 'gid': 20, 'owner': 'alekseykashin', 'group': 'staff', 'mode': '0600', 'state': 'file', 'size': 1052, 'invocation': {'module_args': {'src': '/Users/alekseykashin/.ansible/tmp/ansible-tmp-1729433153.7652748-64516-267645942575021/.source', 'dest': '/Users/alekseykashin/.cache/molecule/ansible-vector/default/Dockerfile_docker_io_debian_latest', 'mode': '0600', 'follow': False, '_original_basename': 'Dockerfile.j2', 'checksum': 'e2fc56b543833ae4b40ecef79cfbfe03a75c1d14', 'backup': False, 'force': True, 'unsafe_writes': False, 'content': None, 'validate': None, 'directory_mode': None, 'remote_src': None, 'local_follow': None, 'owner': None, 'group': None, 'seuser': None, 'serole': None, 'selevel': None, 'setype': None, 'attributes': None}}, 'failed': False, 'item': {'image': 'docker.io/debian:latest', 'name': 'debian', 'pre_build_image': False}, 'ansible_loop_var': 'item', 'i': 1, 'ansible_index_var': 'i'})
+
+TASK [Build an Ansible compatible image (new)] *********************************
+ok: [localhost] => (item=molecule_local/docker.io/ubuntu:latest)
+ok: [localhost] => (item=molecule_local/docker.io/debian:latest)
+
+TASK [Create docker network(s)] ************************************************
+skipping: [localhost]
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})
+ok: [localhost] => (item={'image': 'docker.io/debian:latest', 'name': 'debian', 'pre_build_image': False})
+
+TASK [Create molecule instance(s)] *********************************************
+changed: [localhost] => (item=ubuntu)
+changed: [localhost] => (item=debian)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j831286858318.64984', 'results_file': '/Users/alekseykashin/.ansible_async/j831286858318.64984', 'changed': True, 'item': {'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False}, 'ansible_loop_var': 'item'})
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j876001216008.65005', 'results_file': '/Users/alekseykashin/.ansible_async/j876001216008.65005', 'changed': True, 'item': {'image': 'docker.io/debian:latest', 'name': 'debian', 'pre_build_image': False}, 'ansible_loop_var': 'item'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=9    changed=4    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
+
+INFO     Running default > prepare
+WARNING  Skipping, prepare playbook not configured.
+INFO     Running default > converge
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [Update and upgrade apt packages] *****************************************
+ok: [debian]
+changed: [ubuntu]
+
+TASK [Install gpg] *************************************************************
+changed: [debian]
+changed: [ubuntu]
+
+TASK [Inclide Vector] **********************************************************
+included: ansible-vector for debian, ubuntu
+
+TASK [ansible-vector : Include OS Family Specific Variables] *******************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [ansible-vector : Install Vector] *****************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/tasks/install/apt.yml for debian, ubuntu
+
+TASK [ansible-vector : Add Vector repository] **********************************
+changed: [debian]
+changed: [ubuntu]
+
+TASK [ansible-vector : Add Vector gpg key] *************************************
+changed: [ubuntu]
+changed: [debian]
+
+TASK [ansible-vector : Update cache] *******************************************
+changed: [debian]
+changed: [ubuntu]
+
+TASK [ansible-vector : Install Vector] *****************************************
+changed: [debian] => (item=vector)
+changed: [ubuntu] => (item=vector)
+
+TASK [ansible-vector : Configure Vector service] *******************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/tasks/configure/vector_service.yml for debian, ubuntu
+
+TASK [ansible-vector : Config Vector] ******************************************
+changed: [debian]
+changed: [ubuntu]
+
+TASK [ansible-vector : Config Vector as service] *******************************
+changed: [debian]
+changed: [ubuntu]
+
+TASK [ansible-vector : Flush Vector handlers] **********************************
+
+TASK [ansible-vector : Flush Vector handlers] **********************************
+
+RUNNING HANDLER [ansible-vector : Start vector service] ************************
+changed: [debian]
+changed: [ubuntu]
+
+PLAY RECAP *********************************************************************
+debian                     : ok=14   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ubuntu                     : ok=14   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Running default > idempotence
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [Update and upgrade apt packages] *****************************************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [Install gpg] *************************************************************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [Inclide Vector] **********************************************************
+included: ansible-vector for debian, ubuntu
+
+TASK [ansible-vector : Include OS Family Specific Variables] *******************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [ansible-vector : Install Vector] *****************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/tasks/install/apt.yml for debian, ubuntu
+
+TASK [ansible-vector : Add Vector repository] **********************************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [ansible-vector : Add Vector gpg key] *************************************
+ok: [ubuntu]
+ok: [debian]
+
+TASK [ansible-vector : Update cache] *******************************************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [ansible-vector : Install Vector] *****************************************
+ok: [debian] => (item=vector)
+ok: [ubuntu] => (item=vector)
+
+TASK [ansible-vector : Configure Vector service] *******************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/tasks/configure/vector_service.yml for debian, ubuntu
+
+TASK [ansible-vector : Config Vector] ******************************************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [ansible-vector : Config Vector as service] *******************************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [ansible-vector : Flush Vector handlers] **********************************
+
+TASK [ansible-vector : Flush Vector handlers] **********************************
+
+PLAY RECAP *********************************************************************
+debian                     : ok=13   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ubuntu                     : ok=13   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Idempotence completed successfully.
+INFO     Running default > side_effect
+WARNING  Skipping, side effect playbook not configured.
+INFO     Running default > verify
+INFO     Running Ansible Verifier
+
+PLAY [Verify] ******************************************************************
+
+TASK [Gather Installed Packages] ***********************************************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [Check Vector configuration] **********************************************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [Checck] ******************************************************************
+ok: [debian] => {
+    "vector_config": {
+        "changed": false,
+        "cmd": [
+            "vector",
+            "validate",
+            "/etc/vector/vector.yaml"
+        ],
+        "delta": "0:00:00.009987",
+        "end": "2024-10-20 14:08:22.015843",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-20 14:08:22.005856",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "Loaded with warnings [\"/etc/vector/vector.yaml\"]\n------------------------------------------------\n~ Source \"in\" has no consumers\n\n√ Component configuration\n√ Health check \"print\"\n------------------------------------------------\n                                       Validated",
+        "stdout_lines": [
+            "Loaded with warnings [\"/etc/vector/vector.yaml\"]",
+            "------------------------------------------------",
+            "~ Source \"in\" has no consumers",
+            "",
+            "√ Component configuration",
+            "√ Health check \"print\"",
+            "------------------------------------------------",
+            "                                       Validated"
+        ]
+    }
+}
+ok: [ubuntu] => {
+    "vector_config": {
+        "changed": false,
+        "cmd": [
+            "vector",
+            "validate",
+            "/etc/vector/vector.yaml"
+        ],
+        "delta": "0:00:00.010517",
+        "end": "2024-10-20 14:08:22.032997",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-20 14:08:22.022480",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "Loaded with warnings [\"/etc/vector/vector.yaml\"]\n------------------------------------------------\n~ Source \"in\" has no consumers\n\n√ Component configuration\n√ Health check \"print\"\n------------------------------------------------\n                                       Validated",
+        "stdout_lines": [
+            "Loaded with warnings [\"/etc/vector/vector.yaml\"]",
+            "------------------------------------------------",
+            "~ Source \"in\" has no consumers",
+            "",
+            "√ Component configuration",
+            "√ Health check \"print\"",
+            "------------------------------------------------",
+            "                                       Validated"
+        ]
+    }
+}
+
+TASK [Assert Vector config is not failed] **************************************
+ok: [debian] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Check Vector configuration] **********************************************
+ok: [debian]
+ok: [ubuntu]
+
+TASK [Debug Vector service status] *********************************************
+ok: [debian] => {
+    "vector_service": {
+        "changed": false,
+        "cmd": [
+            "systemctl",
+            "status",
+            "vector"
+        ],
+        "delta": "0:00:00.059096",
+        "end": "2024-10-20 14:08:22.624654",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-20 14:08:22.565558",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "vector.service - Vector Serivce\n    Loaded: loaded (/etc/systemd/system/vector.service, static)\n    Active: active (running)",
+        "stdout_lines": [
+            "vector.service - Vector Serivce",
+            "    Loaded: loaded (/etc/systemd/system/vector.service, static)",
+            "    Active: active (running)"
+        ]
+    }
+}
+ok: [ubuntu] => {
+    "vector_service": {
+        "changed": false,
+        "cmd": [
+            "systemctl",
+            "status",
+            "vector"
+        ],
+        "delta": "0:00:00.073031",
+        "end": "2024-10-20 14:08:22.656704",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-20 14:08:22.583673",
+        "stderr": "/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'\n  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))\n/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'\n  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)\n/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'\n  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)\n/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'\n  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]",
+        "stderr_lines": [
+            "/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'",
+            "  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))",
+            "/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'",
+            "  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)",
+            "/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'",
+            "  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)",
+            "/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'",
+            "  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]"
+        ],
+        "stdout": "vector.service - Vector Serivce\n    Loaded: loaded (/etc/systemd/system/vector.service, static)\n    Active: active (running)",
+        "stdout_lines": [
+            "vector.service - Vector Serivce",
+            "    Loaded: loaded (/etc/systemd/system/vector.service, static)",
+            "    Active: active (running)"
+        ]
+    }
+}
+
+TASK [Assert Vector service is not failed] *************************************
+ok: [debian] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+debian                     : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ubuntu                     : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Verifier completed successfully.
+INFO     Running default > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running default > destroy
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item=ubuntu)
+changed: [localhost] => (item=debian)
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (300 retries left).
+changed: [localhost] => (item=ubuntu)
+changed: [localhost] => (item=debian)
+
+TASK [Delete docker networks(s)] ***********************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+alekseykashin@MBP-Aleksej ansible-vector %  

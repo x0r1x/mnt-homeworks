@@ -1,0 +1,663 @@
+alekseykashin@MBP-Aleksej ansible-vector % tox
+py39-ansible212: install_deps> python -I -m pip install -r tox-requirements.txt
+py39-ansible212: commands[0]> molecule test -s tox --destroy always
+WARNING  Driver podman does not provide a schema.
+INFO     tox scenario test matrix: destroy, create, converge, verify, destroy
+INFO     Performing prerun with role_name_check=0...
+INFO     Running tox > destroy
+INFO     Sanity checks: 'podman'
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (300 retries left).
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j730746109242.12434', 'results_file': '/Users/alekseykashin/.ansible_async/j730746109242.12434', 'changed': True, 'item': {'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False}, 'ansible_loop_var': 'item'})
+
+TASK [Delete podman network dedicated to this scenario] ************************
+skipping: [localhost] => (item=ubuntu: None specified) 
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Running tox > create
+
+PLAY [Create] ******************************************************************
+
+TASK [Log into a container registry] *******************************************
+skipping: [localhost] => (item="ubuntu registry username: None specified") 
+skipping: [localhost]
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item=Dockerfile: None specified)
+
+TASK [Create Dockerfiles from image names] *************************************
+changed: [localhost] => (item="Dockerfile: None specified; Image: docker.io/ubuntu:latest")
+
+TASK [Discover local Podman images] ********************************************
+ok: [localhost] => (item=ubuntu)
+
+TASK [Build an Ansible compatible image] ***************************************
+ok: [localhost] => (item=docker.io/ubuntu:latest)
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item="ubuntu command: None specified")
+
+TASK [Discover local podman networks] ******************************************
+skipping: [localhost] => (item=ubuntu: None specified) 
+skipping: [localhost]
+
+TASK [Create podman network dedicated to this scenario] ************************
+skipping: [localhost]
+
+TASK [Create molecule instance(s)] *********************************************
+ok: [localhost] => (item=ubuntu)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (300 retries left).
+changed: [localhost] => (item=ubuntu)
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
+
+INFO     Running tox > converge
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [ubuntu]
+
+TASK [Update and upgrade apt packages] *****************************************
+changed: [ubuntu]
+
+TASK [Add packages] ************************************************************
+changed: [ubuntu]
+
+TASK [Inclide Vector] **********************************************************
+
+TASK [ansible-vector : Include OS Family Specific Variables] *******************
+ok: [ubuntu]
+
+TASK [ansible-vector : Install Vector] *****************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/tasks/install/apt.yml for ubuntu
+
+TASK [ansible-vector : Add Vector repository] **********************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Add Vector gpg key] *************************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Update cache] *******************************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Install Vector] *****************************************
+changed: [ubuntu] => (item=vector)
+
+TASK [ansible-vector : Configure Vector service] *******************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/tasks/configure/vector_service.yml for ubuntu
+
+TASK [ansible-vector : Config Vector] ******************************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Config Vector as service] *******************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Flush Vector handlers] **********************************
+
+RUNNING HANDLER [ansible-vector : Start vector service] ************************
+changed: [ubuntu]
+
+PLAY RECAP *********************************************************************
+ubuntu                     : ok=13   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Running tox > verify
+INFO     Running Ansible Verifier
+
+PLAY [Verify] ******************************************************************
+
+TASK [Gather Installed Packages] ***********************************************
+ok: [ubuntu]
+
+TASK [Check Vector configuration] **********************************************
+ok: [ubuntu]
+
+TASK [Assert Vector config is not failed] **************************************
+ok: [ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Check Vector configuration] **********************************************
+ok: [ubuntu]
+
+TASK [Assert Vector service is not failed] *************************************
+ok: [ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+ubuntu                     : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Verifier completed successfully.
+INFO     Running tox > destroy
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (300 retries left).
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (299 retries left).
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j282918321577.13035', 'results_file': '/Users/alekseykashin/.ansible_async/j282918321577.13035', 'changed': True, 'item': {'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False}, 'ansible_loop_var': 'item'})
+
+TASK [Delete podman network dedicated to this scenario] ************************
+skipping: [localhost] => (item=ubuntu: None specified) 
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+py39-ansible212: OK ✔ in 1 minute 40.09 seconds
+py39-ansible217: commands[0]> molecule test -s tox --destroy always
+WARNING  Driver podman does not provide a schema.
+INFO     tox scenario test matrix: destroy, create, converge, verify, destroy
+INFO     Performing prerun with role_name_check=0...
+INFO     Running tox > destroy
+INFO     Sanity checks: 'podman'
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j911360395048.13169', 'results_file': '/Users/alekseykashin/.ansible_async/j911360395048.13169', 'changed': True, 'item': {'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False}, 'ansible_loop_var': 'item'})
+
+TASK [Delete podman network dedicated to this scenario] ************************
+skipping: [localhost] => (item=ubuntu: None specified) 
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Running tox > create
+
+PLAY [Create] ******************************************************************
+
+TASK [Log into a container registry] *******************************************
+skipping: [localhost] => (item="ubuntu registry username: None specified") 
+skipping: [localhost]
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item=Dockerfile: None specified)
+
+TASK [Create Dockerfiles from image names] *************************************
+changed: [localhost] => (item="Dockerfile: None specified; Image: docker.io/ubuntu:latest")
+
+TASK [Discover local Podman images] ********************************************
+ok: [localhost] => (item=ubuntu)
+
+TASK [Build an Ansible compatible image] ***************************************
+ok: [localhost] => (item=docker.io/ubuntu:latest)
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item="ubuntu command: None specified")
+
+TASK [Discover local podman networks] ******************************************
+skipping: [localhost] => (item=ubuntu: None specified) 
+skipping: [localhost]
+
+TASK [Create podman network dedicated to this scenario] ************************
+skipping: [localhost]
+
+TASK [Create molecule instance(s)] *********************************************
+ok: [localhost] => (item=ubuntu)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (300 retries left).
+changed: [localhost] => (item=ubuntu)
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
+
+INFO     Running tox > converge
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [ubuntu]
+
+TASK [Update and upgrade apt packages] *****************************************
+changed: [ubuntu]
+
+TASK [Add packages] ************************************************************
+changed: [ubuntu]
+
+TASK [Inclide Vector] **********************************************************
+
+TASK [ansible-vector : Include OS Family Specific Variables] *******************
+ok: [ubuntu]
+
+TASK [ansible-vector : Install Vector] *****************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/tasks/install/apt.yml for ubuntu
+
+TASK [ansible-vector : Add Vector repository] **********************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Add Vector gpg key] *************************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Update cache] *******************************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Install Vector] *****************************************
+changed: [ubuntu] => (item=vector)
+
+TASK [ansible-vector : Configure Vector service] *******************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/tasks/configure/vector_service.yml for ubuntu
+
+TASK [ansible-vector : Config Vector] ******************************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Config Vector as service] *******************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Flush Vector handlers] **********************************
+
+RUNNING HANDLER [ansible-vector : Start vector service] ************************
+changed: [ubuntu]
+
+PLAY RECAP *********************************************************************
+ubuntu                     : ok=13   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Running tox > verify
+INFO     Running Ansible Verifier
+
+PLAY [Verify] ******************************************************************
+
+TASK [Gather Installed Packages] ***********************************************
+ok: [ubuntu]
+
+TASK [Check Vector configuration] **********************************************
+ok: [ubuntu]
+
+TASK [Assert Vector config is not failed] **************************************
+ok: [ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Check Vector configuration] **********************************************
+ok: [ubuntu]
+
+TASK [Assert Vector service is not failed] *************************************
+ok: [ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+ubuntu                     : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Verifier completed successfully.
+INFO     Running tox > destroy
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (300 retries left).
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (299 retries left).
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j505804087519.13707', 'results_file': '/Users/alekseykashin/.ansible_async/j505804087519.13707', 'changed': True, 'item': {'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False}, 'ansible_loop_var': 'item'})
+
+TASK [Delete podman network dedicated to this scenario] ************************
+skipping: [localhost] => (item=ubuntu: None specified) 
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+py39-ansible217: OK ✔ in 1 minute 19.91 seconds
+py312-ansible212: install_deps> python -I -m pip install -r tox-requirements.txt
+py312-ansible212: commands[0]> molecule test -s tox --destroy always
+WARNING  Driver podman does not provide a schema.
+INFO     tox scenario test matrix: destroy, create, converge, verify, destroy
+INFO     Performing prerun with role_name_check=0...
+INFO     Running tox > destroy
+INFO     Sanity checks: 'podman'
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j980997102209.13876', 'results_file': '/Users/alekseykashin/.ansible_async/j980997102209.13876', 'changed': True, 'item': {'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False}, 'ansible_loop_var': 'item'})
+
+TASK [Delete podman network dedicated to this scenario] ************************
+skipping: [localhost] => (item=ubuntu: None specified) 
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Running tox > create
+
+PLAY [Create] ******************************************************************
+
+TASK [Log into a container registry] *******************************************
+skipping: [localhost] => (item="ubuntu registry username: None specified") 
+skipping: [localhost]
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item=Dockerfile: None specified)
+
+TASK [Create Dockerfiles from image names] *************************************
+changed: [localhost] => (item="Dockerfile: None specified; Image: docker.io/ubuntu:latest")
+
+TASK [Discover local Podman images] ********************************************
+ok: [localhost] => (item=ubuntu)
+
+TASK [Build an Ansible compatible image] ***************************************
+ok: [localhost] => (item=docker.io/ubuntu:latest)
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item="ubuntu command: None specified")
+
+TASK [Discover local podman networks] ******************************************
+skipping: [localhost] => (item=ubuntu: None specified) 
+skipping: [localhost]
+
+TASK [Create podman network dedicated to this scenario] ************************
+skipping: [localhost]
+
+TASK [Create molecule instance(s)] *********************************************
+ok: [localhost] => (item=ubuntu)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (300 retries left).
+changed: [localhost] => (item=ubuntu)
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
+
+INFO     Running tox > converge
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [ubuntu]
+
+TASK [Update and upgrade apt packages] *****************************************
+changed: [ubuntu]
+
+TASK [Add packages] ************************************************************
+changed: [ubuntu]
+
+TASK [Inclide Vector] **********************************************************
+included: ansible-vector for ubuntu
+
+TASK [ansible-vector : Include OS Family Specific Variables] *******************
+ok: [ubuntu]
+
+TASK [ansible-vector : Install Vector] *****************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/tasks/install/apt.yml for ubuntu
+
+TASK [ansible-vector : Add Vector repository] **********************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Add Vector gpg key] *************************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Update cache] *******************************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Install Vector] *****************************************
+changed: [ubuntu] => (item=vector)
+
+TASK [ansible-vector : Configure Vector service] *******************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/tasks/configure/vector_service.yml for ubuntu
+
+TASK [ansible-vector : Config Vector] ******************************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Config Vector as service] *******************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Flush Vector handlers] **********************************
+
+RUNNING HANDLER [ansible-vector : Start vector service] ************************
+changed: [ubuntu]
+
+PLAY RECAP *********************************************************************
+ubuntu                     : ok=14   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Running tox > verify
+INFO     Running Ansible Verifier
+
+PLAY [Verify] ******************************************************************
+
+TASK [Gather Installed Packages] ***********************************************
+ok: [ubuntu]
+
+TASK [Check Vector configuration] **********************************************
+ok: [ubuntu]
+
+TASK [Assert Vector config is not failed] **************************************
+ok: [ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Check Vector configuration] **********************************************
+ok: [ubuntu]
+
+TASK [Assert Vector service is not failed] *************************************
+ok: [ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+ubuntu                     : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Verifier completed successfully.
+INFO     Running tox > destroy
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (300 retries left).
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (299 retries left).
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j141956385369.14385', 'results_file': '/Users/alekseykashin/.ansible_async/j141956385369.14385', 'changed': True, 'item': {'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False}, 'ansible_loop_var': 'item'})
+
+TASK [Delete podman network dedicated to this scenario] ************************
+skipping: [localhost] => (item=ubuntu: None specified) 
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+py312-ansible212: OK ✔ in 1 minute 16.33 seconds
+py312-ansible217: commands[0]> molecule test -s tox --destroy always
+WARNING  Driver podman does not provide a schema.
+INFO     tox scenario test matrix: destroy, create, converge, verify, destroy
+INFO     Performing prerun with role_name_check=0...
+INFO     Running tox > destroy
+INFO     Sanity checks: 'podman'
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j155577866399.14524', 'results_file': '/Users/alekseykashin/.ansible_async/j155577866399.14524', 'changed': True, 'item': {'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False}, 'ansible_loop_var': 'item'})
+
+TASK [Delete podman network dedicated to this scenario] ************************
+skipping: [localhost] => (item=ubuntu: None specified) 
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Running tox > create
+
+PLAY [Create] ******************************************************************
+
+TASK [Log into a container registry] *******************************************
+skipping: [localhost] => (item="ubuntu registry username: None specified") 
+skipping: [localhost]
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item=Dockerfile: None specified)
+
+TASK [Create Dockerfiles from image names] *************************************
+changed: [localhost] => (item="Dockerfile: None specified; Image: docker.io/ubuntu:latest")
+
+TASK [Discover local Podman images] ********************************************
+ok: [localhost] => (item=ubuntu)
+
+TASK [Build an Ansible compatible image] ***************************************
+ok: [localhost] => (item=docker.io/ubuntu:latest)
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item="ubuntu command: None specified")
+
+TASK [Discover local podman networks] ******************************************
+skipping: [localhost] => (item=ubuntu: None specified) 
+skipping: [localhost]
+
+TASK [Create podman network dedicated to this scenario] ************************
+skipping: [localhost]
+
+TASK [Create molecule instance(s)] *********************************************
+ok: [localhost] => (item=ubuntu)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (300 retries left).
+changed: [localhost] => (item=ubuntu)
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0
+
+INFO     Running tox > converge
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [ubuntu]
+
+TASK [Update and upgrade apt packages] *****************************************
+changed: [ubuntu]
+
+TASK [Add packages] ************************************************************
+changed: [ubuntu]
+
+TASK [Inclide Vector] **********************************************************
+included: ansible-vector for ubuntu
+
+TASK [ansible-vector : Include OS Family Specific Variables] *******************
+ok: [ubuntu]
+
+TASK [ansible-vector : Install Vector] *****************************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/tasks/install/apt.yml for ubuntu
+
+TASK [ansible-vector : Add Vector repository] **********************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Add Vector gpg key] *************************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Update cache] *******************************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Install Vector] *****************************************
+changed: [ubuntu] => (item=vector)
+
+TASK [ansible-vector : Configure Vector service] *******************************
+included: /Users/alekseykashin/nettology/mnt-homeworks/08-ansible-05-testing/ansible-vector/tasks/configure/vector_service.yml for ubuntu
+
+TASK [ansible-vector : Config Vector] ******************************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Config Vector as service] *******************************
+changed: [ubuntu]
+
+TASK [ansible-vector : Flush Vector handlers] **********************************
+
+RUNNING HANDLER [ansible-vector : Start vector service] ************************
+changed: [ubuntu]
+
+PLAY RECAP *********************************************************************
+ubuntu                     : ok=14   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Running tox > verify
+INFO     Running Ansible Verifier
+
+PLAY [Verify] ******************************************************************
+
+TASK [Gather Installed Packages] ***********************************************
+ok: [ubuntu]
+
+TASK [Check Vector configuration] **********************************************
+ok: [ubuntu]
+
+TASK [Assert Vector config is not failed] **************************************
+ok: [ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Check Vector configuration] **********************************************
+ok: [ubuntu]
+
+TASK [Assert Vector service is not failed] *************************************
+ok: [ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+ubuntu                     : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Verifier completed successfully.
+INFO     Running tox > destroy
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (300 retries left).
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (299 retries left).
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j708242400815.15052', 'results_file': '/Users/alekseykashin/.ansible_async/j708242400815.15052', 'changed': True, 'item': {'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False}, 'ansible_loop_var': 'item'})
+
+TASK [Delete podman network dedicated to this scenario] ************************
+skipping: [localhost] => (item=ubuntu: None specified) 
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+  py39-ansible212: OK (100.09=setup[8.04]+cmd[92.05] seconds)
+  py39-ansible217: OK (79.91=setup[0.01]+cmd[79.90] seconds)
+  py312-ansible212: OK (76.33=setup[7.70]+cmd[68.64] seconds)
+  py312-ansible217: OK (77.74=setup[0.01]+cmd[77.73] seconds)
+  congratulations :) (334.14 seconds)
+alekseykashin@MBP-Aleksej ansible-vector % 
