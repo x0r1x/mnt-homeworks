@@ -1,31 +1,38 @@
 ---
 - name: Get OpenJDK installed
   hosts: sonarqube
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   pre_tasks:
-    - name: install unzip
-      become: true
-      yum:
-        name: unzip
-        state: present
+    # - name: Install unzip
+    #   become: true
+    #   ansible.builtin.package:
+    #     name: unzip
+    #     state: present
+    #     update_cache: true
+
   tasks:
+    # export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:/bin/java::")
+    # export PATH=$PATH:$JAVA_HOME/bin
+
     - name: Upload .tar.gz file conaining binaries from remote storage
-      get_url:
+      ansible.builtin.get_url:
         url: "{{ jdk_url }}"
         dest: "/tmp/jdk-{{ jdk_distr_name }}"
-        mode: 0755
+        mode: "0755"
       register: download_java_remote_binaries
       until: download_java_remote_binaries is succeeded
 
     - name: Ensure installation dir exists
       become: true
-      file:
+      ansible.builtin.file:
         state: directory
         path: "{{ java_home }}"
-        mode: 0755
+        mode: "0755"
 
     - name: Extract java in the installation directory
       become: true
-      unarchive:
+      ansible.builtin.unarchive:
         copy: false
         src: "/tmp/jdk-{{ jdk_distr_name }}"
         dest: "{{ java_home }}"
@@ -34,49 +41,43 @@
 
     - name: Export environment variables
       become: true
-      template:
+      ansible.builtin.template:
         src: jdk.sh.j2
         dest: /etc/profile.d/jdk.sh
         owner: root
         group: root
-        mode: 0644
+        mode: "0644"
 
 - name: Get PostgreSQL installed
   hosts: postgres
   become: true
   tasks:
-    - name: Change repo file
-      copy:
-        src: CentOS-Base.repo
-        dest: /etc/yum.repos.d/CentOS-Base.repo
-        mode: 0644
-        owner: root
-        group: root
-
-    - name: Install PostgreSQL repos
-      yum:
-        name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-        state: present
-        validate_certs: false
 
     - name: Install PostgreSQL
-      yum:
-        name: "postgresql{{ postgresql_version }}-server"
+      ansible.builtin.dnf:
+        name: "postgresql-server"
         state: present
 
-    - name: Init template1 DB
-      command: /usr/pgsql-11/bin/postgresql-11-setup initdb
-      failed_when: false
+    - name: Check if PostgreSQL is initialized
+      ansible.builtin.stat:
+        path: "/var/lib/pgsql/data/pg_hba.conf"
+      register: postgres_data
+
+    - name: Init template DB
+      ansible.builtin.shell: "postgresql-setup initdb"
+      when: not postgres_data.stat.exists
+      # failed_when: false
 
     - name: Start pgsql service
-      systemd:
-        name: "postgresql-{{ postgresql_version }}"
+      ansible.builtin.service:
+        name: postgresql
         state: started
         enabled: true
 
-    - name: Create user in system
-      user:
-        name: "{{ sonarqube_db_user }}"
+    # - name: Create user in system
+    #   ansible.builtin.user:
+    #     name: "{{ sonarqube_db_user }}"
+
     - name: Create user for Sonar in PostgreSQL
       become_user: postgres
       command: "createuser -s -e {{ sonarqube_db_user }}"
@@ -92,10 +93,10 @@
       failed_when: false
 
     - name: Copy pg_hba.conf
-      copy:
+      ansible.builtin.copy:
         src: pg_hba.conf
-        dest: /var/lib/pgsql/11/data/pg_hba.conf
-        mode: 0600
+        dest: /var/lib/pgsql/data/pg_hba.conf
+        mode: "0600"
         owner: postgres
         group: postgres
 
@@ -104,23 +105,23 @@
   become: true
   tasks:
     - name: Create group in system
-      group:
+      ansible.builtin.group:
         name: "{{ sonarqube_db_user }}"
         state: present
 
     - name: Create user in system
-      user:
+      ansible.builtin.user:
         name: "{{ sonarqube_db_user }}"
         group: "{{ sonarqube_db_user }}"
 
     - name: "Set up ssh key to access for managed node"
-      authorized_key:
+      ansible.posix.authorized_key:
         user: "{{ sonarqube_db_user }}"
         state: present
         key: "{{ lookup('file', 'id_rsa.pub') }}"
 
     - name: "Allow group to have passwordless sudo"
-      lineinfile:
+      ansible.builtin.lineinfile:
         dest: /etc/sudoers
         state: present
         regexp: '^%{{ sonarqube_db_user }}'
@@ -128,28 +129,31 @@
         validate: 'visudo -cf %s'
 
     - name: Increase Virtual Memory
-      lineinfile:
+      ansible.builtin.lineinfile:
         dest: /etc/sysctl.conf
         state: present
         regexp: '^vm.max_map_count'
         line: 'vm.max_map_count=262144'
     - name: Reboot VM
-      reboot:
+      ansible.builtin.reboot:
 
 - name: Get Sonarqube installed
   hosts: sonarqube
-  vars: 
+  #become: true
+  vars:
     ansible_user: "{{ sonarqube_db_user }}"
   tasks:
     - name: Get distrib ZIP
-      get_url:
+      become: true
+      ansible.builtin.get_url:
         url: "{{ sonar_download_url }}"
         dest: "/tmp/{{ sonar_version_directory }}.zip"
         validate_certs: false
+        # mode: "0755"
 
     - name: Unzip Sonar
       become: true
-      unarchive:
+      ansible.builtin.unarchive:
         src: "/tmp/{{ sonar_version_directory }}.zip"
         dest: /usr/local/
         copy: false
@@ -159,15 +163,16 @@
 
     - name: Move Sonar into place.
       become: true
-      copy:
+      ansible.builtin.copy:
         src: /usr/local/{{ sonar_version_directory }}/
         dest: /usr/local/sonar/
         owner: "{{ sonarqube_db_user }}"
         group: "{{ sonarqube_db_user }}"
         remote_src: true
+        # mode: "0600"
 
     - name: Configure SonarQube JDBC settings for PostgreSQL.
-      lineinfile:
+      ansible.builtin.lineinfile:
         dest: /usr/local/sonar/conf/sonar.properties
         regexp: "{{ item.regexp }}"
         line: "{{ item.line }}"
@@ -180,16 +185,16 @@
           line: "sonar.jdbc.url=jdbc:postgresql://localhost:{{ sonar_db_port }}/{{ sonarqube_db_name }}?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance"
         - regexp: "^sonar.web.context"
           line: "sonar.web.context={{ sonar_web_context }}"
-    
+
     - name: Generate wrapper.conf
-      template:
+      ansible.builtin.template:
         src: wrapper.conf.j2
         dest: /usr/local/sonar/conf/wrapper.conf
-        mode: 0644
+        mode: "0644"
 
     - name: Symlink sonar bin.
       become: true
-      file:
+      ansible.builtin.file:
         src: /usr/local/sonar/bin/linux-x86-64/sonar.sh
         dest: /usr/bin/sonar
         state: link
@@ -197,56 +202,87 @@
 
     - name: Copy SonarQube systemd unit file into place (for systemd systems).
       become: true
-      template:
+      ansible.builtin.template:
         src: sonar.unit.j2
         dest: /etc/systemd/system/sonar.service
         owner: root
         group: root
-        mode: 0755
+        mode: "0755"
 
     - name: Ensure Sonar is running and set to start on boot.
       become: true
-      service:
+      ansible.builtin.service:
         name: sonar
         state: restarted
         enabled: true
 
     - name: Allow Sonar time to build on first start.
+      become: true
       pause:
         seconds: 180
       when: sonar_symlink.changed
       tags: ['skip_ansible_lint']
 
     - name: Make sure Sonar is responding on the configured port.
-      wait_for:
+      become: true
+      ansible.builtin.wait_for:
         port: 9000
         delay: 3
         timeout: 300
+
 - name: Get Nexus installed
   hosts: nexus
-  pre_tasks:
+  become: true
+  tasks:
     - name: Create Nexus group
-      become: true
-      group:
+      ansible.builtin.group:
         name: "{{ nexus_user_group }}"
         state: present
     - name: Create Nexus user
-      become: true
-      user:
+      ansible.builtin.user:
         name: "{{ nexus_user_name }}"
+        group: "{{ nexus_user_group }}"
     - name: Install JDK
-      become: true
-      package:
+      ansible.builtin.package:
         name: [java-1.8.0-openjdk, java-1.8.0-openjdk-devel]
         state: present
+    - name: "Set up ssh key to access for managed node"
+      ansible.posix.authorized_key:
+        user: "{{ nexus_user_name }}"
+        state: present
+        key: "{{ lookup('file', 'id_rsa.pub') }}"
+    - name: "Allow group to have passwordless sudo"
+      ansible.builtin.lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%{{ nexus_user_name }}'
+        line: '%{{ nexus_user_name }} ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+    - name: Increase Virtual Memory
+      ansible.builtin.lineinfile:
+        dest: /etc/sysctl.conf
+        state: present
+        regexp: '^vm.max_map_count'
+        line: 'vm.max_map_count=262144'
+    - name: Reboot VM
+      ansible.builtin.reboot:
+
+- name: Get Nexus installed
+  hosts: nexus
+  become: true
+  # become_user: "{{ nexus_user_name }}"
+  # vars:
+  #   ansible_user: "{{ nexus_user_name }}"
   tasks:
     - name: Create Nexus directories
       become: true
-      file:
+      become_user: "{{ nexus_user_name }}"
+      ansible.builtin.file:
         group: "{{ nexus_user_group }}"
         owner: "{{ nexus_user_name }}"
         path: "{{ item }}"
         state: directory
+        # mode: "0777"
       with_items:
         - "{{ nexus_directory_log }}"
         - "{{ nexus_directory_data }}"
@@ -257,126 +293,266 @@
     - name: Download Nexus
       become: true
       become_user: "{{ nexus_user_name }}"
-      get_url:
+      ansible.builtin.get_url:
         dest: "{{ nexus_directory_package }}/nexus-{{ nexus_version }}.tar.gz"
         url: "{{ nexus_download_url }}/nexus-{{ nexus_version }}-unix.tar.gz"
         validate_certs: false
+        # mode: "0777"
 
     - name: Unpack Nexus
       become: true
       become_user: "{{ nexus_user_name }}"
       unarchive:
-        copy: no
+        copy: false
         creates: "{{ nexus_directory_package }}/nexus-{{ nexus_version }}"
         dest: "{{ nexus_directory_package }}"
         src: "{{ nexus_directory_package }}/nexus-{{ nexus_version }}.tar.gz"
+        # mode: "0777"
 
     - name: Link to Nexus Directory
       become: true
       become_user: "{{ nexus_user_name }}"
-      file:
+      ansible.builtin.file:
         dest: "{{ nexus_directory_home }}"
         src: "{{ nexus_directory_package }}/nexus-{{ nexus_version }}"
         state: link
+        # mode: "0777"
 
-    - name: Add NEXUS_HOME for Nexus user
+    - name: NEXUS| make nexus runned by "nexus" user
       become: true
       become_user: "{{ nexus_user_name }}"
-      lineinfile:
-        create: yes
-        dest: "/home/{{ nexus_user_name }}/.bashrc"
-        insertafter: EOF
-        line: "export NEXUS_HOME={{ nexus_directory_home }}"
+      ansible.builtin.lineinfile:
+        dest: "{{ nexus_directory_home }}/bin/nexus"
+        regexp: regexp="#RUN_AS_USER="
+        line: "RUN_AS_USER={{ nexus_user_name }}"
+        backrefs: true
+        # mode: "0777"
 
-    - name: Add run_as_user to Nexus.rc
+    - name: NEXUS| set NEXUS_HOME
       become: true
       become_user: "{{ nexus_user_name }}"
-      lineinfile:
-        create: yes
-        dest: "{{ nexus_directory_home }}/bin/nexus.rc"
-        insertafter: EOF
-        line: "run_as_user=\"{{ nexus_user_name }}\""
-        regexp: "^run_as_user"
+      ansible.builtin.lineinfile:
+        dest: "{{ nexus_directory_home }}/bin/nexus"
+        regexp: "^NEXUS_HOME"
+        line: "NEXUS_HOME={{ nexus_directory_home }}"
+        backrefs: true
+        # mode: "0777"
 
-    - name: Raise nofile limit for Nexus user
+    - name: NEXUS| create nexus piddir
       become: true
-      pam_limits:
-        domain: "{{ nexus_user_name }}"
-        limit_type: "-"
-        limit_item: nofile
-        value: "{{ nexus_ulimit }}"
+      ansible.builtin.file:
+        path: "/usr/local/nexus"
+        group: "{{ nexus_user_group }}"
+        owner: "{{ nexus_user_name }}"
+        state: directory
+        # mode: "0777"
 
-    - name: Create Nexus service for SystemD
-      become: true
-      template:
-        dest: /lib/systemd/system/nexus.service
-        mode: 0644
-        src: nexus.systemd.j2
-
-    - name: Ensure Nexus service is enabled for SystemD
-      become: true
-      systemd:
-        daemon_reload: yes
-        enabled: yes
-        name: nexus
-      when:
-        - nexus_service_enabled
-
-    - name: Create Nexus vmoptions
+    - name: NEXUS| set nexus pidir
       become: true
       become_user: "{{ nexus_user_name }}"
-      template:
-        dest: "{{ nexus_directory_home }}/bin/nexus.vmoptions"
-        src: nexus.vmoptions.j2
-      register: nexus_config_changed
+      ansible.builtin.lineinfile:
+        dest: "{{ nexus_directory_home }}/bin/nexus"
+        regexp: "^#PIDDIR="
+        line: "PIDDIR=/usr/local/nexus"
+        backrefs: true
+        # mode: "0777"
 
     - name: Create Nexus properties
       become: true
       become_user: "{{ nexus_user_name }}"
-      template:
+      ansible.builtin.template:
         dest: "{{ nexus_directory_data }}/etc/nexus.properties"
         src: nexus.properties.j2
+        # mode: "0777"
       register: nexus_config_changed
 
-    - name: Lower Nexus disk space threshold
+    - name: Create Nexus vmoptions
       become: true
       become_user: "{{ nexus_user_name }}"
-      lineinfile:
-        backrefs: yes
-        dest: "{{ nexus_directory_home }}/etc/karaf/system.properties"
-        insertafter: EOF
-        line: "storage.diskCache.diskFreeSpaceLimit={{ nexus_configuration_disk_free_space_limit }}"
-        regexp: ^storage\.diskCache\.diskFreeSpaceLimit
-      when: nexus_configuration_disk_free_space_limit is not none
+      ansible.builtin.template:
+        dest: "{{ nexus_directory_home }}/bin/nexus.vmoptions"
+        src: nexus.vmoptions.j2
+        # mode: "0777"
       register: nexus_config_changed
 
-    - name: Start Nexus service if enabled
+    - name: NEXUS| create symbolic links to /usr/bin/nexus
       become: true
-      service:
-        enabled: yes
+      ansible.builtin.file:
+        src: "{{ nexus_directory_home }}/bin/nexus"
+        dest: "/usr/bin/nexus"
+        state: link
+
+    - name: NEXUS| create Nexus service for SystemD
+      become: true
+      ansible.builtin.template:
+        src: nexus.systemd.j2
+        dest: /etc/systemd/system/nexus.service
+        owner: root
+        group: root
+        mode: "0755"
+
+    - name: NEXUS| start Nexus service if enabled
+      become: true
+      ansible.builtin.systemd_service:
+        enabled: true
         name: nexus
         state: started
-      when:
-        - nexus_service_start_on_boot
-        - not nexus_config_changed.changed
-      tags:
-        - skip_ansible_lint
 
-    - name: Ensure Nexus service is restarted
-      become: true
-      service:
-        name: nexus
-        state: restarted
-      when:
-        - nexus_service_start_on_boot
-        - nexus_config_changed.changed
-      tags:
-        - skip_ansible_lint
 
-    - name: Wait for Nexus port if started
-      wait_for:
-        port: "{{ nexus_port }}"
-        state: started
-        timeout: "{{ nexus_port_check_timeout }}"
-      when:
-        - nexus_service_start_on_boot
+# - name: NEXUS| start service
+#   hosts: nexus
+#   become: true
+#   #become_user: "{{ nexus_user_name }}"
+#   # vars:
+#   #   ansible_user: "{{ nexus_user_name }}"
+#   tasks:
+    # - name: NEXUS| add run_as_user to Nexus.rc
+    #   ansible.builtin.lineinfile:
+    #     create: true
+    #     dest: "{{ nexus_directory_home }}/bin/nexus.rc"
+    #     insertafter: EOF
+    #     line: "run_as_user=\"{{ nexus_user_name }}\""
+    #     regexp: "^run_as_user"
+
+    # - name: Create Nexus directories
+    #   # become: true
+    #   ansible.builtin.file:
+    #     path: "/etc/init.d"
+    #     state: directory
+    #     # group: "root"
+    #     # owner: "root"
+    #     mode: "0777"
+
+    # - name: NEXUS| ensure Nexus service is enabled for SystemD
+    #   ansible.builtin.systemd:
+    #     name: nexus
+    #     daemon_reload: true
+    #     enabled: true
+
+    # #########################################################
+    # - name: NEXUS| create symbolic links to /etc/init.d/nexus
+    #   # become: true
+    #   ansible.builtin.file:
+    #     src: "{{ nexus_directory_home }}/bin/nexus"
+    #     dest: "/etc/init.d/nexus"
+    #     state: link
+
+    # - name: NEXUS| configure runlevel links for nexus
+    #   ansible.builtin.command: update-rc.d nexus defaults
+
+    # - name: NEXUS| set nexus working directory
+    #   ansible.builtin.lineinfile:
+    #     dest: "{{ nexus_directory_home }}/conf/nexus.properties"
+    #     regexp: "^nexus-work="
+    #     line: "nexus-work=${bundleBasedir}/work/nexus"
+
+    # - name: NEXUS| start nexus
+    #   ansible.builtin.service:
+    #     name: nexus
+    #     state: started
+    #     pattern: "{{ nexus_directory_home }}"
+    # #########################################################
+
+
+    # - name: Add NEXUS_HOME for Nexus user
+    #   become: true
+    #   ansible.builtin.lineinfile:
+    #     create: true
+    #     dest: "/home/{{ nexus_user_name }}/.bashrc"
+    #     insertafter: EOF
+    #     line: "export NEXUS_HOME={{ nexus_directory_home }}"
+
+    # - name: Add run_as_user to Nexus.rc
+    #   become: true
+    #   ansible.builtin.lineinfile:
+    #     create: true
+    #     dest: "{{ nexus_directory_home }}/bin/nexus.rc"
+    #     insertafter: EOF
+    #     line: "run_as_user=\"{{ nexus_user_name }}\""
+    #     regexp: "^run_as_user"
+
+    # - name: Create Nexus vmoptions
+    #   become: true
+    #   ansible.builtin.template:
+    #     dest: "{{ nexus_directory_home }}/bin/nexus.vmoptions"
+    #     src: nexus.vmoptions.j2
+    #   register: nexus_config_changed
+
+    # - name: Create Nexus properties
+    #   become: true
+    #   ansible.builtin.template:
+    #     dest: "{{ nexus_directory_data }}/etc/nexus.properties"
+    #     src: nexus.properties.j2
+    #   register: nexus_config_changed
+
+    # - name: Create Nexus service for SystemD
+    #   become: true
+    #   ansible.builtin.template:
+    #     src: nexus.systemd.j2
+    #     dest: /lib/systemd/system/nexus.service
+    #     # mode: "0644"
+    #     # owner: root
+    #     # group: root
+    #     # mode: "0755"
+
+    # - name: Ensure Nexus service is enabled for SystemD
+    #   become: true
+    #   ansible.builtin.systemd:
+    #     daemon_reload: true
+    #     enabled: true
+    #     name: nexus
+    # #   when:
+    # #     - nexus_service_enabled
+
+    # - name: Lower Nexus disk space threshold
+    #   become: true
+    #   ansible.builtin.lineinfile:
+    #     backrefs: true
+    #     dest: "{{ nexus_directory_home }}/etc/karaf/system.properties"
+    #     insertafter: EOF
+    #     line: "storage.diskCache.diskFreeSpaceLimit={{ nexus_configuration_disk_free_space_limit }}"
+    #     regexp: ^storage\.diskCache\.diskFreeSpaceLimit
+    #   when: nexus_configuration_disk_free_space_limit is not none
+    #   register: nexus_config_changed
+
+    # - name: Ensure Nexus service is enabled for SystemD
+    #   become: true
+    #   ansible.builtin.systemd:
+    #     daemon_reload: true
+    #     enabled: true
+    #     name: nexus
+    # #   when:
+    # #     - nexus_service_enabled
+
+    # - name: Start Nexus service if enabled
+    #   become: true
+    #   ansible.builtin.service:
+    #     enabled: true
+    #     name: nexus
+    #     state: started
+    #   when:
+    #    - nexus_service_start_on_boot
+    #    - not nexus_config_changed.changed
+    #   tags:
+    #     - skip_ansible_lint
+
+    # - name: Ensure Nexus service is restarted
+    #   become: true
+    #   ansible.builtin.service:
+    #     name: nexus
+    #     state: started
+    #     enabled: true
+    #   # when:
+    #   #  - nexus_service_start_on_boot
+    #   #  - nexus_config_changed.changed
+    #   # tags:
+    #   #   - skip_ansible_lint
+
+    # - name: Wait for Nexus port if started
+    #   become: true
+    #   ansible.builtin.wait_for:
+    #     port: "{{ nexus_port }}"
+    #     state: started
+    #     timeout: "{{ nexus_port_check_timeout }}"
+    #   # when:
+    #   #   - nexus_service_start_on_boot

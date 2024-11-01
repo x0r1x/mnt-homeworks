@@ -4,8 +4,6 @@ After=network.target network-online.target
 Wants=network-online.target
 
 [Service]
-LimitNOFILE=131072
-LimitNPROC=8192
 User={{ sonarqube_db_user }}
 Group={{ sonarqube_db_user }}
 ExecStart=/usr/bin/sonar start
