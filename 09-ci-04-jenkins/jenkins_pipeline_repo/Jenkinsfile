@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Get project') {
             steps {
-                sh 'rm -r ./ansible-vector'
+                sh 'rm -rf ./ansible-vector'
                 sh 'git clone https://github.com/x0r1x/ansible-vector.git && cd ansible-vector'
             }
         }
