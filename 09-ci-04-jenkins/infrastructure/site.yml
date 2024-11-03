@@ -63,6 +63,7 @@
         state: restarted
         enabled: true
       when: jenkins_installed is changed
+
 - name: Prepare jenkins agent
   hosts: jenkins_agents
   become: true
@@ -92,6 +93,7 @@
         name:
           - git
           - python3
+          - pip
           - docker-ce
           - docker-ce-cli
           - containerd.io

@@ -1,0 +1,54 @@
+Started by user ALEKSEI KASHIN
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on agent in /opt/jenkins_agent/workspace/scripted_job
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Git checkout)
+[Pipeline] sh
++ rm -rf ./example-playbook
+[Pipeline] sh
++ git clone https://github.com/aragastmatb/example-playbook.git
+Cloning into 'example-playbook'...
++ cd example-playbook
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Sample define secret_check)
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run playbook)
+[Pipeline] sh
++ cd example-playbook/
++ ansible-playbook site.yml -i inventory/prod.yml
+
+PLAY [Install Java] ************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [java : Upload .tar.gz file containing binaries from local storage] *******
+skipping: [localhost]
+
+TASK [java : Upload .tar.gz file conaining binaries from remote storage] *******
+changed: [localhost]
+
+TASK [java : Ensure installation dir exists] ***********************************
+changed: [localhost]
+
+TASK [java : Extract java in the installation directory] ***********************
+changed: [localhost]
+
+TASK [java : Export environment variables] *************************************
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=5    changed=4    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

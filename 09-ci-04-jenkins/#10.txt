@@ -1,0 +1,494 @@
+Started by user ALEKSEI KASHIN
+Running as SYSTEM
+Building remotely on agent (centos) in workspace /opt/jenkins_agent/workspace/free_job
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+[free_job] $ /bin/sh -xe /tmp/jenkins1858859928410480827.sh
++ git clone https://github.com/x0r1x/ansible-vector.git
+Cloning into 'ansible-vector'...
++ cd ansible-vector
+[free_job] $ /bin/sh -xe /tmp/jenkins16808822836751488142.sh
++ whoami
+root
+[free_job] $ /bin/sh -xe /tmp/jenkins12561941746142954644.sh
++ cd ansible-vector/
++ sudo python -m molecule test
+[31mWARNING [0m Driver docker does not provide a schema.
+[34mINFO    [0m default scenario test matrix: dependency, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
+[34mINFO    [0m Performing prerun with [33mrole_name_check[0m=[1;36m0[0m[33m...[0m
+[31mWARNING [0m Another version of [32m'ansible.posix'[0m [1;36m1.5[0m.[1;36m4[0m was found installed in [35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.6[0m.[1;36m2[0m [1m([0m[35m/root/.ansible/collections/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.docker'[0m [1;36m3.4[0m.[1;36m7[0m was found installed in [35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m4.0[0m.[1;36m0[0m [1m([0m[35m/root/.ansible/collections/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'amazon.aws'[0m [1;36m1.4[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m5.5[0m.[1;36m1[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'ansible.netcommon'[0m [1;36m1.5[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m4.1[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'ansible.posix'[0m [1;36m1.1[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.6[0m.[1;36m2[0m [1m([0m[35m/root/.ansible/collections/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'ansible.windows'[0m [1;36m1.4[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.14[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'arista.eos'[0m [1;36m1.3[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m6.0[0m.[1;36m1[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'awx.awx'[0m [1;36m14.1[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m21.14[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'azure.azcollection'[0m [1;36m1.4[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.16[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'check_point.mgmt'[0m [1;36m1.0[0m.[1;36m6[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m4.0[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'chocolatey.chocolatey'[0m [1;36m1.0[0m.[1;36m2[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.4[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cisco.aci'[0m [1;36m1.1[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.6[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cisco.asa'[0m [1;36m1.0[0m.[1;36m4[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m4.0[0m.[1;36m1[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cisco.intersight'[0m [1;36m1.0[0m.[1;36m10[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.0[0m.[1;36m27[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cisco.ios'[0m [1;36m1.3[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m4.6[0m.[1;36m1[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cisco.iosxr'[0m [1;36m1.2[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m4.1[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cisco.meraki'[0m [1;36m2.2[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.15[0m.[1;36m1[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cisco.mso'[0m [1;36m1.1[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.4[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cisco.nso'[0m [1;36m1.0[0m.[1;36m3[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.0[0m.[1;36m3[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cisco.nxos'[0m [1;36m1.4[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m4.4[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cisco.ucs'[0m [1;36m1.6[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.8[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cloudscale_ch.cloud'[0m [1;36m1.3[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.3[0m.[1;36m1[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.aws'[0m [1;36m1.3[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m5.5[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.azure'[0m [1;36m1.0[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.0[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.crypto'[0m [1;36m1.4[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.14[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.digitalocean'[0m [1;36m1.0[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.23[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.docker'[0m [1;36m1.2[0m.[1;36m2[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m4.0[0m.[1;36m0[0m [1m([0m[35m/root/.ansible/collections/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.fortios'[0m [1;36m1.0[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.0[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.general'[0m [1;36m1.3[0m.[1;36m6[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m6.6[0m.[1;36m2[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.google'[0m [1;36m1.0[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.0[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.grafana'[0m [1;36m1.1[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.5[0m.[1;36m4[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.hashi_vault'[0m [1;36m1.1[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m4.2[0m.[1;36m1[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.hrobot'[0m [1;36m1.1[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.8[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.libvirt'[0m [1;36m1.0[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.2[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.mongodb'[0m [1;36m1.2[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.6[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.mysql'[0m [1;36m1.2[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m3.7[0m.[1;36m2[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.network'[0m [1;36m1.3[0m.[1;36m2[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m5.0[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.okd'[0m [1;36m1.0[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.3[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.postgresql'[0m [1;36m1.1[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.4[0m.[1;36m2[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.proxysql'[0m [1;36m1.0[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.5[0m.[1;36m1[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.rabbitmq'[0m [1;36m1.0[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.2[0m.[1;36m3[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.routeros'[0m [1;36m1.1[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.8[0m.[1;36m2[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.skydive'[0m [1;36m1.0[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.0[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.vmware'[0m [1;36m1.7[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m3.7[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.windows'[0m [1;36m1.3[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.13[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'community.zabbix'[0m [1;36m1.2[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.9[0m.[1;36m3[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'containers.podman'[0m [1;36m1.4[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.10[0m.[1;36m2[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cyberark.conjur'[0m [1;36m1.1[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.2[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'cyberark.pas'[0m [1;36m1.0[0m.[1;36m5[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.0[0m.[1;36m19[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'dellemc.os10'[0m [1;36m1.0[0m.[1;36m2[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.1[0m.[1;36m1[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'dellemc.os6'[0m [1;36m1.0[0m.[1;36m6[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.0[0m.[1;36m7[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'dellemc.os9'[0m [1;36m1.0[0m.[1;36m3[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.0[0m.[1;36m4[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'f5networks.f5_modules'[0m [1;36m1.7[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.25[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'fortinet.fortimanager'[0m [1;36m1.0[0m.[1;36m5[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.2[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'fortinet.fortios'[0m [1;36m1.1[0m.[1;36m8[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.3[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'frr.frr'[0m [1;36m1.0[0m.[1;36m3[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.0[0m.[1;36m2[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'gluster.gluster'[0m [1;36m1.0[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.0[0m.[1;36m2[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'google.cloud'[0m [1;36m1.0[0m.[1;36m2[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.1[0m.[1;36m3[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'hetzner.hcloud'[0m [1;36m1.2[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.11[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'ibm.qradar'[0m [1;36m1.0[0m.[1;36m3[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.1[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'infinidat.infinibox'[0m [1;36m1.2[0m.[1;36m4[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.3[0m.[1;36m12[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'junipernetworks.junos'[0m [1;36m1.3[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m4.1[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'mellanox.onyx'[0m [1;36m1.0[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.0[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'netapp.aws'[0m [1;36m20.9[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m21.7[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'netapp.elementsw'[0m [1;36m20.11[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m21.7[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'netapp.ontap'[0m [1;36m20.12[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m22.7[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'netapp_eseries.santricity'[0m [1;36m1.1[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.4[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'netbox.netbox'[0m [1;36m1.2[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m3.13[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'ngine_io.cloudstack'[0m [1;36m1.2[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.3[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'ngine_io.exoscale'[0m [1;36m1.0[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.0[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'ngine_io.vultr'[0m [1;36m1.1[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.1[0m.[1;36m3[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'openstack.cloud'[0m [1;36m1.2[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.10[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'openvswitch.openvswitch'[0m [1;36m1.1[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.1[0m.[1;36m1[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'ovirt.ovirt'[0m [1;36m1.3[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.4[0m.[1;36m1[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'purestorage.flasharray'[0m [1;36m1.6[0m.[1;36m2[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.19[0m.[1;36m1[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'purestorage.flashblade'[0m [1;36m1.4[0m.[1;36m0[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.11[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'splunk.es'[0m [1;36m1.0[0m.[1;36m2[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m2.1[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'theforeman.foreman'[0m [1;36m1.5[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m3.11[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'vyos.vyos'[0m [1;36m1.1[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m4.1[0m.[1;36m0[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[31mWARNING [0m Another version of [32m'wti.remote'[0m [1;36m1.0[0m.[1;36m1[0m was found installed in [35m/usr/local/lib/python3.9/site-packages/[0m[95mansible_collections[0m, only the first one will be used, [1;36m1.0[0m.[1;36m5[0m [1m([0m[35m/usr/lib/python3.9/site-packages/[0m[95mansible_collections[0m[1m)[0m.
+[34mINFO    [0m [2;36mRunning [0m[2;32mdefault[0m[2;36m > [0m[2;32mdependency[0m
+[31mWARNING [0m Skipping, missing the requirements file.
+[31mWARNING [0m Skipping, missing the requirements file.
+[34mINFO    [0m [2;36mRunning [0m[2;32mdefault[0m[2;36m > [0m[2;32mcleanup[0m
+[31mWARNING [0m Skipping, cleanup playbook not configured.
+[34mINFO    [0m [2;36mRunning [0m[2;32mdefault[0m[2;36m > [0m[2;32mdestroy[0m
+[34mINFO    [0m Sanity checks: [32m'docker'[0m
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+[32mok: [localhost][0m
+
+TASK [Destroy molecule instance(s)] ********************************************
+[33mchanged: [localhost] => (item=ubuntu)[0m
+[33mchanged: [localhost] => (item=debian)[0m
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+[32mok: [localhost] => (item=ubuntu)[0m
+[32mok: [localhost] => (item=debian)[0m
+
+TASK [Delete docker networks(s)] ***********************************************
+[36mskipping: [localhost][0m
+
+PLAY RECAP *********************************************************************
+[33mlocalhost[0m                  : [32mok=3   [0m [33mchanged=1   [0m unreachable=0    failed=0    [36mskipped=1   [0m rescued=0    ignored=0
+
+[34mINFO    [0m [2;36mRunning [0m[2;32mdefault[0m[2;36m > [0m[2;32msyntax[0m
+
+playbook: /opt/jenkins_agent/workspace/free_job/ansible-vector/molecule/default/converge.yml
+[34mINFO    [0m [2;36mRunning [0m[2;32mdefault[0m[2;36m > [0m[2;32mcreate[0m
+
+PLAY [Create] ******************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+[32mok: [localhost][0m
+
+TASK [Log into a Docker registry] **********************************************
+[36mskipping: [localhost] => (item=None) [0m
+[36mskipping: [localhost] => (item=None) [0m
+[36mskipping: [localhost][0m
+
+TASK [Check presence of custom Dockerfiles] ************************************
+[32mok: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})[0m
+[32mok: [localhost] => (item={'image': 'docker.io/debian:latest', 'name': 'debian', 'pre_build_image': False})[0m
+
+TASK [Create Dockerfiles from image names] *************************************
+[33mchanged: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})[0m
+[33mchanged: [localhost] => (item={'image': 'docker.io/debian:latest', 'name': 'debian', 'pre_build_image': False})[0m
+
+TASK [Synchronization the context] *********************************************
+[33mchanged: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})[0m
+[32mok: [localhost] => (item={'image': 'docker.io/debian:latest', 'name': 'debian', 'pre_build_image': False})[0m
+
+TASK [Discover local Docker images] ********************************************
+[32mok: [localhost] => (item={'diff': [], 'dest': '/root/.cache/molecule/ansible-vector/default/Dockerfile_docker_io_ubuntu_latest', 'src': '/root/.ansible/tmp/ansible-tmp-1730571869.1799586-49313-76774079245019/source', 'md5sum': '7b8a9f3844e2871e8b2fa596ecf5f48e', 'checksum': '5c641cd1a8bd8a08b33684855b04a1e62b76770a', 'changed': True, 'uid': 0, 'gid': 0, 'owner': 'root', 'group': 'root', 'mode': '0600', 'state': 'file', 'secontext': 'system_u:object_r:cache_home_t:s0', 'size': 1088, 'invocation': {'module_args': {'src': '/root/.ansible/tmp/ansible-tmp-1730571869.1799586-49313-76774079245019/source', 'dest': '/root/.cache/molecule/ansible-vector/default/Dockerfile_docker_io_ubuntu_latest', 'mode': '0600', 'follow': False, '_original_basename': 'Dockerfile.j2', 'checksum': '5c641cd1a8bd8a08b33684855b04a1e62b76770a', 'backup': False, 'force': True, 'unsafe_writes': False, 'content': None, 'validate': None, 'directory_mode': None, 'remote_src': None, 'local_follow': None, 'owner': None, 'group': None, 'seuser': None, 'serole': None, 'selevel': None, 'setype': None, 'attributes': None}}, 'failed': False, 'item': {'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False}, 'ansible_loop_var': 'item', 'i': 0, 'ansible_index_var': 'i'})[0m
+[32mok: [localhost] => (item={'diff': [], 'dest': '/root/.cache/molecule/ansible-vector/default/Dockerfile_docker_io_debian_latest', 'src': '/root/.ansible/tmp/ansible-tmp-1730571872.2546864-49313-201815083590704/source', 'md5sum': 'cf2a48909c7de4b362ac3552de01abee', 'checksum': 'c71df394a31a1ee08c285898d79d0ac7827d5915', 'changed': True, 'uid': 0, 'gid': 0, 'owner': 'root', 'group': 'root', 'mode': '0600', 'state': 'file', 'secontext': 'system_u:object_r:cache_home_t:s0', 'size': 1088, 'invocation': {'module_args': {'src': '/root/.ansible/tmp/ansible-tmp-1730571872.2546864-49313-201815083590704/source', 'dest': '/root/.cache/molecule/ansible-vector/default/Dockerfile_docker_io_debian_latest', 'mode': '0600', 'follow': False, '_original_basename': 'Dockerfile.j2', 'checksum': 'c71df394a31a1ee08c285898d79d0ac7827d5915', 'backup': False, 'force': True, 'unsafe_writes': False, 'content': None, 'validate': None, 'directory_mode': None, 'remote_src': None, 'local_follow': None, 'owner': None, 'group': None, 'seuser': None, 'serole': None, 'selevel': None, 'setype': None, 'attributes': None}}, 'failed': False, 'item': {'image': 'docker.io/debian:latest', 'name': 'debian', 'pre_build_image': False}, 'ansible_loop_var': 'item', 'i': 1, 'ansible_index_var': 'i'})[0m
+
+TASK [Create docker network(s)] ************************************************
+[36mskipping: [localhost][0m
+
+TASK [Build an Ansible compatible image (new)] *********************************
+[32mok: [localhost] => (item=molecule_local/docker.io/ubuntu:latest)[0m
+[32mok: [localhost] => (item=molecule_local/docker.io/debian:latest)[0m
+
+TASK [Determine the CMD directives] ********************************************
+[32mok: [localhost] => (item={'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False})[0m
+[32mok: [localhost] => (item={'image': 'docker.io/debian:latest', 'name': 'debian', 'pre_build_image': False})[0m
+
+TASK [Create molecule instance(s)] *********************************************
+[33mchanged: [localhost] => (item=ubuntu)[0m
+[33mchanged: [localhost] => (item=debian)[0m
+
+TASK [Wait for instance(s) creation to complete] *******************************
+[33mchanged: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j744226169407.49514', 'results_file': '/root/.ansible_async/j744226169407.49514', 'changed': True, 'item': {'image': 'docker.io/ubuntu:latest', 'name': 'ubuntu', 'pre_build_image': False}, 'ansible_loop_var': 'item'})[0m
+[33mchanged: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j169159898115.49534', 'results_file': '/root/.ansible_async/j169159898115.49534', 'changed': True, 'item': {'image': 'docker.io/debian:latest', 'name': 'debian', 'pre_build_image': False}, 'ansible_loop_var': 'item'})[0m
+
+PLAY RECAP *********************************************************************
+[33mlocalhost[0m                  : [32mok=9   [0m [33mchanged=4   [0m unreachable=0    failed=0    [36mskipped=2   [0m rescued=0    ignored=0
+
+[34mINFO    [0m [2;36mRunning [0m[2;32mdefault[0m[2;36m > [0m[2;32mprepare[0m
+[31mWARNING [0m Skipping, prepare playbook not configured.
+[34mINFO    [0m [2;36mRunning [0m[2;32mdefault[0m[2;36m > [0m[2;32mconverge[0m
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+[32mok: [debian][0m
+[32mok: [ubuntu][0m
+
+TASK [Update and upgrade apt packages] *****************************************
+[32mok: [debian][0m
+[33mchanged: [ubuntu][0m
+
+TASK [Add packages] ************************************************************
+[33mchanged: [debian][0m
+[33mchanged: [ubuntu][0m
+
+TASK [Inclide Vector] **********************************************************
+
+TASK [ansible-vector : Include OS Family Specific Variables] *******************
+[32mok: [debian][0m
+[32mok: [ubuntu][0m
+
+TASK [ansible-vector : Install Vector] *****************************************
+[36mincluded: /opt/jenkins_agent/workspace/free_job/ansible-vector/tasks/install/apt.yml for debian, ubuntu[0m
+
+TASK [ansible-vector : Add Vector repository] **********************************
+[33mchanged: [ubuntu][0m
+[33mchanged: [debian][0m
+
+TASK [ansible-vector : Add Vector gpg key] *************************************
+[33mchanged: [ubuntu][0m
+[33mchanged: [debian][0m
+
+TASK [ansible-vector : Update cache] *******************************************
+[33mchanged: [debian][0m
+[33mchanged: [ubuntu][0m
+
+TASK [ansible-vector : Install Vector] *****************************************
+[33mchanged: [debian] => (item=vector)[0m
+[33mchanged: [ubuntu] => (item=vector)[0m
+
+TASK [ansible-vector : Configure Vector service] *******************************
+[36mincluded: /opt/jenkins_agent/workspace/free_job/ansible-vector/tasks/configure/vector_service.yml for ubuntu, debian[0m
+
+TASK [ansible-vector : Config Vector] ******************************************
+[33mchanged: [ubuntu][0m
+[33mchanged: [debian][0m
+
+TASK [ansible-vector : Config Vector as service] *******************************
+[33mchanged: [debian][0m
+[33mchanged: [ubuntu][0m
+
+TASK [ansible-vector : Flush Vector handlers] **********************************
+
+TASK [ansible-vector : Flush Vector handlers] **********************************
+
+RUNNING HANDLER [ansible-vector : Start vector service] ************************
+[33mchanged: [debian][0m
+[33mchanged: [ubuntu][0m
+
+PLAY RECAP *********************************************************************
+[33mdebian[0m                     : [32mok=13  [0m [33mchanged=8   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+[33mubuntu[0m                     : [32mok=13  [0m [33mchanged=9   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+[34mINFO    [0m [2;36mRunning [0m[2;32mdefault[0m[2;36m > [0m[2;32midempotence[0m
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+[32mok: [debian][0m
+[32mok: [ubuntu][0m
+
+TASK [Update and upgrade apt packages] *****************************************
+[32mok: [debian][0m
+[32mok: [ubuntu][0m
+
+TASK [Add packages] ************************************************************
+[32mok: [debian][0m
+[32mok: [ubuntu][0m
+
+TASK [Inclide Vector] **********************************************************
+
+TASK [ansible-vector : Include OS Family Specific Variables] *******************
+[32mok: [debian][0m
+[32mok: [ubuntu][0m
+
+TASK [ansible-vector : Install Vector] *****************************************
+[36mincluded: /opt/jenkins_agent/workspace/free_job/ansible-vector/tasks/install/apt.yml for debian, ubuntu[0m
+
+TASK [ansible-vector : Add Vector repository] **********************************
+[32mok: [ubuntu][0m
+[32mok: [debian][0m
+
+TASK [ansible-vector : Add Vector gpg key] *************************************
+[32mok: [ubuntu][0m
+[32mok: [debian][0m
+
+TASK [ansible-vector : Update cache] *******************************************
+[32mok: [debian][0m
+[32mok: [ubuntu][0m
+
+TASK [ansible-vector : Install Vector] *****************************************
+[32mok: [debian] => (item=vector)[0m
+[32mok: [ubuntu] => (item=vector)[0m
+
+TASK [ansible-vector : Configure Vector service] *******************************
+[36mincluded: /opt/jenkins_agent/workspace/free_job/ansible-vector/tasks/configure/vector_service.yml for debian, ubuntu[0m
+
+TASK [ansible-vector : Config Vector] ******************************************
+[32mok: [ubuntu][0m
+[32mok: [debian][0m
+
+TASK [ansible-vector : Config Vector as service] *******************************
+[32mok: [debian][0m
+[32mok: [ubuntu][0m
+
+TASK [ansible-vector : Flush Vector handlers] **********************************
+
+TASK [ansible-vector : Flush Vector handlers] **********************************
+
+PLAY RECAP *********************************************************************
+[32mdebian[0m                     : [32mok=12  [0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+[32mubuntu[0m                     : [32mok=12  [0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+[34mINFO    [0m Idempotence completed successfully.
+[34mINFO    [0m [2;36mRunning [0m[2;32mdefault[0m[2;36m > [0m[2;32mside_effect[0m
+[31mWARNING [0m Skipping, side effect playbook not configured.
+[34mINFO    [0m [2;36mRunning [0m[2;32mdefault[0m[2;36m > [0m[2;32mverify[0m
+[34mINFO    [0m Running Ansible Verifier
+
+PLAY [Verify] ******************************************************************
+
+TASK [Gather Installed Packages] ***********************************************
+[32mok: [debian][0m
+[32mok: [ubuntu][0m
+
+TASK [Check Vector configuration] **********************************************
+[32mok: [debian][0m
+[32mok: [ubuntu][0m
+
+TASK [Checck] ******************************************************************
+[32mok: [debian] => {[0m
+[32m    "vector_config": {[0m
+[32m        "changed": false,[0m
+[32m        "cmd": [[0m
+[32m            "vector",[0m
+[32m            "validate",[0m
+[32m            "/etc/vector/vector.yaml"[0m
+[32m        ],[0m
+[32m        "delta": "0:00:00.102373",[0m
+[32m        "end": "2024-11-02 18:33:42.755885",[0m
+[32m        "failed": false,[0m
+[32m        "msg": "",[0m
+[32m        "rc": 0,[0m
+[32m        "start": "2024-11-02 18:33:42.653512",[0m
+[32m        "stderr": "",[0m
+[32m        "stderr_lines": [],[0m
+[32m        "stdout": "Loaded with warnings [\"/etc/vector/vector.yaml\"]\n------------------------------------------------\n~ Source \"in\" has no consumers\n\n√ Component configuration\n√ Health check \"print\"\n------------------------------------------------\n                                       Validated",[0m
+[32m        "stdout_lines": [[0m
+[32m            "Loaded with warnings [\"/etc/vector/vector.yaml\"]",[0m
+[32m            "------------------------------------------------",[0m
+[32m            "~ Source \"in\" has no consumers",[0m
+[32m            "",[0m
+[32m            "√ Component configuration",[0m
+[32m            "√ Health check \"print\"",[0m
+[32m            "------------------------------------------------",[0m
+[32m            "                                       Validated"[0m
+[32m        ][0m
+[32m    }[0m
+[32m}[0m
+[32mok: [ubuntu] => {[0m
+[32m    "vector_config": {[0m
+[32m        "changed": false,[0m
+[32m        "cmd": [[0m
+[32m            "vector",[0m
+[32m            "validate",[0m
+[32m            "/etc/vector/vector.yaml"[0m
+[32m        ],[0m
+[32m        "delta": "0:00:00.063160",[0m
+[32m        "end": "2024-11-02 18:33:42.763480",[0m
+[32m        "failed": false,[0m
+[32m        "msg": "",[0m
+[32m        "rc": 0,[0m
+[32m        "start": "2024-11-02 18:33:42.700320",[0m
+[32m        "stderr": "",[0m
+[32m        "stderr_lines": [],[0m
+[32m        "stdout": "Loaded with warnings [\"/etc/vector/vector.yaml\"]\n------------------------------------------------\n~ Source \"in\" has no consumers\n\n√ Component configuration\n√ Health check \"print\"\n------------------------------------------------\n                                       Validated",[0m
+[32m        "stdout_lines": [[0m
+[32m            "Loaded with warnings [\"/etc/vector/vector.yaml\"]",[0m
+[32m            "------------------------------------------------",[0m
+[32m            "~ Source \"in\" has no consumers",[0m
+[32m            "",[0m
+[32m            "√ Component configuration",[0m
+[32m            "√ Health check \"print\"",[0m
+[32m            "------------------------------------------------",[0m
+[32m            "                                       Validated"[0m
+[32m        ][0m
+[32m    }[0m
+[32m}[0m
+
+TASK [Assert Vector config is not failed] **************************************
+[32mok: [debian] => {[0m
+[32m    "changed": false,[0m
+[32m    "msg": "All assertions passed"[0m
+[32m}[0m
+[32mok: [ubuntu] => {[0m
+[32m    "changed": false,[0m
+[32m    "msg": "All assertions passed"[0m
+[32m}[0m
+
+TASK [Check Vector configuration] **********************************************
+[32mok: [debian][0m
+[32mok: [ubuntu][0m
+
+TASK [Debug Vector service status] *********************************************
+[32mok: [debian] => {[0m
+[32m    "vector_service": {[0m
+[32m        "changed": false,[0m
+[32m        "cmd": [[0m
+[32m            "systemctl",[0m
+[32m            "status",[0m
+[32m            "vector"[0m
+[32m        ],[0m
+[32m        "delta": "0:00:01.173698",[0m
+[32m        "end": "2024-11-02 18:33:51.872888",[0m
+[32m        "failed": false,[0m
+[32m        "msg": "",[0m
+[32m        "rc": 0,[0m
+[32m        "start": "2024-11-02 18:33:50.699190",[0m
+[32m        "stderr": "",[0m
+[32m        "stderr_lines": [],[0m
+[32m        "stdout": "vector.service - Vector Serivce\n    Loaded: loaded (/etc/systemd/system/vector.service, static)\n    Active: active (running)",[0m
+[32m        "stdout_lines": [[0m
+[32m            "vector.service - Vector Serivce",[0m
+[32m            "    Loaded: loaded (/etc/systemd/system/vector.service, static)",[0m
+[32m            "    Active: active (running)"[0m
+[32m        ][0m
+[32m    }[0m
+[32m}[0m
+[32mok: [ubuntu] => {[0m
+[32m    "vector_service": {[0m
+[32m        "changed": false,[0m
+[32m        "cmd": [[0m
+[32m            "systemctl",[0m
+[32m            "status",[0m
+[32m            "vector"[0m
+[32m        ],[0m
+[32m        "delta": "0:00:01.597824",[0m
+[32m        "end": "2024-11-02 18:33:52.689677",[0m
+[32m        "failed": false,[0m
+[32m        "msg": "",[0m
+[32m        "rc": 0,[0m
+[32m        "start": "2024-11-02 18:33:51.091853",[0m
+[32m        "stderr": "/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'\n  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))\n/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'\n  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)\n/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'\n  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)\n/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'\n  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]",[0m
+[32m        "stderr_lines": [[0m
+[32m            "/usr/bin/systemctl:1541: SyntaxWarning: invalid escape sequence '\\w'",[0m
+[32m            "  expanded = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd.replace(\"\\\\\\n\",\"\"))",[0m
+[32m            "/usr/bin/systemctl:1543: SyntaxWarning: invalid escape sequence '\\w'",[0m
+[32m            "  new_text = re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), expanded)",[0m
+[32m            "/usr/bin/systemctl:1628: SyntaxWarning: invalid escape sequence '\\w'",[0m
+[32m            "  cmd3 = re.sub(\"[$](\\w+)\", lambda m: get_env1(m), cmd2)",[0m
+[32m            "/usr/bin/systemctl:1631: SyntaxWarning: invalid escape sequence '\\w'",[0m
+[32m            "  newcmd += [ re.sub(\"[$][{](\\w+)[}]\", lambda m: get_env2(m), part) ]"[0m
+[32m        ],[0m
+[32m        "stdout": "vector.service - Vector Serivce\n    Loaded: loaded (/etc/systemd/system/vector.service, static)\n    Active: active (running)",[0m
+[32m        "stdout_lines": [[0m
+[32m            "vector.service - Vector Serivce",[0m
+[32m            "    Loaded: loaded (/etc/systemd/system/vector.service, static)",[0m
+[32m            "    Active: active (running)"[0m
+[32m        ][0m
+[32m    }[0m
+[32m}[0m
+
+TASK [Assert Vector service is not failed] *************************************
+[32mok: [debian] => {[0m
+[32m    "changed": false,[0m
+[32m    "msg": "All assertions passed"[0m
+[32m}[0m
+[32mok: [ubuntu] => {[0m
+[32m    "changed": false,[0m
+[32m    "msg": "All assertions passed"[0m
+[32m}[0m
+
+PLAY RECAP *********************************************************************
+[32mdebian[0m                     : [32mok=7   [0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+[32mubuntu[0m                     : [32mok=7   [0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+[34mINFO    [0m Verifier completed successfully.
+[34mINFO    [0m [2;36mRunning [0m[2;32mdefault[0m[2;36m > [0m[2;32mcleanup[0m
+[31mWARNING [0m Skipping, cleanup playbook not configured.
+[34mINFO    [0m [2;36mRunning [0m[2;32mdefault[0m[2;36m > [0m[2;32mdestroy[0m
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+[32mok: [localhost][0m
+
+TASK [Destroy molecule instance(s)] ********************************************
+[33mchanged: [localhost] => (item=ubuntu)[0m
+[33mchanged: [localhost] => (item=debian)[0m
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+[33mchanged: [localhost] => (item=ubuntu)[0m
+[33mchanged: [localhost] => (item=debian)[0m
+
+TASK [Delete docker networks(s)] ***********************************************
+[36mskipping: [localhost][0m
+
+PLAY RECAP *********************************************************************
+[33mlocalhost[0m                  : [32mok=3   [0m [33mchanged=2   [0m unreachable=0    failed=0    [36mskipped=1   [0m rescued=0    ignored=0
+
+[34mINFO    [0m Pruning extra files from scenario ephemeral directory
+Finished: SUCCESS
