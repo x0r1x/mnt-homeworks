@@ -31,6 +31,95 @@
 18. Проверьте, что конфигурация в репозитории содержит все настройки конфигурации из teamcity.
 19. В ответе пришлите ссылку на репозиторий.
 
+
+#### Решение
+
+
+- Создаем новый проект в teamcity на основе fork.
+
+    ![alt text](image.png)
+
+    ![alt text](image-1.png)
+
+- Делаем autodetect конфигурации.
+
+    ![alt text](image-2.png)
+
+- Запускаем первую сборку master.
+
+    ![alt text](image-3.png)
+
+    ![alt text](image-4.png)
+
+- Меняем условия сборки: если сборка по ветке `master`, то должен происходит `mvn clean deploy`, иначе `mvn clean test`
+
+    ![alt text](image-7.png)
+
+- Для deploy загружаем [settings.xml](./teamcity/settings.xml) в набор конфигураций maven у teamcity, предварительно записав туда креды для подключения к nexus.
+
+    ![alt text](image-8.png)
+
+- В pom.xml меням ссылки на репозиторий и nexus, ссылка на [commit](https://github.com/x0r1x/example-teamcity/commit/d01d44b298876e1c3ff68328611a616f7da4de04).
+
+    ![alt text](image-21.png)
+
+- Убеждаемся что корректно отработла сборка, отработал шаг который собирает только ветку `master`
+
+    ![alt text](image-9.png)
+
+- Убеждаемся, что всё прошло успешно и артефакт появился в nexus.
+
+    ![alt text](image-6.png)
+
+- Мигрируем `build configuration` в репозиторий. ссылка на [commit](https://github.com/x0r1x/example-teamcity/commit/ec89df98ee01c3109647567fbbc96bd33047ff3b)
+
+    ![alt text](image-22.png)
+
+- Проверяем что конфигурация появилась в репозитории
+
+    ![alt text](image-23.png)
+
+- Напишите новый метод для класса Welcomer: метод должен возвращать произвольную реплику, содержащую слово `hunter`. Дополните тест для нового метода на поиск слова `hunter` в новой реплике. [push](https://github.com/x0r1x/example-teamcity/commit/8fbc2408174a792623275d5ad3dc6a51d661b455)
+
+    ![alt text](image-25.png)
+
+- Делаем push всех изменений в новую ветку репозитория. Убеждаемся, что сборка самостоятельно запустилась, тесты прошли успешно.
+
+    ![alt text](image-10.png)
+
+    ![alt text](image-11.png)
+
+- Шаг который собирает только ветку `feature`
+
+    ![alt text](image-12.png)
+
+- Вносим изменения из произвольной ветки `feature/add_reply` в `master` через `Merge`. Сделал [pull_request](https://github.com/x0r1x/example-teamcity/pull/1) и мердж в ветку `master`
+
+    ![alt text](image-14.png)
+
+    ![alt text](image-15.png)
+
+- Убеждаемся, что нет собранного артефакта в сборке по ветке `master`.
+
+    ![alt text](image-16.png)
+
+- Настраиваем конфигурацию так, чтобы она собирала `.jar` в артефакты сборки.
+
+    ![alt text](image-13.png)
+
+- Запускаем сборку мастера, артефакты собраны.
+
+    ![alt text](image-17.png)
+
+    ![alt text](image-18.png)
+
+- Проведите повторную сборку мастера, убедитесь, что сбора прошла успешно и артефакты собраны.
+
+    ![alt text](image-20.png)
+
+    ![alt text](image-19.png)
+
+- Ссылка на репозиторий [project_src](https://github.com/x0r1x/example-teamcity.git)
 ---
 
 ### Как оформить решение задания

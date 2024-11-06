@@ -1,0 +1,46 @@
+spec:
+  containers:
+  - image: jetbrains/teamcity-server
+    name: teamcity-server
+    securityContext:
+      privileged: false
+    stdin: false
+    tty: false
+    volumeMounts:
+      - mountPath: data/teamcity_server/datadir
+        name: data-volume
+      - mountPath: /opt/teamcity/logs
+        name: data-logs
+  restartPolicy: Always
+  volumes:
+    - name: data-volume
+      hostPath:
+        path: /teamcity/data/
+    - name: data-logs
+      hostPath:
+        path: /teamcity/logs/
+
+# spec:
+#   containers:
+#   - command:
+#     image: jetbrains/teamcity-server:latest
+#     name: teamcity-server
+#     securityContext:
+#       privileged: false
+#     stdin: false
+#     tty: false
+#     expose:
+#       - 8111
+#     volumeMounts:
+#       - mountPath: data/teamcity_server/datadir
+#         name: data-volume
+#       - mountPath: /opt/teamcity/logs
+#         name: data-logs
+#   restartPolicy: Always
+#   volumes:
+#     - name: data-volume
+#       emptyDir:
+#         medium: ~/teamcity/data/
+#     - name: data-logs
+#       hostPath:
+#         path: ~/teamcity/logs/

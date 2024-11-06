@@ -1,0 +1,20 @@
+---
+# TeamCity Home
+teamcity_server_home: /home/teamcity
+
+# TeamCity User
+teamcity_server_user: teamcity
+teamcity_server_group: teamcity
+
+# TeamCity Port
+teamcity_server_bind_port: 8111
+
+# TeamCity Dirs
+teamcity_server_install_dir: /opt
+teamcity_server_dir: "{{ teamcity_server_install_dir }}/TeamCity"
+teamcity_server_data_dir: "{{ teamcity_server_dir }}/BuildServer"
+teamcity_server_plugins_dir: "{{ teamcity_server_data_dir }}/plugins"
+teamcity_server_config_dir: "{{ teamcity_server_data_dir }}/config"
+
+# TeamCity Version
+teamcity_server_version: 2017.2.3

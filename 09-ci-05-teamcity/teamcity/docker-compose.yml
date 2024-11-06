@@ -1,17 +1,37 @@
-version: "3"
 services:
   teamcity:
     image: jetbrains/teamcity-server
     volumes:
-      - ~/teamcity/data/:/data/teamcity_server/datadir
-      - ~/teamcity/logs/:/opt/teamcity/logs
+      - teamcity_server_data:/data/teamcity_server/datadir
+      - teamcity_server_log:/opt/teamcity/logs
+    networks:
+      - net
     ports:
       - 8111:8111
-  teamcity-agent:
+  teamcity-agent-1:
     image: jetbrains/teamcity-agent 
     depends_on:
       - teamcity
     volumes:
-      - ~/teamcity/agent/:/data/teamcity_agent/conf 
+      - teamcity_server_agent:/data/teamcity_agent/conf
+    networks:
+      - net
     environment:
       SERVER_URL: "http://teamcity:8111"
+  nexus:
+    image: snorc/nexus:3.13
+    volumes:
+      - nexus_server_data:/nexus-data
+    ports:
+      - 8081:8081
+    networks:
+      - net
+
+volumes:
+  teamcity_server_data: {}
+  teamcity_server_log: {}
+  teamcity_server_agent: {}
+  nexus_server_data: {}
+networks:
+  net:
+    driver: bridge
